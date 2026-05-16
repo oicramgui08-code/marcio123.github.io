@@ -1,59 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tech Ofertas</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial;
-      background: #0f172a;
-      color: white;
-      text-align: center;
-    }
-    header {
-      background: #020617;
-      padding: 20px;
-      font-size: 24px;
-    }
-    .card {
-      background: #1e293b;
-      margin: 20px;
-      padding: 15px;
-      border-radius: 10px;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px;
-      background: #2563eb;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Ofertas</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0f172a;
+  color: white;
+}
+
+header {
+  background: #020617;
+  padding: 20px;
+  font-size: 24px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 15px;
+}
+
+.card {
+  background: #1e293b;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 12px;
+  background: #2563eb;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
+</style>
 </head>
+
 <body>
 
 <header>🔥 Tech Ofertas</header>
 
+<div class="container">
+
 <div class="card">
-  <img src="https://http2.mlstatic.com/D_NQ_NP_2X_907234-MLA74223967164_012024-F.webp" style="width:100%; border-radius:10px;">
+  <img src="https://http2.mlstatic.com/D_NQ_NP_2X_907234-MLA74223967164_012024-F.webp">
   <h2>Smartphone Samsung</h2>
-  <p>R$ 2.200</p>
+  <p>R$ 2.700</p>
   <a href="https://meli.la/2GujwmR" class="btn">Ver oferta</a>
 </div>
-  
+
 <div class="card">
-  <img src="https://http2.mlstatic.com/D_NQ_NP_2X_913850-MLA74222209845_012024-F.webp" style="width:100%; border-radius:10px;">
+  <img src="https://http2.mlstatic.com/D_NQ_NP_2X_913850-MLA74222209845_012024-F.webp">
   <h2>Notebook Lenovo</h2>
   <p>R$ 4.198</p>
   <a href="https://meli.la/1Liom2f" class="btn">Ver oferta</a>
 </div>
 
+<div class="card">
+  <img src="https://http2.mlstatic.com/D_NQ_NP_2X_964825-MLA74258160207_012024-F.webp">
+  <h2>Fone Bluetooth</h2>
+  <p>R$ 35</p>
+  <a href="https://meli.la/1nDBqEA" class="btn">Ver oferta</a>
+</div>
+
+</div>
+
 <footer>
-  <p>Este site participa do programa de afiliados do Mercado Livre</p>
+Este site participa do programa de afiliados do Mercado Livre
 </footer>
 
 </body>
