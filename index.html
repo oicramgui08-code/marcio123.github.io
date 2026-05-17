@@ -7,81 +7,141 @@
 <title>Tech Ofertas</title>
 
 <style>
-body { margin:0; font-family:Arial; background:#0f172a; color:white; }
-header { background:#020617; padding:20px; text-align:center; font-size:26px; }
-.container { display:grid; gap:15px; padding:15px; }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #cfe9ff, #eaf6ff);
+    color: #0a2540;
+}
+
+header {
+    background: #1e88ff;
+    color: white;
+    padding: 15px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.hero {
+    padding: 30px 15px;
+}
+
+.hero h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+    padding: 15px;
+}
 
 .card {
-  background:#1e293b;
-  padding:15px;
-  border-radius:12px;
-  text-align:center;
+    background: white;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
 }
 
-.card img { width:100%; border-radius:10px; }
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.card h3 {
+    font-size: 14px;
+}
+
+.price {
+    font-weight: bold;
+    margin: 5px 0;
+}
 
 .btn {
-  display:inline-block;
-  margin-top:10px;
-  padding:12px;
-  background:#22c55e;
-  color:white;
-  text-decoration:none;
-  border-radius:8px;
+    display: block;
+    background: #1e88ff;
+    color: white;
+    padding: 8px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-top: 8px;
 }
 
-footer { text-align:center; padding:20px; }
+footer {
+    text-align: center;
+    padding: 15px;
+    font-size: 12px;
+}
 </style>
+
 </head>
 
 <body>
 
 <header>🔥 Tech Ofertas</header>
 
+<section class="hero">
+    <h1>Tecnologia que transforma seu dia!</h1>
+    <p>Fones e smartwatches com os melhores preços 🔥</p>
+</section>
+
 <div class="container">
 
-<!-- 4 FONES -->
+<!-- FONE 1 -->
 <div class="card">
-  <img src="https://picsum.photos/400/300?1">
-  <h2>Fone Bluetooth Premium</h2>
-  <a href="https://meli.la/1nW2s1B" class="btn" target="_blank">Ver oferta</a>
+<img src="COLE_A_IMAGEM_AQUI">
+<h3>Fone Bluetooth</h3>
+<p class="price">R$ 59,90</p>
+<a href="https://meli.la/1nW2s1B" class="btn">Ver oferta</a>
 </div>
 
+<!-- FONE 2 -->
 <div class="card">
-  <img src="https://picsum.photos/400/300?2">
-  <h2>Headset Gamer</h2>
-  <a href="https://meli.la/2KFmtVh" class="btn" target="_blank">Ver oferta</a>
+<img src="COLE_A_IMAGEM_AQUI">
+<h3>Headset Gamer</h3>
+<p class="price">R$ 129,90</p>
+<a href="https://meli.la/2KFmtVh" class="btn">Ver oferta</a>
 </div>
 
+<!-- FONE 3 -->
 <div class="card">
-  <img src="https://picsum.photos/400/300?3">
-  <h2>Earbuds Bluetooth</h2>
-  <a href="https://meli.la/1X6npsX" class="btn" target="_blank">Ver oferta</a>
+<img src="COLE_A_IMAGEM_AQUI">
+<h3>Earbuds Bluetooth</h3>
+<p class="price">R$ 89,90</p>
+<a href="https://meli.la/1X6npsX" class="btn">Ver oferta</a>
 </div>
 
+<!-- FONE 4 -->
 <div class="card">
-  <img src="https://picsum.photos/400/300?4">
-  <h2>Fone Sem Fio</h2>
-  <a href="https://meli.la/32zGP3N" class="btn" target="_blank">Ver oferta</a>
+<img src="COLE_A_IMAGEM_AQUI">
+<h3>Fone Sem Fio JBL</h3>
+<p class="price">R$ 149,90</p>
+<a href="https://meli.la/32zGP3N" class="btn">Ver oferta</a>
 </div>
 
-<!-- 2 SMARTWATCH -->
+<!-- SMARTWATCH 1 -->
 <div class="card">
-  <img src="https://picsum.photos/400/300?5">
-  <h2>Smartwatch Bluetooth</h2>
-  <a href="https://meli.la/1B8kgku" class="btn" target="_blank">Ver oferta</a>
+<img src="COLE_A_IMAGEM_AQUI">
+<h3>Smartwatch Bluetooth</h3>
+<p class="price">R$ 69,90</p>
+<a href="https://meli.la/1B8kgku" class="btn">Ver oferta</a>
 </div>
 
+<!-- SMARTWATCH 2 -->
 <div class="card">
-  <img src="https://picsum.photos/400/300?6">
-  <h2>Relógio Inteligente</h2>
-  <a href="https://meli.la/28Ryff2" class="btn" target="_blank">Ver oferta</a>
+<img src="COLE_A_IMAGEM_AQUI">
+<h3>Relógio Inteligente</h3>
+<p class="price">R$ 119,90</p>
+<a href="https://meli.la/28Ryff2" class="btn">Ver oferta</a>
 </div>
 
 </div>
 
 <footer>
-Site afiliado Mercado Livre
+Este site participa do programa de afiliados do Mercado Livre
 </footer>
 
 </body>
