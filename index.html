@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta name="google-site-verification" content="JWOi7j1uA04iS7bNgf-EpKAENQhOrRjQcAHXswhyjIY" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tech Ofertas</title>
@@ -17,20 +16,21 @@ body {
 header {
   background: #020617;
   padding: 20px;
-  font-size: 24px;
+  text-align: center;
+  font-size: 26px;
 }
 
 .container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
   padding: 15px;
 }
 
 .card {
   background: #1e293b;
+  margin: 15px 0;
   padding: 15px;
   border-radius: 12px;
+  text-align: center;
+  position: relative;
 }
 
 .card img {
@@ -38,14 +38,42 @@ header {
   border-radius: 10px;
 }
 
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: red;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.stars {
+  color: gold;
+  margin: 5px 0;
+}
+
 .btn {
   display: inline-block;
   margin-top: 10px;
   padding: 12px;
-  background: #2563eb;
+  background: #22c55e;
   color: white;
   text-decoration: none;
-  border-radius: 6px;
+  border-radius: 8px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.timer {
+  color: #facc15;
+  font-size: 14px;
+  margin-top: 5px;
 }
 
 footer {
@@ -63,69 +91,37 @@ footer {
 <div class="container">
 
 <div class="card">
-  <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9" style="width:100%; border-radius:10px;">
-  <h2>Smartphone Samsung</h2>
-  <p>R$ 2.700</p>
-  <a href="https://meli.la/2GujwmR" class="btn">Ver oferta</a>
-</div>
+  <span class="badge">🔥 Oferta</span>
+  <img src="https://picsum.photos/400/300?1">
+  <h2>Fone Bluetooth Premium</h2>
+  
+  <div class="stars">★★★★★</div>
+  
+  <div class="timer">⏳ Oferta acaba em: <span id="timer"></span></div>
 
-<div class="card">
-  <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8" style="width:100%; border-radius:10px;">
-  <h2>Notebook Lenovo</h2>
-  <p>R$ 4.198</p>
-  <a href="https://meli.la/1Liom2f" class="btn">Ver oferta</a>
-</div>
-
-<div class="card">
-  <img src="https://images.unsplash.com/photo-1518444065439-e933c06ce9cd" style="width:100%; border-radius:10px;">
-  <h2>Fone Bluetooth</h2>
-  <p>R$ 48</p>
-  <a href="https://meli.la/1nDBqEA" class="btn">Ver oferta</a>
+  <a href="https://meli.la/1nW2s1B" class="btn" target="_blank">Ver oferta</a>
 </div>
 
 </div>
 
 <footer>
-Este site participa do programa de afiliados do Mercado Livre
+Este site participa do programa de afiliados
 </footer>
+
+<script>
+// CONTADOR
+let tempo = 600; // 10 minutos
+
+function atualizarTimer() {
+  let min = Math.floor(tempo / 60);
+  let seg = tempo % 60;
+  document.getElementById("timer").innerText = min + ":" + (seg < 10 ? "0" : "") + seg;
+  tempo--;
+  if (tempo >= 0) setTimeout(atualizarTimer, 1000);
+}
+
+atualizarTimer();
+</script>
 
 </body>
 </html>
-<h2>Melhor smartwatch custo-benefício 2026</h2>
-
-<p>Esse smartwatch é uma ótima opção para quem quer monitorar atividades físicas, receber notificações e ter um visual moderno sem gastar muito.</p>
-
-<div class="card">
-  <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12" style="width:100%; border-radius:10px;">
-  
-  <h2>⌚ Smartwatch Premium</h2>
-  
-  <p>💰 R$ 253</p>
-  
-  <a href="https://meli.la/2e7AYcr" class="btn">🔥 Ver oferta</a>
-</div>
-<h2>Smart TV com excelente custo-benefício</h2>
-
-<p>Uma Smart TV ideal para assistir filmes, séries e jogar com ótima qualidade de imagem e preço acessível.</p>
-
-<div class="card">
-  <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6" style="width:100%; border-radius:10px;">
-  
-  <h2>📺 Smart TV</h2>
-  
-  <p>💰 R$ 869</p>
-  
-  <a href="https://meli.la/1U8STXi" class="btn">🔥 Ver oferta</a>
-</div><h2>Caixa de som potente para festas</h2>
-
-<p>Essa caixa de som entrega áudio potente, conexão Bluetooth e ótima qualidade para músicas e eventos.</p>
-
-<div class="card">
-  <img src="https://images.unsplash.com/photo-1545454675-3531b543be5d" style="width:100%; border-radius:10px;">
-  
-  <h2>🔊 Caixa de Som Bluetooth</h2>
-  
-  <p>💰 R$ 3.080</p>
-  
-  <a href="https://meli.la/2TfijK1" class="btn">🔥 Ver oferta</a>
-</div>
