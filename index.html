@@ -1,5 +1,5 @@
 
-<!DOCTYPE html>
+       <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -25,13 +25,12 @@
             background: linear-gradient(135deg, #1e90ff, #007acc);
             color: white;
             text-align: center;
-            padding: 40px 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 35px 20px 25px 20px;
         }
 
         header h1 {
             font-size: 2.2rem;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -43,10 +42,31 @@
             opacity: 0.9;
         }
 
+        /* --- BARRA DE SEGURANÇA / CONFIANÇA --- */
+        .trust-bar {
+            background-color: #fff;
+            border-bottom: 1px solid #e1e8ed;
+            padding: 12px 10px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #4b5563;
+        }
+
         /* --- GRADE DE PRODUTOS --- */
         .container {
             max-width: 1200px;
-            margin: 30px auto;
+            margin: 25px auto;
             padding: 0 20px;
         }
 
@@ -122,8 +142,8 @@
         .product-info h3 {
             font-size: 1.1rem;
             color: #2c3e50;
-            margin-bottom: 8px;
-            min-height: 44px; /* Garante alinhamento mesmo com títulos de tamanhos diferentes */
+            margin-bottom: 6px;
+            min-height: 44px;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
@@ -132,15 +152,15 @@
 
         .product-info .subtitle {
             font-size: 0.85rem;
-            color: #7f8c8d;
+            color: #ff4757;
             margin-bottom: 15px;
-            font-weight: 500;
+            font-weight: bold;
         }
 
         /* Container de Preços */
         .price-container {
-            margin-bottom: 20px;
-            margin-top: auto; /* Empurra o preço e o botão sempre para o fundo */
+            margin-bottom: 18px;
+            margin-top: auto;
         }
 
         .old-price {
@@ -152,9 +172,21 @@
         }
 
         .current-price {
-            color: #00a650; /* Verde Mercado Livre */
-            font-size: 1.4rem;
+            color: #00a650;
+            font-size: 1.45rem;
             font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .discount-tag {
+            font-size: 0.75rem;
+            background: #e5f9ee;
+            color: #00a650;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
         }
 
         /* Botão */
@@ -176,36 +208,21 @@
             background-color: #008744;
         }
 
-        /* Responsividade para telas menores */
+        /* Responsividade */
         @media (max-width: 600px) {
+            .trust-bar { gap: 12px; padding: 8px; }
+            .trust-item { font-size: 0.75rem; }
             .products-grid {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
                 gap: 15px;
             }
-            .product-image {
-                height: 160px;
-                padding: 10px;
-            }
-            .product-info {
-                padding: 12px;
-            }
-            .product-info h3 {
-                font-size: 0.95rem;
-                min-height: 38px;
-            }
-            .current-price {
-                font-size: 1.15rem;
-            }
-            .btn-oferta {
-                padding: 8px;
-                font-size: 0.9rem;
-            }
-            .badge {
-                font-size: 0.65rem;
-                padding: 4px 8px;
-                top: 10px;
-                left: 10px;
-            }
+            .product-image { height: 160px; padding: 10px; }
+            .product-info { padding: 12px; }
+            .product-info h3 { font-size: 0.95rem; min-height: 38px; }
+            .current-price { font-size: 1.2rem; gap: 4px; }
+            .discount-tag { font-size: 0.65rem; padding: 1px 4px; }
+            .btn-oferta { padding: 8px; font-size: 0.9rem; }
+            .badge { font-size: 0.65rem; padding: 4px 8px; top: 10px; left: 10px; }
         }
     </style>
 </head>
@@ -216,22 +233,30 @@
         <p>Os produtos mais vendidos do Mercado Livre</p>
     </header>
 
+    <div class="trust-bar">
+        <div class="trust-item">🚚 Envio Rápido Full</div>
+        <div class="trust-item">💳 Até 12x ou Pix</div>
+        <div class="trust-item">🔒 Compra Garantida</div>
+    </div>
+
     <div class="container">
         <div class="products-grid">
 
             <div class="product-card">
-                <span class="badge top">Top</span>
+                <span class="badge top">Mais Vendido</span>
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop&q=60" alt="Fone Bluetooth Premium">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop&q=60" alt="Fone Bluetooth">
                 </div>
                 <div class="product-info">
-                    <h3>Fone de Ouvido Bluetooth Premium</h3>
-                    <p class="subtitle">Mais vendido da semana</p>
+                    <h3>Fone de Ouvido Bluetooth In-Ear</h3>
+                    <p class="subtitle">⚡ Super Oferta por tempo limitado</p>
                     <div class="price-container">
-                        <span class="old-price">Preço Original</span>
-                        <span class="current-price">Em Oferta</span>
+                        <span class="old-price">De R$ 49,90</span>
+                        <div class="current-price">
+                            R$ 21,00 <span class="discount-tag">57% OFF</span>
+                        </div>
                     </div>
-                    <a href="https://meli.la/1nW2s1B" target="_blank" class="btn-oferta">Ver oferta</a>
+                    <a href="https://meli.la/1nW2s1B" target="_blank" class="btn-oferta">Garantir Desconto</a>
                 </div>
             </div>
 
@@ -241,77 +266,87 @@
                     <img src="https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=500&auto=format&fit=crop&q=60" alt="Headset Gamer">
                 </div>
                 <div class="product-info">
-                    <h3>Headset Gamer com Microfone</h3>
-                    <p class="subtitle">Alta qualidade de som</p>
+                    <h3>Headset Gamer Profissional Bass</h3>
+                    <p class="subtitle">⚡ Frete Grátis Disponível</p>
                     <div class="price-container">
-                        <span class="old-price">Preço Original</span>
-                        <span class="current-price">Promoção</span>
+                        <span class="old-price">De R$ 399,00</span>
+                        <div class="current-price">
+                            R$ 275,00 <span class="discount-tag">31% OFF</span>
+                        </div>
                     </div>
-                    <a href="https://meli.la/2KFmtVh" target="_blank" class="btn-oferta">Ver oferta</a>
+                    <a href="https://meli.la/2KFmtVh" target="_blank" class="btn-oferta">Garantir Desconto</a>
                 </div>
             </div>
 
             <div class="product-card">
                 <span class="badge desconto">Destaque</span>
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&auto=format&fit=crop&q=60" alt="Earbuds Bluetooth">
+                    <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&auto=format&fit=crop&q=60" alt="Earbuds">
                 </div>
                 <div class="product-info">
-                    <h3>Earbuds Bluetooth Sem Fio</h3>
-                    <p class="subtitle">Estojo de carregamento rápido</p>
+                    <h3>Earbuds Bluetooth Sem Fio Touch</h3>
+                    <p class="subtitle">⚡ Poucas unidades no estoque</p>
                     <div class="price-container">
-                        <span class="old-price">Preço Original</span>
-                        <span class="current-price">Melhor Preço</span>
+                        <span class="old-price">De R$ 149,00</span>
+                        <div class="current-price">
+                            R$ 78,00 <span class="discount-tag">47% OFF</span>
+                        </div>
                     </div>
-                    <a href="https://meli.la/1X6npsX" target="_blank" class="btn-oferta">Ver oferta</a>
+                    <a href="https://meli.la/1X6npsX" target="_blank" class="btn-oferta">Garantir Desconto</a>
                 </div>
             </div>
 
             <div class="product-card">
                 <span class="badge desconto">Oferta</span>
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=500&auto=format&fit=crop&q=60" alt="Fone Sem Fio">
+                    <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=500&auto=format&fit=crop&q=60" alt="Fone Over-Ear">
                 </div>
                 <div class="product-info">
-                    <h3>Fone de Ouvido Wireless Confort</h3>
-                    <p class="subtitle">Isolamento acústico passivo</p>
+                    <h3>Fone Wireless Confort Premium</h3>
+                    <p class="subtitle">⚡ Campeão de avaliações 5 estrelas</p>
                     <div class="price-container">
-                        <span class="old-price">Preço Original</span>
-                        <span class="current-price">Desconto Ativo</span>
+                        <span class="old-price">De R$ 420,00</span>
+                        <div class="current-price">
+                            R$ 281,00 <span class="discount-tag">33% OFF</span>
+                        </div>
                     </div>
-                    <a href="https://meli.la/32zGP3N" target="_blank" class="btn-oferta">Ver oferta</a>
+                    <a href="https://meli.la/32zGP3N" target="_blank" class="btn-oferta">Garantir Desconto</a>
                 </div>
             </div>
 
             <div class="product-card">
                 <span class="badge premium">Smart</span>
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&auto=format&fit=crop&q=60" alt="Smartwatch Minimalista">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&auto=format&fit=crop&q=60" alt="Smartwatch">
                 </div>
                 <div class="product-info">
-                    <h3>Relógio Inteligente Smartwatch</h3>
-                    <p class="subtitle">Controle de notificações e treino</p>
+                    <h3>Relógio Inteligente Smartwatch Sport</h3>
+                    <p class="subtitle">⚡ Campeão em custo-benefício</p>
                     <div class="price-container">
-                        <span class="old-price">Preço Original</span>
-                        <span class="current-price">Menor Valor</span>
+                        <span class="old-price">De R$ 159,00</span>
+                        <div class="current-price">
+                            R$ 79,00 <span class="discount-tag">50% OFF</span>
+                        </div>
                     </div>
-                    <a href="https://meli.la/1B8kgku" target="_blank" class="btn-oferta">Ver oferta</a>
+                    <a href="https://meli.la/1B8kgku" target="_blank" class="btn-oferta">Garantir Desconto</a>
                 </div>
             </div>
 
             <div class="product-card">
                 <span class="badge premium">Premium</span>
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=500&auto=format&fit=crop&q=60" alt="Smartwatch Sport">
+                    <img src="https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=500&auto=format&fit=crop&q=60" alt="Smartwatch Premium">
                 </div>
                 <div class="product-info">
-                    <h3>Smartwatch Sport Monitor Cardíaco</h3>
-                    <p class="subtitle">Bateria de longa duração</p>
+                    <h3>Smartwatch Intelligent Monitor 2026</h3>
+                    <p class="subtitle">⚡ Notificações e Monitoramento Cardíaco</p>
                     <div class="price-container">
-                        <span class="old-price">Preço Original</span>
-                        <span class="current-price">Destaque Premium</span>
+                        <span class="old-price">De R$ 299,00</span>
+                        <div class="current-price">
+                            R$ 182,00 <span class="discount-tag">39% OFF</span>
+                        </div>
                     </div>
-                    <a href="https://meli.la/28Ryff2" target="_blank" class="btn-oferta">Ver oferta</a>
+                    <a href="https://meli.la/28Ryff2" target="_blank" class="btn-oferta">Garantir Desconto</a>
                 </div>
             </div>
 
@@ -320,3 +355,4 @@
 
 </body>
 </html>
+                     
