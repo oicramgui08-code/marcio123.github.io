@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,81 +7,30 @@
 <title>Tech Ofertas</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial;
-  background: #0f172a;
-  color: white;
-}
-
-header {
-  background: #020617;
-  padding: 20px;
-  text-align: center;
-  font-size: 26px;
-}
-
-.container {
-  padding: 15px;
-}
+body { margin:0; font-family:Arial; background:#0f172a; color:white; }
+header { background:#020617; padding:20px; text-align:center; font-size:26px; }
+.container { display:grid; gap:15px; padding:15px; }
 
 .card {
-  background: #1e293b;
-  margin: 15px 0;
-  padding: 15px;
-  border-radius: 12px;
-  text-align: center;
-  position: relative;
+  background:#1e293b;
+  padding:15px;
+  border-radius:12px;
+  text-align:center;
 }
 
-.card img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-.badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: red;
-  padding: 5px 10px;
-  border-radius: 6px;
-  font-size: 12px;
-}
-
-.stars {
-  color: gold;
-  margin: 5px 0;
-}
+.card img { width:100%; border-radius:10px; }
 
 .btn {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 12px;
-  background: #22c55e;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  animation: pulse 1.5s infinite;
+  display:inline-block;
+  margin-top:10px;
+  padding:12px;
+  background:#22c55e;
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-.timer {
-  color: #facc15;
-  font-size: 14px;
-  margin-top: 5px;
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  font-size: 14px;
-}
+footer { text-align:center; padding:20px; }
 </style>
 </head>
 
@@ -90,38 +40,49 @@ footer {
 
 <div class="container">
 
+<!-- 4 FONES -->
 <div class="card">
-  <span class="badge">🔥 Oferta</span>
   <img src="https://picsum.photos/400/300?1">
   <h2>Fone Bluetooth Premium</h2>
-  
-  <div class="stars">★★★★★</div>
-  
-  <div class="timer">⏳ Oferta acaba em: <span id="timer"></span></div>
-
   <a href="https://meli.la/1nW2s1B" class="btn" target="_blank">Ver oferta</a>
+</div>
+
+<div class="card">
+  <img src="https://picsum.photos/400/300?2">
+  <h2>Headset Gamer</h2>
+  <a href="https://meli.la/2KFmtVh" class="btn" target="_blank">Ver oferta</a>
+</div>
+
+<div class="card">
+  <img src="https://picsum.photos/400/300?3">
+  <h2>Earbuds Bluetooth</h2>
+  <a href="https://meli.la/1X6npsX" class="btn" target="_blank">Ver oferta</a>
+</div>
+
+<div class="card">
+  <img src="https://picsum.photos/400/300?4">
+  <h2>Fone Sem Fio</h2>
+  <a href="https://meli.la/32zGP3N" class="btn" target="_blank">Ver oferta</a>
+</div>
+
+<!-- 2 SMARTWATCH -->
+<div class="card">
+  <img src="https://picsum.photos/400/300?5">
+  <h2>Smartwatch Bluetooth</h2>
+  <a href="https://meli.la/1B8kgku" class="btn" target="_blank">Ver oferta</a>
+</div>
+
+<div class="card">
+  <img src="https://picsum.photos/400/300?6">
+  <h2>Relógio Inteligente</h2>
+  <a href="https://meli.la/28Ryff2" class="btn" target="_blank">Ver oferta</a>
 </div>
 
 </div>
 
 <footer>
-Este site participa do programa de afiliados
+Site afiliado Mercado Livre
 </footer>
-
-<script>
-// CONTADOR
-let tempo = 600; // 10 minutos
-
-function atualizarTimer() {
-  let min = Math.floor(tempo / 60);
-  let seg = tempo % 60;
-  document.getElementById("timer").innerText = min + ":" + (seg < 10 ? "0" : "") + seg;
-  tempo--;
-  if (tempo >= 0) setTimeout(atualizarTimer, 1000);
-}
-
-atualizarTimer();
-</script>
 
 </body>
 </html>
