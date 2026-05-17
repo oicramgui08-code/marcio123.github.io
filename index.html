@@ -2,201 +2,321 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tech Ofertas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Ofertas - Os Melhores Produtos do Mercado Livre</title>
+    <style>
+        /* --- ESTILIZAÇÃO GERAL --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-<style>
-body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    background:linear-gradient(to bottom,#b9e3ff,#eaf7ff);
-    color:#0a2540;
-}
+        body {
+            background-color: #f0f4f8;
+            color: #333;
+            padding-bottom: 40px;
+        }
 
-header{
-    background:#1e88ff;
-    color:white;
-    padding:18px;
-    font-size:26px;
-    font-weight:bold;
-    text-align:center;
-    box-shadow:0 2px 10px rgba(0,0,0,0.2);
-}
+        /* --- TOPO / HEADER --- */
+        header {
+            background: linear-gradient(135deg, #1e90ff, #007acc);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
 
-.hero{
-    padding:25px 15px;
-    text-align:center;
-}
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
 
-.hero h1{
-    margin:0;
-    font-size:30px;
-}
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
 
-.hero p{
-    opacity:0.8;
-}
+        /* --- GRADE DE PRODUTOS --- */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
 
-.container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-    gap:15px;
-    padding:15px;
-}
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
 
-.card{
-    background:white;
-    border-radius:15px;
-    overflow:hidden;
-    box-shadow:0 4px 12px rgba(0,0,0,0.12);
-    transition:0.3s;
-    position:relative;
-}
+        /* --- CARTÃO DO PRODUTO (CARD) --- */
+        .product-card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e1e8ed;
+        }
 
-.card:hover{
-    transform:translateY(-5px);
-}
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
 
-.tag{
-    position:absolute;
-    top:10px;
-    left:10px;
-    background:#ff3b30;
-    color:white;
-    padding:5px 10px;
-    border-radius:20px;
-    font-size:12px;
-    font-weight:bold;
-}
+        /* Etiquetas (Badges) */
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 6px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+        .badge.top { background-color: #ff4757; }
+        .badge.gamer { background-color: #6c5ce7; }
+        .badge.desconto { background-color: #ffa502; }
+        .badge.premium { background-color: #2ed573; }
 
-.card img{
-    width:100%;
-    height:180px;
-    object-fit:cover;
-}
+        /* Imagem do Produto */
+        .product-image {
+            width: 100%;
+            height: 240px;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
 
-.info{
-    padding:12px;
-}
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
 
-.info h3{
-    margin:0;
-    font-size:16px;
-}
+        /* Informações */
+        .product-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
 
-.price{
-    color:#1e88ff;
-    font-size:20px;
-    font-weight:bold;
-    margin:8px 0;
-}
+        .product-info h3 {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            min-height: 44px; /* Garante alinhamento mesmo com títulos de tamanhos diferentes */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
 
-.btn{
-    display:block;
-    text-align:center;
-    background:linear-gradient(45deg,#1e88ff,#00c6ff);
-    color:white;
-    text-decoration:none;
-    padding:10px;
-    border-radius:10px;
-    font-weight:bold;
-    margin-top:10px;
-}
+        .product-info .subtitle {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
 
-footer{
-    text-align:center;
-    padding:20px;
-    font-size:13px;
-    opacity:0.7;
-}
-</style>
+        /* Container de Preços */
+        .price-container {
+            margin-bottom: 20px;
+            margin-top: auto; /* Empurra o preço e o botão sempre para o fundo */
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #95a5a6;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .current-price {
+            color: #00a650; /* Verde Mercado Livre */
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        /* Botão */
+        .btn-oferta {
+            display: block;
+            text-align: center;
+            background-color: #00a650;
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 166, 80, 0.2);
+        }
+
+        .btn-oferta:hover {
+            background-color: #008744;
+        }
+
+        /* Responsividade para telas menores */
+        @media (max-width: 600px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 15px;
+            }
+            .product-image {
+                height: 160px;
+                padding: 10px;
+            }
+            .product-info {
+                padding: 12px;
+            }
+            .product-info h3 {
+                font-size: 0.95rem;
+                min-height: 38px;
+            }
+            .current-price {
+                font-size: 1.15rem;
+            }
+            .btn-oferta {
+                padding: 8px;
+                font-size: 0.9rem;
+            }
+            .badge {
+                font-size: 0.65rem;
+                padding: 4px 8px;
+                top: 10px;
+                left: 10px;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-🔥 Tech Ofertas
-</header>
+    <header>
+        <h1>🔥 Tech Ofertas</h1>
+        <p>Os produtos mais vendidos do Mercado Livre</p>
+    </header>
 
-<section class="hero">
-<h1>Top ofertas em tecnologia</h1>
-<p>Os produtos mais vendidos do Mercado Livre 🔥</p>
-</section>
+    <div class="container">
+        <div class="products-grid">
 
-<div class="container">
+            <div class="product-card">
+                <span class="badge top">Top</span>
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop&q=60" alt="Fone Bluetooth Premium">
+                </div>
+                <div class="product-info">
+                    <h3>Fone de Ouvido Bluetooth Premium</h3>
+                    <p class="subtitle">Mais vendido da semana</p>
+                    <div class="price-container">
+                        <span class="old-price">Preço Original</span>
+                        <span class="current-price">Em Oferta</span>
+                    </div>
+                    <a href="https://meli.la/1nW2s1B" target="_blank" class="btn-oferta">Ver oferta</a>
+                </div>
+            </div>
 
-<!-- FONE 1 -->
-<div class="card">
-<span class="tag">TOP</span>
-<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e">
-<div class="info">
-<h3>Fone Bluetooth Premium</h3>
-<div class="price">Oferta</div>
-<a href="https://meli.la/1nW2s1B" class="btn" target="_blank">Ver oferta</a>
-</div>
-</div>
+            <div class="product-card">
+                <span class="badge gamer">Gamer</span>
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=500&auto=format&fit=crop&q=60" alt="Headset Gamer">
+                </div>
+                <div class="product-info">
+                    <h3>Headset Gamer com Microfone</h3>
+                    <p class="subtitle">Alta qualidade de som</p>
+                    <div class="price-container">
+                        <span class="old-price">Preço Original</span>
+                        <span class="current-price">Promoção</span>
+                    </div>
+                    <a href="https://meli.la/2KFmtVh" target="_blank" class="btn-oferta">Ver oferta</a>
+                </div>
+            </div>
 
-<!-- FONE 2 -->
-<div class="card">
-<span class="tag">GAMER</span>
-<img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b">
-<div class="info">
-<h3>Headset Gamer</h3>
-<div class="price">Promoção</div>
-<a href="https://meli.la/2KFmtVh" class="btn" target="_blank">Ver oferta</a>
-</div>
-</div>
+            <div class="product-card">
+                <span class="badge desconto">Destaque</span>
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&auto=format&fit=crop&q=60" alt="Earbuds Bluetooth">
+                </div>
+                <div class="product-info">
+                    <h3>Earbuds Bluetooth Sem Fio</h3>
+                    <p class="subtitle">Estojo de carregamento rápido</p>
+                    <div class="price-container">
+                        <span class="old-price">Preço Original</span>
+                        <span class="current-price">Melhor Preço</span>
+                    </div>
+                    <a href="https://meli.la/1X6npsX" target="_blank" class="btn-oferta">Ver oferta</a>
+                </div>
+            </div>
 
-<!-- FONE 3 -->
-<div class="card">
-<span class="tag">🔥</span>
-<img src="https://images.unsplash.com/photo-1583394838336-acd977736f90">
-<div class="info">
-<h3>Earbuds Bluetooth</h3>
-<div class="price">Mais vendido</div>
-<a href="https://meli.la/1X6npsX" class="btn" target="_blank">Ver oferta</a>
-</div>
-</div>
+            <div class="product-card">
+                <span class="badge desconto">Oferta</span>
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=500&auto=format&fit=crop&q=60" alt="Fone Sem Fio">
+                </div>
+                <div class="product-info">
+                    <h3>Fone de Ouvido Wireless Confort</h3>
+                    <p class="subtitle">Isolamento acústico passivo</p>
+                    <div class="price-container">
+                        <span class="old-price">Preço Original</span>
+                        <span class="current-price">Desconto Ativo</span>
+                    </div>
+                    <a href="https://meli.la/32zGP3N" target="_blank" class="btn-oferta">Ver oferta</a>
+                </div>
+            </div>
 
-<!-- FONE 4 -->
-<div class="card">
-<span class="tag">OFERTA</span>
-<img src="https://images.unsplash.com/photo-1577174881658-0f30ed549adc">
-<div class="info">
-<h3>Fone Sem Fio</h3>
-<div class="price">Desconto</div>
-<a href="https://meli.la/32zGP3N" class="btn" target="_blank">Ver oferta</a>
-</div>
-</div>
+            <div class="product-card">
+                <span class="badge premium">Smart</span>
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&auto=format&fit=crop&q=60" alt="Smartwatch Minimalista">
+                </div>
+                <div class="product-info">
+                    <h3>Relógio Inteligente Smartwatch</h3>
+                    <p class="subtitle">Controle de notificações e treino</p>
+                    <div class="price-container">
+                        <span class="old-price">Preço Original</span>
+                        <span class="current-price">Menor Valor</span>
+                    </div>
+                    <a href="https://meli.la/1B8kgku" target="_blank" class="btn-oferta">Ver oferta</a>
+                </div>
+            </div>
 
-<!-- SMARTWATCH 1 -->
-<div class="card">
-<span class="tag">⌚</span>
-<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30">
-<div class="info">
-<h3>Smartwatch Bluetooth</h3>
-<div class="price">Top vendas</div>
-<a href="https://meli.la/1B8kgku" class="btn" target="_blank">Ver oferta</a>
-</div>
-</div>
+            <div class="product-card">
+                <span class="badge premium">Premium</span>
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=500&auto=format&fit=crop&q=60" alt="Smartwatch Sport">
+                </div>
+                <div class="product-info">
+                    <h3>Smartwatch Sport Monitor Cardíaco</h3>
+                    <p class="subtitle">Bateria de longa duração</p>
+                    <div class="price-container">
+                        <span class="old-price">Preço Original</span>
+                        <span class="current-price">Destaque Premium</span>
+                    </div>
+                    <a href="https://meli.la/28Ryff2" target="_blank" class="btn-oferta">Ver oferta</a>
+                </div>
+            </div>
 
-<!-- SMARTWATCH 2 -->
-<div class="card">
-<span class="tag">PREMIUM</span>
-<img src="https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d">
-<div class="info">
-<h3>Relógio Inteligente</h3>
-<div class="price">Custo-benefício</div>
-<a href="https://meli.la/28Ryff2" class="btn" target="_blank">Ver oferta</a>
-</div>
-</div>
-
-</div>
-
-<footer>
-Este site participa do programa de afiliados do Mercado Livre
-</footer>
+        </div>
+    </div>
 
 </body>
 </html>
