@@ -1,5 +1,5 @@
 
-       <!DOCTYPE html>
+                     <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -18,6 +18,7 @@
             background-color: #f0f4f8;
             color: #333;
             padding-bottom: 40px;
+            overflow-x: hidden;
         }
 
         /* --- TOPO / HEADER --- */
@@ -25,7 +26,8 @@
             background: linear-gradient(135deg, #1e90ff, #007acc);
             color: white;
             text-align: center;
-            padding: 35px 20px 25px 20px;
+            padding: 40px 20px 30px 20px;
+            position: relative;
         }
 
         header h1 {
@@ -42,7 +44,93 @@
             opacity: 0.9;
         }
 
-        /* --- BARRA DE SEGURANÇA / CONFIANÇA --- */
+        /* --- MENU HAMBÚRGUER (TRÊS BARRAS) --- */
+        .menu-icon {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .menu-icon span {
+            display: block;
+            height: 4px;
+            width: 100%;
+            background-color: white;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        /* Animação do ícone mudando para 'X' quando aberto */
+        .menu-icon.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .menu-icon.open span:nth-child(2) { opacity: 0; }
+        .menu-icon.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+        /* --- MENU LATERAL (SIDEBAR) --- */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100%;
+            background-color: #ffffff;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 99;
+            padding: 80px 20px 20px 20px;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar.open {
+            right: 0;
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .sidebar-item:hover {
+            background-color: #f0f4f8;
+            color: #007acc;
+        }
+
+        /* Barra de pesquisa dentro do menu */
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f0f4f8;
+            border-radius: 8px;
+            padding: 8px 12px;
+            margin-bottom: 10px;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 100%;
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        /* --- BARRA DE SEGURANÇA --- */
         .trust-bar {
             background-color: #fff;
             border-bottom: 1px solid #e1e8ed;
@@ -76,7 +164,7 @@
             gap: 25px;
         }
 
-        /* --- CARTÃO DO PRODUTO (CARD) --- */
+        /* --- CARTÃO DO PRODUTO --- */
         .product-card {
             background: #ffffff;
             border-radius: 16px;
@@ -95,7 +183,6 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
-        /* Etiquetas (Badges) */
         .badge {
             position: absolute;
             top: 15px;
@@ -107,14 +194,12 @@
             border-radius: 20px;
             text-transform: uppercase;
             z-index: 10;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
         }
         .badge.top { background-color: #ff4757; }
         .badge.gamer { background-color: #6c5ce7; }
         .badge.desconto { background-color: #ffa502; }
         .badge.premium { background-color: #2ed573; }
 
-        /* Imagem do Produto */
         .product-image {
             width: 100%;
             height: 240px;
@@ -131,7 +216,6 @@
             object-fit: contain;
         }
 
-        /* Informações */
         .product-info {
             padding: 20px;
             display: flex;
@@ -157,9 +241,8 @@
             font-weight: bold;
         }
 
-        /* Container de Preços */
         .price-container {
-            margin-bottom: 18px;
+            margin-bottom: 15px;
             margin-top: auto;
         }
 
@@ -189,7 +272,13 @@
             font-weight: 600;
         }
 
-        /* Botão */
+        /* Botões de Ação */
+        .actions-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
         .btn-oferta {
             display: block;
             text-align: center;
@@ -200,12 +289,108 @@
             border-radius: 8px;
             font-weight: bold;
             font-size: 1rem;
-            transition: background-color 0.2s ease;
+            transition: background 0.2s;
             box-shadow: 0 4px 6px rgba(0, 166, 80, 0.2);
         }
 
-        .btn-oferta:hover {
-            background-color: #008744;
+        .btn-oferta:hover { background-color: #008744; }
+
+        .btn-add-cart {
+            background-color: #f0f4f8;
+            color: #4b5563;
+            border: 1px solid #d1d5db;
+            padding: 8px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-add-cart:hover {
+            background-color: #e5e7eb;
+            color: #1f2937;
+        }
+
+        /* --- MODAL (JANELAS POP-UP PARA SOBRE E CARRINHO) --- */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 16px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #95a5a6;
+        }
+
+        /* Itens do Carrinho dentro do Modal */
+        .cart-list {
+            margin-top: 15px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e1e8ed;
+            gap: 10px;
+        }
+
+        .cart-item-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 220px;
+        }
+
+        .cart-item-price {
+            color: #00a650;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        .btn-remove {
+            background: none;
+            border: none;
+            color: #ff4757;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.85rem;
         }
 
         /* Responsividade */
@@ -222,11 +407,28 @@
             .current-price { font-size: 1.2rem; gap: 4px; }
             .discount-tag { font-size: 0.65rem; padding: 1px 4px; }
             .btn-oferta { padding: 8px; font-size: 0.9rem; }
+            .btn-add-cart { font-size: 0.75rem; padding: 6px; }
             .badge { font-size: 0.65rem; padding: 4px 8px; top: 10px; left: 10px; }
         }
     </style>
 </head>
 <body>
+
+    <div class="menu-icon" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="sidebar" id="sidebarMenu">
+        <div class="search-box">
+            🔍 <input type="text" id="searchInput" placeholder="Pesquisar produto...">
+        </div>
+        
+        <div class="sidebar-item" id="menuHome">🏠 Início</div>
+        <div class="sidebar-item" id="menuSobre">ℹ️ Sobre o Site</div>
+        <div class="sidebar-item" id="menuCarrinho">🛒 Meu Carrinho (<span id="cartCount">0</span>)</div>
+    </div>
 
     <header>
         <h1>🔥 Tech Ofertas</h1>
@@ -240,9 +442,9 @@
     </div>
 
     <div class="container">
-        <div class="products-grid">
+        <div class="products-grid" id="productsGrid">
 
-            <div class="product-card">
+            <div class="product-card" data-title="Fone de Ouvido Bluetooth In-Ear">
                 <span class="badge top">Mais Vendido</span>
                 <div class="product-image">
                     <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop&q=60" alt="Fone Bluetooth">
@@ -252,15 +454,16 @@
                     <p class="subtitle">⚡ Super Oferta por tempo limitado</p>
                     <div class="price-container">
                         <span class="old-price">De R$ 49,90</span>
-                        <div class="current-price">
-                            R$ 21,00 <span class="discount-tag">57% OFF</span>
-                        </div>
+                        <div class="current-price">R$ 21,00 <span class="discount-tag">57% OFF</span></div>
                     </div>
-                    <a href="https://meli.la/1nW2s1B" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                    <div class="actions-container">
+                        <a href="https://meli.la/1nW2s1B" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                        <button class="btn-add-cart" onclick="addToCart('Fone de Ouvido Bluetooth In-Ear', 'R$ 21,00', 'https://meli.la/1nW2s1B')">⭐ Salvar no Carrinho</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="Headset Gamer Profissional Bass">
                 <span class="badge gamer">Gamer</span>
                 <div class="product-image">
                     <img src="https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=500&auto=format&fit=crop&q=60" alt="Headset Gamer">
@@ -270,15 +473,16 @@
                     <p class="subtitle">⚡ Frete Grátis Disponível</p>
                     <div class="price-container">
                         <span class="old-price">De R$ 399,00</span>
-                        <div class="current-price">
-                            R$ 275,00 <span class="discount-tag">31% OFF</span>
-                        </div>
+                        <div class="current-price">R$ 275,00 <span class="discount-tag">31% OFF</span></div>
                     </div>
-                    <a href="https://meli.la/2KFmtVh" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                    <div class="actions-container">
+                        <a href="https://meli.la/2KFmtVh" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                        <button class="btn-add-cart" onclick="addToCart('Headset Gamer Profissional Bass', 'R$ 275,00', 'https://meli.la/2KFmtVh')">⭐ Salvar no Carrinho</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="Earbuds Bluetooth Sem Fio Touch">
                 <span class="badge desconto">Destaque</span>
                 <div class="product-image">
                     <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&auto=format&fit=crop&q=60" alt="Earbuds">
@@ -288,15 +492,16 @@
                     <p class="subtitle">⚡ Poucas unidades no estoque</p>
                     <div class="price-container">
                         <span class="old-price">De R$ 149,00</span>
-                        <div class="current-price">
-                            R$ 78,00 <span class="discount-tag">47% OFF</span>
-                        </div>
+                        <div class="current-price">R$ 78,00 <span class="discount-tag">47% OFF</span></div>
                     </div>
-                    <a href="https://meli.la/1X6npsX" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                    <div class="actions-container">
+                        <a href="https://meli.la/1X6npsX" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                        <button class="btn-add-cart" onclick="addToCart('Earbuds Bluetooth Sem Fio Touch', 'R$ 78,00', 'https://meli.la/1X6npsX')">⭐ Salvar no Carrinho</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="Fone Wireless Confort Premium">
                 <span class="badge desconto">Oferta</span>
                 <div class="product-image">
                     <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=500&auto=format&fit=crop&q=60" alt="Fone Over-Ear">
@@ -306,15 +511,16 @@
                     <p class="subtitle">⚡ Campeão de avaliações 5 estrelas</p>
                     <div class="price-container">
                         <span class="old-price">De R$ 420,00</span>
-                        <div class="current-price">
-                            R$ 281,00 <span class="discount-tag">33% OFF</span>
-                        </div>
+                        <div class="current-price">R$ 281,00 <span class="discount-tag">33% OFF</span></div>
                     </div>
-                    <a href="https://meli.la/32zGP3N" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                    <div class="actions-container">
+                        <a href="https://meli.la/32zGP3N" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                        <button class="btn-add-cart" onclick="addToCart('Fone Wireless Confort Premium', 'R$ 281,00', 'https://meli.la/32zGP3N')">⭐ Salvar no Carrinho</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="Relógio Inteligente Smartwatch Sport">
                 <span class="badge premium">Smart</span>
                 <div class="product-image">
                     <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&auto=format&fit=crop&q=60" alt="Smartwatch">
@@ -324,35 +530,157 @@
                     <p class="subtitle">⚡ Campeão em custo-benefício</p>
                     <div class="price-container">
                         <span class="old-price">De R$ 159,00</span>
-                        <div class="current-price">
-                            R$ 79,00 <span class="discount-tag">50% OFF</span>
-                        </div>
+                        <div class="current-price">R$ 79,00 <span class="discount-tag">50% OFF</span></div>
                     </div>
-                    <a href="https://meli.la/1B8kgku" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                    <div class="actions-container">
+                        <a href="https://meli.la/1B8kgku" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                        <button class="btn-add-cart" onclick="addToCart('Relógio Inteligente Smartwatch Sport', 'R$ 79,00', 'https://meli.la/1B8kgku')">⭐ Salvar no Carrinho</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="Smartwatch Intelligent Monitor">
                 <span class="badge premium">Premium</span>
                 <div class="product-image">
                     <img src="https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=500&auto=format&fit=crop&q=60" alt="Smartwatch Premium">
                 </div>
                 <div class="product-info">
-                    <h3>Smartwatch Intelligent Monitor 2026</h3>
+                    <h3>Smartwatch Intelligent Monitor</h3>
                     <p class="subtitle">⚡ Notificações e Monitoramento Cardíaco</p>
                     <div class="price-container">
                         <span class="old-price">De R$ 299,00</span>
-                        <div class="current-price">
-                            R$ 182,00 <span class="discount-tag">39% OFF</span>
-                        </div>
+                        <div class="current-price">R$ 182,00 <span class="discount-tag">39% OFF</span></div>
                     </div>
-                    <a href="https://meli.la/28Ryff2" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                    <div class="actions-container">
+                        <a href="https://meli.la/28Ryff2" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                        <button class="btn-add-cart" onclick="addToCart('Smartwatch Intelligent Monitor', 'R$ 182,00', 'https://meli.la/28Ryff2')">⭐ Salvar no Carrinho</button>
+                    </div>
                 </div>
             </div>
 
         </div>
     </div>
 
+    <div class="modal" id="modalSobre">
+        <div class="modal-content">
+            <span class="close-modal" id="closeSobre">&times;</span>
+            <h2>ℹ️ Sobre o Tech Ofertas</h2>
+            <p style="margin-top: 15px; line-height: 1.6; color: #555;">
+                Bem-vindo ao <strong>Tech Ofertas</strong>! O nosso objetivo é fazer uma curadoria manual dos melhores e mais bem avaliados produtos de tecnologia do Mercado Livre. 
+            </p>
+            <p style="margin-top: 10px; line-height: 1.6; color: #555;">
+                Comprando através dos nossos botões, você é redirecionado para a plataforma oficial e segura do Mercado Livre, garantindo proteção total na sua compra, entrega Full rápida e parcelamento facilitado.
+            </p>
+        </div>
+    </div>
+
+    <div class="modal" id="modalCarrinho">
+        <div class="modal-content">
+            <span class="close-modal" id="closeCarrinho">&times;</span>
+            <h2>🛒 Meus Itens Salvos</h2>
+            <div class="cart-list" id="cartItemsContainer">
+                </div>
+        </div>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebarMenu = document.getElementById('sidebarMenu');
+        const searchInput = document.getElementById('searchInput');
+        const productsGrid = document.getElementById('productsGrid');
+        
+        // Modais
+        const modalSobre = document.getElementById('modalSobre');
+        const modalCarrinho = document.getElementById('modalCarrinho');
+        
+        // Elementos de abertura/fechamento
+        document.getElementById('menuHome').addEventListener('click', () => { closeMenu(); window.scrollTo({top: 0, behavior: 'smooth'}); });
+        document.getElementById('menuSobre').addEventListener('click', () => { closeMenu(); modalSobre.classList.add('open'); });
+        document.getElementById('menuCarrinho').addEventListener('click', () => { closeMenu(); modalCarrinho.classList.add('open'); openCartModal(); });
+        
+        document.getElementById('closeSobre').addEventListener('click', () => modalSobre.classList.remove('open'));
+        document.getElementById('closeCarrinho').addEventListener('click', () => modalCarrinho.classList.remove('open'));
+
+        // Abrir/Fechar Menu Lateral
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('open');
+            sidebarMenu.classList.toggle('open');
+        });
+
+        function closeMenu() {
+            menuToggle.classList.remove('open');
+            sidebarMenu.classList.remove('remove');
+            sidebarMenu.classList.remove('open');
+        }
+
+        // BARRA DE PESQUISA FUNCIONAL
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const cards = productsGrid.getElementsByClassName('product-card');
+            
+            Array.from(cards).forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                if(title.includes(term)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // LÓGICA DO CARRINHO DE COMPRAS (LOCALSTORAGE)
+        let cart = JSON.parse(localStorage.getItem('tech_cart')) || [];
+        updateCartCount();
+
+        function addToCart(title, price, link) {
+            // Evita duplicar o produto no carrinho
+            if (cart.some(item => item.title === title)) {
+                alert('Este produto já está guardado no seu carrinho!');
+                return;
+            }
+            cart.push({ title, price, link });
+            localStorage.setItem('tech_cart', JSON.stringify(cart));
+            updateCartCount();
+            alert('Produto guardado no carrinho com sucesso! Clique nas 3 barras no topo para visualizar.');
+        }
+
+        function updateCartCount() {
+            document.getElementById('cartCount').innerText = cart.length;
+        }
+
+        function openCartModal() {
+            const container = document.getElementById('cartItemsContainer');
+            container.innerHTML = '';
+            
+            if(cart.length === 0) {
+                container.innerHTML = '<p style="color: #888; text-align:center; padding: 20px;">Seu carrinho está vazio. Adicione produtos para acompanhar as ofertas!</p>';
+                return;
+            }
+            
+            cart.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'cart-item';
+                itemDiv.innerHTML = `
+                    <div>
+                        <div class="cart-item-title">${item.title}</div>
+                        <div class="cart-item-price">${item.price}</div>
+                    </div>
+                    <div style="display:flex; gap: 10px; align-items:center;">
+                        <a href="${item.link}" target="_blank" style="color:#007acc; text-decoration:none; font-size:0.85rem; font-weight:bold;">Comprar</a>
+                        <button class="btn-remove" onclick="removeFromCart(${index})">❌</button>
+                    </div>
+                `;
+                container.appendChild(itemDiv);
+            });
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('tech_cart', JSON.stringify(cart));
+            updateCartCount();
+            openCartModal();
+        }
+    </script>
 </body>
 </html>
-                     
+
