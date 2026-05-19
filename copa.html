@@ -6,7 +6,7 @@
     <title>Nexa Tech - Produtos Copa 2026</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: #f4f7f6; color: #333; padding-bottom: 5px; }
+        body { background-color: #f4f7f6; color: #333; padding-bottom: 40px; }
         header { background: linear-gradient(135deg, #009c3b, #ffdf00); color: #002244; text-align: center; padding: 35px 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         header h1 { font-size: 2.2rem; font-weight: 800; }
         .back-btn { display: inline-block; margin-top: 10px; color: #002244; font-weight: bold; text-decoration: none; background: rgba(255,255,255,0.6); padding: 5px 15px; border-radius: 15px; }
@@ -44,7 +44,7 @@
             .carousel-container { height: 170px; }
             .product-info h3 { font-size: 0.85rem; min-height: 36px; }
             .current-price { font-size: 1.15rem; }
-            .nav-btn { display: none; } /* Oculta setas no celular para focar no toque/arraste */
+            .nav-btn { display: none; }
         }
     </style>
 </head>
@@ -52,7 +52,7 @@
 
     <header>
         <h1>🇧🇷 Achados Nexa Copa 2026 🇧🇷</h1>
-        <p>Abaixo estão as melhores ofertas selecionadas no Mercado Livre para você</p>
+        <p>Arraste para o lado nas fotos para ver os detalhes de cada produto</p>
         <a href="index.html" class="back-btn">← Voltar para Eletrônicos</a>
     </header>
 
@@ -71,10 +71,10 @@
                     <div class="carousel-dots"></div>
                 </div>
                 <div class="product-info">
-                    <h3>Smart TV 43" AOC LED Roku Full HD Wi-Fi - 43S5155</h3>
+                    <h3>Smart TV 43" AOC LED Roku Full HD Wi-Fi - 43S5155/78G</h3>
                     <div class="price-container"><div class="current-price">R$ 1.279,00</div></div>
                     <a href="https://meli.la/13LioHM" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                    <button class="btn-add-cart" onclick="alert('Salvo!')">⭐ Salvar no Carrinho</button>
+                    <button class="btn-add-cart" onclick="addToCart('Smart TV 43 AOC', 'R$ 1.279,00', 'https://meli.la/13LioHM')">⭐ Salvar no Carrinho</button>
                 </div>
             </div>
 
@@ -93,22 +93,7 @@
                     <h3>Smart TV TCL 50" QLED 4K Google TV - 50P7K</h3>
                     <div class="price-container"><div class="current-price">R$ 2.159,00</div></div>
                     <a href="https://meli.la/2pa7xf3" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                    <button class="btn-add-cart" onclick="alert('Salvo!')">⭐ Salvar no Carrinho</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="carousel-container">
-                    <div class="carousel-track">
-                        <div class="carousel-slide"><img src="https://i.ibb.co/wF1Myr1g/Screenshot-2026-05-19-18-51-28-685-com-mercadolibre.jpg"></div>
-                    </div>
-                    <div class="carousel-dots"></div>
-                </div>
-                <div class="product-info">
-                    <h3>Kit 700 Figurinhas do Álbum Copa 2026 (100 Envelopes)</h3>
-                    <div class="price-container"><div class="current-price">R$ 700,00</div></div>
-                    <a href="https://meli.la/199faJp" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                    <button class="btn-add-cart" onclick="alert('Salvo!')">⭐ Salvar no Carrinho</button>
+                    <button class="btn-add-cart" onclick="addToCart('Smart TV TCL 50', 'R$ 2.159,00', 'https://meli.la/2pa7xf3')">⭐ Salvar no Carrinho</button>
                 </div>
             </div>
 
@@ -116,18 +101,19 @@
                 <div class="carousel-container">
                     <button class="nav-btn prev-btn">‹</button>
                     <div class="carousel-track">
-                        <div class="carousel-slide"><img src="https://i.ibb.co/zVhdfq1G/Screenshot-2026-05-19-18-51-33-885-com-mercadolibre.jpg"></div>
                         <div class="carousel-slide"><img src="https://i.ibb.co/dsJCGV8z/Screenshot-2026-05-19-18-39-48-949-com-mercadolibre.jpg"></div>
                         <div class="carousel-slide"><img src="https://i.ibb.co/Txm6BxSd/Screenshot-2026-05-19-18-39-51-261-com-mercadolibre.jpg"></div>
+                        <div class="carousel-slide"><img src="https://i.ibb.co/271dJqTY/Screenshot-2026-05-19-18-39-53-582-com-mercadolibre.jpg"></div>
+                        <div class="carousel-slide"><img src="https://i.ibb.co/wF1Myr1g/Screenshot-2026-05-19-18-51-28-685-com-mercadolibre.jpg"></div>
                     </div>
                     <button class="nav-btn next-btn">›</button>
                     <div class="carousel-dots"></div>
                 </div>
                 <div class="product-info">
-                    <h3>Álbum de Figurinhas Oficial Copa 2026 - Capa Dura</h3>
-                    <div class="price-container"><div class="current-price">R$ 99,00</div></div>
-                    <a href="https://meli.la/2oypH7M" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                    <button class="btn-add-cart" onclick="alert('Salvo!')">⭐ Salvar no Carrinho</button>
+                    <h3>Camisa Brasil Nike I 2026/27 Fã Masculina Amarelo/Verde G</h3>
+                    <div class="price-container"><div class="current-price">R$ 199,00</div></div>
+                    <a href="https://meli.la/199faJp" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                    <button class="btn-add-cart" onclick="addToCart('Camisa Masculina Nike G', 'R$ 199,00', 'https://meli.la/199faJp')">⭐ Salvar no Carrinho</button>
                 </div>
             </div>
 
@@ -138,15 +124,16 @@
                         <div class="carousel-slide"><img src="https://i.ibb.co/3ymhWQ5W/Screenshot-2026-05-19-18-40-36-217-com-mercadolibre.jpg"></div>
                         <div class="carousel-slide"><img src="https://i.ibb.co/p6V0Cw39/Screenshot-2026-05-19-18-40-38-786-com-mercadolibre.jpg"></div>
                         <div class="carousel-slide"><img src="https://i.ibb.co/hJBXfmzV/Screenshot-2026-05-19-18-40-42-409-com-mercadolibre.jpg"></div>
+                        <div class="carousel-slide"><img src="https://i.ibb.co/zVhdfq1G/Screenshot-2026-05-19-18-51-33-885-com-mercadolibre.jpg"></div>
                     </div>
                     <button class="nav-btn next-btn">›</button>
                     <div class="carousel-dots"></div>
                 </div>
                 <div class="product-info">
-                    <h3>Camisa Brasil Nike I 2026/27 Versão Fã Masculina - G</h3>
-                    <div class="price-container"><div class="current-price">R$ 199,00</div></div>
-                    <a href="https://meli.la/2L7BMP4" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                    <button class="btn-add-cart" onclick="alert('Salvo!')">⭐ Salvar no Carrinho</button>
+                    <h3>Camisa Do Brasil Feminina Torcedor 2026 Dry Amarelo P</h3>
+                    <div class="price-container"><div class="current-price">R$ 96,00</div></div>
+                    <a href="https://meli.la/2oypH7M" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                    <button class="btn-add-cart" onclick="addToCart('Camisa Feminina P', 'R$ 96,00', 'https://meli.la/2oypH7M')">⭐ Salvar no Carrinho</button>
                 </div>
             </div>
 
@@ -161,10 +148,10 @@
                     <div class="carousel-dots"></div>
                 </div>
                 <div class="product-info">
-                    <h3>Camisa Do Brasil Feminina Torcedor 2026 Dry Fit</h3>
-                    <div class="price-container"><div class="current-price">R$ 96,00</div></div>
-                    <a href="https://meli.la/2D7ANQa" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                    <button class="btn-add-cart" onclick="alert('Salvo!')">⭐ Salvar no Carrinho</button>
+                    <h3>Camiseta Copa 2026 Esportiva Dryfit Azul M</h3>
+                    <div class="price-container"><div class="current-price">R$ 76,00</div></div>
+                    <a href="https://meli.la/2L7BMP4" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                    <button class="btn-add-cart" onclick="addToCart('Camiseta Azul M', 'R$ 76,00', 'https://meli.la/2L7BMP4')">⭐ Salvar no Carrinho</button>
                 </div>
             </div>
 
@@ -179,10 +166,10 @@
                     <div class="carousel-dots"></div>
                 </div>
                 <div class="product-info">
-                    <h3>Camiseta Copa 2026 Esportiva Dryfit Azul - M</h3>
-                    <div class="price-container"><div class="current-price">R$ 76,00</div></div>
-                    <a href="https://meli.la/2FiNFju" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                    <button class="btn-add-cart" onclick="alert('Salvo!')">⭐ Salvar no Carrinho</button>
+                    <h3>Camisa Polo Infantil Brasil Unissex Amarelo - Tam 10</h3>
+                    <div class="price-container"><div class="current-price">R$ 45,00</div></div>
+                    <a href="https://meli.la/2D7ANQa" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                    <button class="btn-add-cart" onclick="addToCart('Polo Infantil 10', 'R$ 45,00', 'https://meli.la/2D7ANQa')">⭐ Salvar no Carrinho</button>
                 </div>
             </div>
 
@@ -197,10 +184,10 @@
                     <div class="carousel-dots"></div>
                 </div>
                 <div class="product-info">
-                    <h3>Camisa Polo Infantil Brasil Unissex Lisa - Tam 10</h3>
-                    <div class="price-container"><div class="current-price">R$ 45,00</div></div>
-                    <a href="https://meli.la/1TrRdQD" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                    <button class="btn-add-cart" onclick="alert('Salvo!')">⭐ Salvar no Carrinho</button>
+                    <h3>Projetor Magcubic Hy310 Smart Full HD 1080p Android 11</h3>
+                    <div class="price-container"><div class="current-price">R$ 393,00</div></div>
+                    <a href="https://meli.la/2FiNFju" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                    <button class="btn-add-cart" onclick="addToCart('Projetor HY310', 'R$ 393,00', 'https://meli.la/2FiNFju')">⭐ Salvar no Carrinho</button>
                 </div>
             </div>
 
@@ -212,10 +199,10 @@
                     <div class="carousel-dots"></div>
                 </div>
                 <div class="product-info">
-                    <h3>Projetor Magcubic HY310 Smart Full HD 1080p</h3>
-                    <div class="price-container"><div class="current-price">R$ 393,00</div></div>
-                    <a href="https://meli.la/1B7tKiW" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                    <button class="btn-add-cart" onclick="alert('Salvo!')">⭐ Salvar no Carrinho</button>
+                    <h3>Projetor Smart Portátil Full HD Suporte 4K Home Theater</h3>
+                    <div class="price-container"><div class="current-price">R$ 189,00</div></div>
+                    <a href="https://meli.la/1TrRdQD" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                    <button class="btn-add-cart" onclick="addToCart('Projetor Portátil 4K', 'R$ 189,00', 'https://meli.la/1TrRdQD')">⭐ Salvar no Carrinho</button>
                 </div>
             </div>
 
@@ -224,16 +211,16 @@
                     <button class="nav-btn prev-btn">‹</button>
                     <div class="carousel-track">
                         <div class="carousel-slide"><img src="https://i.ibb.co/B5JsmDs7/Screenshot-2026-05-19-18-50-46-412-com-mercadolibre.jpg"></div>
-                        <div class="carousel-slide"><img src="https://i.ibb.co/271dJqTY/Screenshot-2026-05-19-18-39-53-582-com-mercadolibre.jpg"></div>
+                        <div class="carousel-slide"><img src="https://i.ibb.co/m5ySfwgT/Screenshot-2026-05-19-18-50-50-867-com-mercadolibre.jpg"></div>
                     </div>
                     <button class="nav-btn next-btn">›</button>
                     <div class="carousel-dots"></div>
                 </div>
                 <div class="product-info">
-                    <h3>Mini Projetor Smart Portátil Full HD Suporte 4K</h3>
-                    <div class="price-container"><div class="current-price">R$ 189,00</div></div>
-                    <a href="https://meli.la/2tYNL8S" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                    <button class="btn-add-cart" onclick="alert('Salvo!')">⭐ Salvar no Carrinho</button>
+                    <h3>Kit 2 Cornetas Vuvuzela Grande Torcida Copa 2026</h3>
+                    <div class="price-container"><div class="current-price">R$ 21,00</div></div>
+                    <a href="https://meli.la/1B7tKiW" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                    <button class="btn-add-cart" onclick="addToCart('Kit 2 Cornetas', 'R$ 21,00', 'https://meli.la/1B7tKiW')">⭐ Salvar no Carrinho</button>
                 </div>
             </div>
 
@@ -241,16 +228,32 @@
                 <div class="carousel-container">
                     <button class="nav-btn prev-btn">‹</button>
                     <div class="carousel-track">
-                        <div class="carousel-slide"><img src="https://i.ibb.co/m5ySfwgT/Screenshot-2026-05-19-18-50-50-867-com-mercadolibre.jpg"></div>
+                        <div class="carousel-slide"><img src="https://i.ibb.co/wF1Myr1g/Screenshot-2026-05-19-18-51-28-685-com-mercadolibre.jpg"></div>
+                        <div class="carousel-slide"><img src="https://i.ibb.co/zVhdfq1G/Screenshot-2026-05-19-18-51-33-885-com-mercadolibre.jpg"></div>
                     </div>
                     <button class="nav-btn next-btn">›</button>
                     <div class="carousel-dots"></div>
                 </div>
                 <div class="product-info">
-                    <h3>Kit 2 Cornetas Vuvuzela Grande Torcida Brasil</h3>
-                    <div class="price-container"><div class="current-price">R$ 21,00</div></div>
+                    <h3>Bandeira Do Brasil Grande Oficial Dupla Face (1,50 X 0,90)</h3>
+                    <div class="price-container"><div class="current-price">R$ 37,00</div></div>
+                    <a href="https://meli.la/2tYNL8S" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                    <button class="btn-add-cart" onclick="addToCart('Bandeira Oficial', 'R$ 37,00', 'https://meli.la/2tYNL8S')">⭐ Salvar no Carrinho</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="carousel-container">
+                    <div class="carousel-track">
+                        <div class="carousel-slide"><img src="https://i.ibb.co/wF1Myr1g/Screenshot-2026-05-19-18-51-28-685-com-mercadolibre.jpg"></div>
+                    </div>
+                    <div class="carousel-dots"></div>
+                </div>
+                <div class="product-info">
+                    <h3>Kit 700 Figurinha Do Álbum Copa do Mundo 2026</h3>
+                    <div class="price-container"><div class="current-price">R$ 700,00</div></div>
                     <a href="https://meli.la/2LFKL4o" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                    <button class="btn-add-cart" onclick="alert('Salvo!')">⭐ Salvar no Carrinho</button>
+                    <button class="btn-add-cart" onclick="addToCart('Kit 700 Figurinhas', 'R$ 700,00', 'https://meli.la/2LFKL4o')">⭐ Salvar no Carrinho</button>
                 </div>
             </div>
 
@@ -262,10 +265,10 @@
                     <div class="carousel-dots"></div>
                 </div>
                 <div class="product-info">
-                    <h3>Bandeira Do Brasil Grande Oficial Dupla Face (1,50 X 0,90)</h3>
-                    <div class="price-container"><div class="current-price">R$ 37,00</div></div>
+                    <h3>Álbum De Figurinhas Copa do Mundo Fifa 2026 Capa Dura</h3>
+                    <div class="price-container"><div class="current-price">R$ 99,00</div></div>
                     <a href="https://meli.la/2kQnCF1" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                    <button class="btn-add-cart" onclick="alert('Salvo!')">⭐ Salvar no Carrinho</button>
+                    <button class="btn-add-cart" onclick="addToCart('Álbum Capa Dura', 'R$ 99,00', 'https://meli.la/2kQnCF1')">⭐ Salvar no Carrinho</button>
                 </div>
             </div>
 
@@ -273,7 +276,7 @@
     </div>
 
     <script>
-        // Lógica do Carrossel Arrastável (Touch e Mouse)
+        // Sistema Inteligente de Carrossel (Touch e Click)
         document.querySelectorAll('.product-card').forEach(card => {
             const track = card.querySelector('.carousel-track');
             const slides = Array.from(card.querySelectorAll('.carousel-slide'));
@@ -290,7 +293,6 @@
             let prevTranslate = 0;
             let animationID = 0;
 
-            // Criar bolinhas indicadoras
             slides.forEach((_, idx) => {
                 const dot = document.createElement('div');
                 dot.classList.add('dot');
@@ -311,7 +313,6 @@
                 nextBtn.addEventListener('click', () => { if(currentIndex < slides.length - 1) currentIndex++; updateCarousel(); });
             }
 
-            // Eventos de Toque (Celular) e Mouse (PC)
             track.addEventListener('touchstart', touchStart(currentIndex));
             track.addEventListener('touchend', touchEnd);
             track.addEventListener('touchmove', touchMove);
@@ -336,8 +337,8 @@
                 isDragging = false;
                 cancelAnimationFrame(animationID);
                 const movedBy = currentTranslate - prevTranslate;
-                if (movedBy < -50 && currentIndex < slides.length - 1) currentIndex++;
-                if (movedBy > 50 && currentIndex > 0) currentIndex--;
+                if (movedBy < -40 && currentIndex < slides.length - 1) currentIndex++;
+                if (movedBy > 40 && currentIndex > 0) currentIndex--;
                 updateCarousel();
             }
             function animation() {
@@ -347,6 +348,13 @@
                 }
             }
         });
+
+        function addToCart(name, price, link) {
+            let cart = JSON.parse(localStorage.getItem('tech_cart')) || [];
+            cart.push({ title: name, price: price, link: link });
+            localStorage.setItem('tech_cart', JSON.stringify(cart));
+            alert(`${name} foi salvo com sucesso no carrinho!`);
+        }
     </script>
 </body>
 </html>
