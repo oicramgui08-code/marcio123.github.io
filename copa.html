@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -263,7 +264,7 @@
             <div class="product-card">
                 <div class="carousel-container">
                     <div class="carousel-track">
-                        <div class="carousel-slide"><img src="https://i.ibb.co/wF1Myr1g/Screenshot-2026-05-19-18-51-28-685-com-mercadolibre.jpg"></div>
+                        <div class="carousel-slide"><img src="https://i.ibb.co/Df5x8mPR/Screenshot-2026-05-19-19-35-29-642-com-mercadolibre.jpg"></div>
                     </div>
                     <div class="carousel-dots"></div>
                 </div>
@@ -278,7 +279,7 @@
             <div class="product-card">
                 <div class="carousel-container">
                     <div class="carousel-track">
-                        <div class="carousel-slide"><img src="https://i.ibb.co/zVhdfq1G/Screenshot-2026-05-19-18-51-33-885-com-mercadolibre.jpg"></div>
+                        <div class="carousel-slide"><img src="https://i.ibb.co/FL9ysY3J/Screenshot-2026-05-19-19-35-48-804-com-mercadolibre.jpg"></div>
                     </div>
                     <div class="carousel-dots"></div>
                 </div>
@@ -294,5 +295,153 @@
     </div>
 
     <script>
-        // Lógica dos Carrosséis Arrastáveis
-        document.querySelectorAll('.product-car
+        // Lógica dos Carrosséis Arrastáveis com Tratamento de Erros
+        document.querySelectorAll('.product-card').forEach(card => {
+            const track = card.querySelector('.carousel-track');
+            const slides = Array.from(card.querySelectorAll('.carousel-slide'));
+            const dotsContainer = card.querySelector('.carousel-dots');
+            const prevBtn = card.querySelector('.prev-btn');
+            const nextBtn = card.querySelector('.next-btn');
+            
+            if(!track || slides.length === 0) return;
+            
+            let currentIndex = 0;
+            let isDragging = false;
+            let startX = 0;
+            let currentTranslate = 0;
+            let prevTranslate = 0;
+            let animationID = 0;
+
+            slides.forEach((_, idx) => {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if(idx === 0) dot.classList.add('active');
+                dotsContainer.appendChild(dot);
+            });
+            const dots = card.querySelectorAll('.dot');
+
+            function updateCarousel() {
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                if(dots.length > currentIndex) {
+                    dots.forEach((d, idx) => d.classList.toggle('active', idx === currentIndex));
+                }
+                prevTranslate = -currentIndex * track.offsetWidth;
+            }
+
+            if(prevBtn && nextBtn) {
+                if(slides.length <= 1) { prevBtn.style.display='none'; nextBtn.style.display='none'; }
+                prevBtn.addEventListener('click', () => { if(currentIndex > 0) currentIndex--; updateCarousel(); });
+                nextBtn.addEventListener('click', () => { if(currentIndex < slides.length - 1) currentIndex++; updateCarousel(); });
+            }
+
+            track.addEventListener('touchstart', touchStart(currentIndex));
+            track.addEventListener('touchend', touchEnd);
+            track.addEventListener('touchmove', touchMove);
+            track.addEventListener('mousedown', touchStart(currentIndex));
+            track.addEventListener('mouseup', touchEnd);
+            track.addEventListener('mouseleave', touchEnd);
+            track.addEventListener('mousemove', touchMove);
+
+            function touchStart(index) {
+                return function(event) {
+                    isDragging = true;
+                    startX = event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+                    animationID = requestAnimationFrame(animation);
+                }
+            }
+            function touchMove(event) {
+                if (!isDragging) return;
+                const currentX = event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+                currentTranslate = prevTranslate + (currentX - startX);
+            }
+            function touchEnd() {
+                isDragging = false;
+                cancelAnimationFrame(animationID);
+                const movedBy = currentTranslate - prevTranslate;
+                if (movedBy < -40 && currentIndex < slides.length - 1) currentIndex++;
+                if (movedBy > 40 && currentIndex > 0) currentIndex--;
+                updateCarousel();
+            }
+            function animation() {
+                if (isDragging) {
+                    track.style.transform = `translateX(${currentTranslate}px)`;
+                    requestAnimationFrame(animation);
+                }
+            }
+        });
+
+        // Chuva de Fios Coloridos (Confetes)
+        const canvas = document.getElementById('confettiCanvas');
+        const ctx = canvas.getContext('2d');
+        let pieces = [];
+        const numberOfPieces = 120;
+        const colors = ['#009c3b', '#ffdf00', '#002244', '#ffffff'];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class ConfettiPiece {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * -canvas.height - 20;
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = (Math.random() - 0.5) * 4;
+                this.width = Math.random() * 4 + 4;
+                this.height = Math.random() * 15 + 15;
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.speed = Math.random() * 3 + 4;
+            }
+            update() {
+                this.y += this.speed;
+                this.rotation += this.rotationSpeed;
+            }
+            draw() {
+                ctx.save();
+                ctx.translate(this.x + this.width / 2, this.y + this.height / 2);
+                ctx.rotate((this.rotation * Math.PI) / 180);
+                ctx.fillStyle = this.color;
+                ctx.fillRect(-this.width / 2, -this.height / 2, this.width, this.height);
+                ctx.restore();
+            }
+        }
+
+        for (let i = 0; i < numberOfPieces; i++) {
+            pieces.push(new ConfettiPiece());
+        }
+
+        function animateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            let alive = false;
+            
+            pieces.forEach(p => {
+                if (p.y < canvas.height) {
+                    p.update();
+                    p.draw();
+                    alive = true;
+                }
+            });
+
+            if (alive) {
+                requestAnimationFrame(animateConfetti);
+            } else {
+                canvas.style.display = 'none';
+            }
+        }
+        
+        window.addEventListener('load', () => {
+            setTimeout(animateConfetti, 400);
+        });
+
+        function addToCart(name, price, link) {
+            let cart = JSON.parse(localStorage.getItem('tech_cart')) || [];
+            cart.push({ title: name, price: price, link: link });
+            localStorage.setItem('tech_cart', JSON.stringify(cart));
+            alert(`${name} foi salvo com sucesso no carrinho!`);
+        }
+    </script>
+</body>
+</html>
