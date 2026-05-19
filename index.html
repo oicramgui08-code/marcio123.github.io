@@ -9,38 +9,49 @@
 <style>
 body {
     margin: 0;
-    font-family: Arial;
-    background: #f5f6fa;
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
 }
 
-/* HEADER */
+/* TOPO */
 header {
     background: linear-gradient(135deg,#1e90ff,#007acc);
     color: white;
     text-align: center;
-    padding: 25px;
+    padding: 30px 15px;
 }
 
-/* FILTRO */
-.filtro {
+header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+header p {
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+/* CATEGORIAS */
+.categorias {
     display: flex;
     gap: 10px;
-    padding: 15px;
     overflow-x: auto;
+    padding: 10px;
 }
 
-.filtro button {
+.categorias button {
     border: none;
     background: white;
-    padding: 8px 12px;
+    padding: 8px 14px;
     border-radius: 20px;
+    font-weight: bold;
     cursor: pointer;
 }
 
 /* GRID */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
+    grid-template-columns: repeat(2,1fr);
     gap: 15px;
     padding: 15px;
 }
@@ -48,9 +59,20 @@ header {
 /* CARD */
 .card {
     background: white;
-    border-radius: 12px;
+    border-radius: 15px;
     padding: 10px;
-    box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
 }
 
 /* BADGE */
@@ -58,32 +80,44 @@ header {
     position: absolute;
     background: red;
     color: white;
-    padding: 4px 8px;
-    border-radius: 8px;
-    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
 }
 
-/* IMG */
-.card img {
-    width: 100%;
-    height: 140px;
-    object-fit: contain;
+/* TEXTO */
+.nome {
+    font-size: 16px;
+    margin: 5px 0;
 }
 
-/* PREÇO */
-.old { text-decoration: line-through; color: gray; }
-.price { color: green; font-weight: bold; }
+.preco-antigo {
+    text-decoration: line-through;
+    color: gray;
+    font-size: 13px;
+}
+
+.preco {
+    color: green;
+    font-size: 18px;
+    font-weight: bold;
+}
 
 /* BOTÃO */
-.btn {
+.botao {
     display: block;
-    background: green;
+    background: linear-gradient(45deg,#00c853,#009624);
     color: white;
     text-align: center;
-    padding: 8px;
-    border-radius: 8px;
-    text-decoration: none;
+    padding: 10px;
+    border-radius: 10px;
     margin-top: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.botao:hover {
+    transform: scale(1.05);
 }
 </style>
 </head>
@@ -95,56 +129,69 @@ header {
 <p>Ofertas automáticas 🔥</p>
 </header>
 
-<div class="filtro" id="filtro"></div>
+<div class="categorias">
+<button>Todos</button>
+<button>Fones</button>
+<button>Streaming</button>
+<button>TV</button>
+<button>Informática</button>
+<button>Smartwatch</button>
+</div>
 
-<div class="grid" id="grid"></div>
-
-<script src="produtos.js"></script>
+<div class="grid" id="produtos"></div>
 
 <script>
+const produtos = [
+{
+nome: "Fone Xiaomi Redmi Buds 6",
+img: "https://i.ibb.co/G4wYwmCx/IMG-20260519-110430.jpg",
+preco: "R$ 89,45",
+antigo: "R$ 107,99",
+link: "https://meli.la/2tPnubz"
+},
+{
+nome: "Fire TV Stick 4K Max",
+img: "https://i.ibb.co/8nnSh83B/IMG-20260519-110442.jpg",
+preco: "R$ 375,00",
+antigo: "R$ 399,00",
+link: "https://meli.la/2k6FaAp"
+},
+{
+nome: "Roku Streaming Stick",
+img: "https://i.ibb.co/vvcB2wy0/IMG-20260519-110500.jpg",
+preco: "R$ 258,30",
+antigo: "R$ 309,90",
+link: "https://meli.la/2u3Xm6U"
+},
+{
+nome: "SSD Kingston 480GB",
+img: "https://i.ibb.co/67cT968s/IMG-20260519-110513.jpg",
+preco: "R$ 515,10",
+antigo: "R$ 559,89",
+link: "https://meli.la/1FWygjw"
+}
+];
 
-const grid = document.getElementById("grid");
-const filtro = document.getElementById("filtro");
+const container = document.getElementById("produtos");
 
-/* PEGAR CATEGORIAS */
-const categorias = [...new Set(produtos.map(p => p.categoria))];
-
-filtro.innerHTML = `<button onclick="mostrar('todos')">Todos</button>` +
-categorias.map(c => `<button onclick="mostrar('${c}')">${c}</button>`).join("");
-
-function mostrar(cat){
-
-grid.innerHTML = "";
-
-produtos
-.filter(p => cat === 'todos' || p.categoria === cat)
-.forEach(p => {
-
-grid.innerHTML += `
+produtos.forEach(p => {
+container.innerHTML += `
 <div class="card">
-
-${p.destaque ? `<div class="badge">🔥 TOP</div>` : ""}
-
 <img src="${p.img}">
+<div class="nome">${p.nome}</div>
 
-<h4>${p.nome}</h4>
+<div class="preco-antigo">${p.antigo}</div>
+<div class="preco">${p.preco}</div>
 
-<div class="old">${p.old}</div>
-<div class="price">${p.price}</div>
+<p style="font-size:12px;color:#777;">⭐ 4.8 (120 avaliações)</p>
+<p style="color:red;font-size:13px;">⚡ Últimas unidades!</p>
 
-<a class="btn" href="${p.link}" target="_blank">
-Comprar agora
+<a href="${p.link}" target="_blank" class="botao">
+🔥 Garantir desconto agora
 </a>
-
 </div>
 `;
-
 });
-}
-
-/* INICIAL */
-mostrar('todos');
-
 </script>
 
 </body>
