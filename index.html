@@ -7,134 +7,84 @@
 <title>Nexa Tech</title>
 
 <style>
-* {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Segoe UI', sans-serif;
-}
-
 body {
-  background:#f0f4f8;
+    margin: 0;
+    font-family: Arial;
+    background: #f5f6fa;
 }
 
+/* HEADER */
 header {
-  background: linear-gradient(135deg,#1e90ff,#007acc);
-  color:white;
-  text-align:center;
-  padding:40px 20px;
+    background: linear-gradient(135deg,#1e90ff,#007acc);
+    color: white;
+    text-align: center;
+    padding: 25px;
 }
 
-header h1 {
-  font-size:28px;
+/* FILTRO */
+.filtro {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    overflow-x: auto;
 }
 
-.container {
-  padding:20px;
-  max-width:1200px;
-  margin:auto;
+.filtro button {
+    border: none;
+    background: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
 }
 
-.products-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:20px;
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
+    gap: 15px;
+    padding: 15px;
 }
 
-/* CARD PROFISSIONAL */
-.product-card {
-  background:white;
-  border-radius:18px;
-  padding:15px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.08);
-  transition:0.3s;
-  position:relative;
-  overflow:hidden;
-}
-
-.product-card:hover {
-  transform:translateY(-6px);
+/* CARD */
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.1);
 }
 
 /* BADGE */
 .badge {
-  position:absolute;
-  top:10px;
-  left:10px;
-  background:#ff4757;
-  color:white;
-  padding:5px 10px;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:bold;
+    position: absolute;
+    background: red;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 10px;
 }
 
-/* IMAGEM */
-.product-image img {
-  width:100%;
-  height:180px;
-  object-fit:contain;
+/* IMG */
+.card img {
+    width: 100%;
+    height: 140px;
+    object-fit: contain;
 }
 
-/* TITULO */
-h3 {
-  font-size:14px;
-  margin:10px 0;
-  min-height:38px;
-}
+/* PREÇO */
+.old { text-decoration: line-through; color: gray; }
+.price { color: green; font-weight: bold; }
 
-/* PREÇOS */
-.old-price {
-  text-decoration:line-through;
-  color:#999;
-  font-size:12px;
+/* BOTÃO */
+.btn {
+    display: block;
+    background: green;
+    color: white;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 8px;
 }
-
-.current-price {
-  color:#00a650;
-  font-size:20px;
-  font-weight:bold;
-}
-
-.discount {
-  background:#e6f7ed;
-  color:#00a650;
-  font-size:12px;
-  padding:3px 6px;
-  border-radius:6px;
-  margin-left:5px;
-}
-
-/* BOTÃO PRO */
-.btn-oferta {
-  display:block;
-  background:linear-gradient(135deg,#00c853,#00a650);
-  color:white;
-  text-align:center;
-  padding:12px;
-  margin-top:12px;
-  border-radius:10px;
-  text-decoration:none;
-  font-weight:bold;
-  transition:0.2s;
-}
-
-.btn-oferta:hover {
-  transform:scale(1.05);
-  box-shadow:0 5px 15px rgba(0,200,83,0.4);
-}
-
-/* EFEITO PULSANDO */
-.btn-oferta {
-  animation:pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0% { transform:scale(1); }
-  50% { transform:scale(1.05); }
-  100% { transform:scale(1); }
-}
-
 </style>
 </head>
 
@@ -142,97 +92,58 @@ h3 {
 
 <header>
 <h1>⚡ Nexa Tech</h1>
-<p>Ofertas atualizadas automaticamente 🔥</p>
+<p>Ofertas automáticas 🔥</p>
 </header>
 
-<div class="container">
-<div class="products-grid" id="productsGrid"></div>
-</div>
+<div class="filtro" id="filtro"></div>
+
+<div class="grid" id="grid"></div>
+
+<script src="produtos.js"></script>
 
 <script>
 
-const products = [
-{
-title:"Fone Xiaomi Redmi Buds 6",
-price:"R$ 89,45",
-oldPrice:"R$ 107,99",
-discount:"17% OFF",
-img:"https://i.ibb.co/G4wYwmCx/IMG-20260519-110430.jpg",
-link:"https://meli.la/2tPnubz",
-badge:"Fone"
-},
-{
-title:"Fire TV Stick 4K Max",
-price:"R$ 375,00",
-oldPrice:"R$ 399,00",
-discount:"Promoção",
-img:"https://i.ibb.co/8nnSh83B/IMG-20260519-110442.jpg",
-link:"https://meli.la/2k6FaAp",
-badge:"Streaming"
-},
-{
-title:"Roku Streaming Stick",
-price:"R$ 258,30",
-oldPrice:"R$ 309,90",
-discount:"16% OFF",
-img:"https://i.ibb.co/vvcB2wy0/IMG-20260519-110500.jpg",
-link:"https://meli.la/2u3Xm6U",
-badge:"TV"
-},
-{
-title:"SSD Kingston 480GB",
-price:"R$ 515,10",
-oldPrice:"R$ 559,89",
-discount:"7% OFF",
-img:"https://i.ibb.co/67cT968s/IMG-20260519-110513.jpg",
-link:"https://meli.la/1FWygjw",
-badge:"Informática"
-},
-{
-title:"Mi Band 10",
-price:"R$ 288,07",
-oldPrice:"R$ 479,00",
-discount:"39% OFF",
-img:"https://i.ibb.co/W4b3N6XT/IMG-20260519-110528.jpg",
-link:"https://meli.la/34mZxTS",
-badge:"Smartwatch"
-}
-];
+const grid = document.getElementById("grid");
+const filtro = document.getElementById("filtro");
 
-const grid = document.getElementById("productsGrid");
+/* PEGAR CATEGORIAS */
+const categorias = [...new Set(produtos.map(p => p.categoria))];
 
-function loadProducts(){
+filtro.innerHTML = `<button onclick="mostrar('todos')">Todos</button>` +
+categorias.map(c => `<button onclick="mostrar('${c}')">${c}</button>`).join("");
+
+function mostrar(cat){
+
 grid.innerHTML = "";
 
-products.forEach(p=>{
+produtos
+.filter(p => cat === 'todos' || p.categoria === cat)
+.forEach(p => {
+
 grid.innerHTML += `
-<div class="product-card">
+<div class="card">
 
-<span class="badge">${p.badge}</span>
+${p.destaque ? `<div class="badge">🔥 TOP</div>` : ""}
 
-<div class="product-image">
 <img src="${p.img}">
-</div>
 
-<h3>${p.title}</h3>
+<h4>${p.nome}</h4>
 
-<div class="old-price">${p.oldPrice}</div>
+<div class="old">${p.old}</div>
+<div class="price">${p.price}</div>
 
-<div class="current-price">
-${p.price}
-<span class="discount">${p.discount}</span>
-</div>
-
-<a href="${p.link}" target="_blank" class="btn-oferta">
-🔥 Garantir Desconto
+<a class="btn" href="${p.link}" target="_blank">
+Comprar agora
 </a>
 
 </div>
 `;
+
 });
 }
 
-loadProducts();
+/* INICIAL */
+mostrar('todos');
 
 </script>
 
