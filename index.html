@@ -1,19 +1,36 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+
+<!-- SEO GOOGLE -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nexa Tech</title>
+
+<title>Nexa Tech | Ofertas Baratas e Produtos em Promoção</title>
+
+<meta name="description" content="Encontre fones Bluetooth, smartwatches e eletrônicos com desconto direto do Mercado Livre. Ofertas atualizadas todos os dias!">
+
+<meta name="keywords" content="ofertas, promoção, fone bluetooth barato, smartwatch barato, mercado livre ofertas">
+
+<meta name="author" content="Nexa Tech">
+
+<!-- GOOGLE SEARCH VERIFICATION -->
+<meta name="google-site-verification" content="COLE_AQUI_SEU_CODIGO_DO_GOOGLE" />
+
+<!-- SOCIAL (aparece bonito quando compartilhar) -->
+<meta property="og:title" content="🔥 Ofertas Baratas - Nexa Tech">
+<meta property="og:description" content="Veja produtos baratos com desconto real. Clique antes que acabe!">
+<meta property="og:image" content="https://i.ibb.co/G4wYwmCx/IMG-20260519-110430.jpg">
+<meta property="og:type" content="website">
 
 <style>
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f2f2f2;
+    background: #f5f6fa;
 }
 
-/* TOPO */
+/* HEADER */
 header {
     background: linear-gradient(135deg,#1e90ff,#007acc);
     color: white;
@@ -31,21 +48,12 @@ header p {
     font-size: 14px;
 }
 
-/* CATEGORIAS */
-.categorias {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    padding: 10px;
-}
-
-.categorias button {
-    border: none;
+/* BARRA DE CONFIANÇA */
+.trust {
+    text-align: center;
+    font-size: 13px;
+    padding: 8px;
     background: white;
-    padding: 8px 14px;
-    border-radius: 20px;
-    font-weight: bold;
-    cursor: pointer;
 }
 
 /* GRID */
@@ -69,42 +77,33 @@ header p {
     transform: translateY(-5px);
 }
 
+/* IMG */
 .card img {
     width: 100%;
     height: 180px;
     object-fit: contain;
 }
 
-/* BADGE */
-.badge {
-    position: absolute;
-    background: red;
-    color: white;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-}
-
 /* TEXTO */
 .nome {
-    font-size: 16px;
+    font-size: 15px;
     margin: 5px 0;
 }
 
-.preco-antigo {
+.old {
     text-decoration: line-through;
     color: gray;
     font-size: 13px;
 }
 
-.preco {
-    color: green;
+.price {
+    color: #00a650;
     font-size: 18px;
     font-weight: bold;
 }
 
 /* BOTÃO */
-.botao {
+.btn {
     display: block;
     background: linear-gradient(45deg,#00c853,#009624);
     color: white;
@@ -116,8 +115,16 @@ header p {
     font-weight: bold;
 }
 
-.botao:hover {
-    transform: scale(1.05);
+/* URGÊNCIA */
+.urgencia {
+    color: red;
+    font-size: 13px;
+}
+
+/* PROVA SOCIAL */
+.social {
+    font-size: 12px;
+    color: #777;
 }
 </style>
 </head>
@@ -126,16 +133,11 @@ header p {
 
 <header>
 <h1>⚡ Nexa Tech</h1>
-<p>Ofertas automáticas 🔥</p>
+<p>Ofertas baratas atualizadas todos os dias 🔥</p>
 </header>
 
-<div class="categorias">
-<button>Todos</button>
-<button>Fones</button>
-<button>Streaming</button>
-<button>TV</button>
-<button>Informática</button>
-<button>Smartwatch</button>
+<div class="trust">
+🚚 Envio rápido | 🔒 Compra segura | 💥 Promoções reais
 </div>
 
 <div class="grid" id="produtos"></div>
@@ -145,29 +147,29 @@ const produtos = [
 {
 nome: "Fone Xiaomi Redmi Buds 6",
 img: "https://i.ibb.co/G4wYwmCx/IMG-20260519-110430.jpg",
-preco: "R$ 89,45",
-antigo: "R$ 107,99",
+old: "R$ 107,99",
+price: "R$ 89,45",
 link: "https://meli.la/2tPnubz"
 },
 {
 nome: "Fire TV Stick 4K Max",
 img: "https://i.ibb.co/8nnSh83B/IMG-20260519-110442.jpg",
-preco: "R$ 375,00",
-antigo: "R$ 399,00",
+old: "R$ 399,00",
+price: "R$ 375,00",
 link: "https://meli.la/2k6FaAp"
 },
 {
 nome: "Roku Streaming Stick",
 img: "https://i.ibb.co/vvcB2wy0/IMG-20260519-110500.jpg",
-preco: "R$ 258,30",
-antigo: "R$ 309,90",
+old: "R$ 309,90",
+price: "R$ 258,30",
 link: "https://meli.la/2u3Xm6U"
 },
 {
 nome: "SSD Kingston 480GB",
 img: "https://i.ibb.co/67cT968s/IMG-20260519-110513.jpg",
-preco: "R$ 515,10",
-antigo: "R$ 559,89",
+old: "R$ 559,89",
+price: "R$ 515,10",
 link: "https://meli.la/1FWygjw"
 }
 ];
@@ -178,17 +180,19 @@ produtos.forEach(p => {
 container.innerHTML += `
 <div class="card">
 <img src="${p.img}">
+
 <div class="nome">${p.nome}</div>
 
-<div class="preco-antigo">${p.antigo}</div>
-<div class="preco">${p.preco}</div>
+<div class="old">${p.old}</div>
+<div class="price">${p.price}</div>
 
-<p style="font-size:12px;color:#777;">⭐ 4.8 (120 avaliações)</p>
-<p style="color:red;font-size:13px;">⚡ Últimas unidades!</p>
+<p class="social">⭐ 4.8 (120 avaliações)</p>
+<p class="urgencia">⚡ Últimas unidades!</p>
 
-<a href="${p.link}" target="_blank" class="botao">
+<a href="${p.link}" target="_blank" class="btn">
 🔥 Garantir desconto agora
 </a>
+
 </div>
 `;
 });
