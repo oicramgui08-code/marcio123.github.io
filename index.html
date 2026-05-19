@@ -4,53 +4,88 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nexa Tech - Lançamentos e Achados</title>
+<title>Nexa Tech</title>
 
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-body { background-color: #f0f4f8; color: #333; padding-bottom: 40px; }
+* { margin:0; padding:0; box-sizing:border-box; font-family:Arial; }
 
-header { background: linear-gradient(135deg, #1e90ff, #007acc); color: white; text-align: center; padding: 40px 20px; }
+body { background:#f0f4f8; }
 
-/* GRID */
+header {
+  background: linear-gradient(135deg,#1e90ff,#007acc);
+  color:white;
+  text-align:center;
+  padding:30px;
+}
+
+.menu-icon {
+  position:absolute;
+  top:20px;
+  right:20px;
+  cursor:pointer;
+}
+
+.sidebar {
+  position:fixed;
+  right:-250px;
+  top:0;
+  width:250px;
+  height:100%;
+  background:white;
+  transition:0.3s;
+  padding:20px;
+}
+
+.sidebar.open { right:0; }
+
+.container { padding:20px; }
+
 .products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  padding: 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:15px;
 }
 
 .product-card {
-  background: #fff;
-  border-radius: 15px;
-  padding: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  background:white;
+  border-radius:12px;
+  padding:10px;
+  box-shadow:0 3px 10px rgba(0,0,0,0.1);
 }
 
 .product-image img {
-  width: 100%;
+  width:100%;
+  height:150px;
+  object-fit:contain;
 }
 
-.product-info h3 {
-  font-size: 14px;
-  margin: 10px 0;
+.badge {
+  background:red;
+  color:white;
+  padding:5px;
+  border-radius:8px;
+  font-size:12px;
+}
+
+.old-price {
+  text-decoration:line-through;
+  font-size:12px;
 }
 
 .current-price {
-  color: green;
-  font-weight: bold;
-  font-size: 18px;
+  color:green;
+  font-weight:bold;
 }
 
 .btn-oferta {
-  display: block;
-  background: #00a650;
-  color: #fff;
-  text-align: center;
-  padding: 10px;
-  border-radius: 8px;
-  margin-top: 10px;
-  text-decoration: none;
+  display:block;
+  background:green;
+  color:white;
+  text-align:center;
+  padding:8px;
+  margin-top:5px;
+  border-radius:6px;
+  text-decoration:none;
 }
 </style>
 </head>
@@ -62,45 +97,98 @@ header { background: linear-gradient(135deg, #1e90ff, #007acc); color: white; te
 <p>Produtos atualizados automaticamente 🔥</p>
 </header>
 
-<!-- PRODUTOS AUTOMÁTICOS -->
+<div class="container">
 <div class="products-grid" id="productsGrid"></div>
+</div>
 
 <script>
-async function carregarProdutos() {
-  const grid = document.getElementById("productsGrid");
 
-  try {
-    const resposta = await fetch("produtos.json");
-    const produtos = await resposta.json();
+const products = [
+{
+title:"Fone Xiaomi Redmi Buds 6",
+price:"R$ 89,45",
+oldPrice:"R$ 107,99",
+discount:"17% OFF",
+img:"https://i.ibb.co/G4wYwmCx/IMG-20260519-110430.jpg",
+link:"https://meli.la/2tPnubz",
+badge:"Fone"
+},
 
-    grid.innerHTML = "";
+{
+title:"Fire TV Stick 4K Max",
+price:"R$ 375,00",
+oldPrice:"R$ 399,00",
+discount:"Promoção",
+img:"https://i.ibb.co/8nnSh83B/IMG-20260519-110442.jpg",
+link:"https://meli.la/2k6FaAp",
+badge:"Streaming"
+},
 
-    produtos.forEach(p => {
-      grid.innerHTML += `
-        <div class="product-card">
-          <div class="product-image">
-            <img src="${p.imagem}">
-          </div>
+{
+title:"Roku Streaming Stick",
+price:"R$ 258,30",
+oldPrice:"R$ 309,90",
+discount:"16% OFF",
+img:"https://i.ibb.co/vvcB2wy0/IMG-20260519-110500.jpg",
+link:"https://meli.la/2u3Xm6U",
+badge:"TV"
+},
 
-          <div class="product-info">
-            <h3>${p.nome}</h3>
-            <div class="current-price">R$ ${p.preco}</div>
+{
+title:"SSD Kingston 480GB",
+price:"R$ 515,10",
+oldPrice:"R$ 559,89",
+discount:"7% OFF",
+img:"https://i.ibb.co/67cT968s/IMG-20260519-110513.jpg",
+link:"https://meli.la/1FWygjw",
+badge:"Informática"
+},
 
-            <a href="${p.link}" target="_blank" class="btn-oferta">
-              Garantir Desconto
-            </a>
-          </div>
-        </div>
-      `;
-    });
-
-  } catch (erro) {
-    grid.innerHTML = "Erro ao carregar produtos 😢";
-    console.error(erro);
-  }
+{
+title:"Mi Band 10",
+price:"R$ 288,07",
+oldPrice:"R$ 479,00",
+discount:"39% OFF",
+img:"https://i.ibb.co/W4b3N6XT/IMG-20260519-110528.jpg",
+link:"https://meli.la/34mZxTS",
+badge:"Smartwatch"
 }
 
-carregarProdutos();
+];
+
+const grid = document.getElementById("productsGrid");
+
+function loadProducts(){
+grid.innerHTML = "";
+
+products.forEach(p=>{
+grid.innerHTML += `
+<div class="product-card">
+<span class="badge">${p.badge}</span>
+
+<div class="product-image">
+<img src="${p.img}">
+</div>
+
+<h3>${p.title}</h3>
+
+<div class="old-price">${p.oldPrice}</div>
+
+<div class="current-price">
+${p.price} (${p.discount})
+</div>
+
+<a href="${p.link}" target="_blank" class="btn-oferta">
+Garantir Desconto
+</a>
+
+</div>
+`;
+});
+}
+
+loadProducts();
+
 </script>
 
 </body>
