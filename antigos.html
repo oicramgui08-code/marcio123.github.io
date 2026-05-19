@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ofertas Anteriores - Tech Ofertas</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f0f4f8; color: #333; padding-bottom: 40px; overflow-x: hidden; }
+        header { background: linear-gradient(135deg, #718096, #4a5568); color: white; text-align: center; padding: 40px 20px; position: relative; }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        .container { max-width: 1200px; margin: 25px auto; padding: 0 20px; }
+        .btn-voltar { display: inline-block; margin-bottom: 25px; padding: 10px 20px; background-color: #4a5568; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; transition: background 0.2s; }
+        .btn-voltar:hover { background-color: #2d3748; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .product-card { background: #ffffff; border-radius: 16px; box-shadow: 0 6px 15px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; position: relative; border: 1px solid #e1e8ed; }
+        .badge { position: absolute; top: 15px; left: 15px; color: white; font-size: 0.75rem; font-weight: bold; padding: 6px 12px; border-radius: 20px; text-transform: uppercase; z-index: 10; }
+        .badge.top { background-color: #ff4757; }
+        .badge.gamer { background-color: #6c5ce7; }
+        .badge.desconto { background-color: #007acc; }
+        .badge.premium { background-color: #e1b12c; }
+        .product-image { width: 100%; height: 240px; display: flex; align-items: center; justify-content: center; padding: 20px; background: white; }
+        .product-image img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .product-info { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+        .product-info h3 { font-size: 1rem; color: #2c3e50; margin-bottom: 6px; min-height: 44px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-transform: capitalize; }
+        .product-info .subtitle { font-size: 0.85rem; color: #7f8c8d; margin-bottom: 15px; font-weight: 500; }
+        .price-container { margin-top: auto; margin-bottom: 15px; }
+        .old-price { font-size: 0.85rem; color: #7f8c8d; text-decoration: line-through; margin-bottom: 2px; display: block; }
+        .current-price { color: #00a650; font-size: 1.45rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+        .discount-tag { background: #e6f7ed; color: #00a650; font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
+        .actions-container { display: flex; flex-direction: column; gap: 8px; }
+        .btn-oferta { display: block; text-align: center; background-color: #00a650; color: white; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: bold; }
+        .btn-add-cart { display: block; text-align: center; background-color: #fff; color: #007acc; border: 1px solid #007acc; padding: 10px; border-radius: 8px; font-weight: 600; cursor: pointer; }
+        @media (max-width: 600px) { .products-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; } .product-image { height: 160px; } .product-info h3 { font-size: 0.85rem; min-height: 36px; } .current-price { font-size: 1.1rem; flex-direction: column; align-items: flex-start; gap: 2px; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>⏳ Ofertas Anteriores</h1>
+        <p>Produtos incríveis que já passaram pela nossa página principal</p>
+    </header>
+
+    <div class="container">
+        <a href="index.html" class="btn-voltar">🏠 Voltar para os Lançamentos</a>
+        
+        <div class="products-grid">
+
+            <div class="product-card">
+                <span class="badge top">Mais Vendido</span>
+                <div class="product-image">
+                    <img src="https://i.ibb.co/4RxcdVwX/1779041260047-1779116054281.jpg" alt="Fone In-Ear">
+                </div>
+                <div class="product-info">
+                    <h3>fone de ouvido bluetooth 5.0 bateria longa duração sem fio preto</h3>
+                    <p class="subtitle">⚡ Super Oferta por tempo limitado</p>
+                    <div class="price-container">
+                        <span class="old-price">De R$ 49,90</span>
+                        <div class="current-price">R$ 21,00 <span class="discount-tag">57% OFF</span></div>
+                    </div>
+                    <div class="actions-container">
+                        <a href="https://meli.la/1nW2s1B" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                        <button class="btn-add-cart" onclick="addToCart('Fone Bluetooth Preto', 'R$ 21,00', 'https://meli.la/1nW2s1B')">⭐ Salvar no Carrinho</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <span class="badge gamer">Gamer</span>
+                <div class="product-image">
+                    <img src="https://i.ibb.co/2YsdHRn7/Screenshot-2026-05-17-14-32-42-509-com-1779116424042-mercadolibre.jpg" alt="JBL Tune 520bt">
+                </div>
+                <div class="product-info">
+                    <h3>fone de ouvido headphone bluetooth tune 520bt azul JBL azul</h3>
+                    <p class="subtitle">⚡ Frete Grátis Disponível</p>
+                    <div class="price-container">
+                        <span class="old-price">De R$ 399,00</span>
+                        <div class="current-price">R$ 275,00 <span class="discount-tag">31% OFF</span></div>
+                    </div>
+                    <div class="actions-container">
+                        <a href="https://meli.la/2KFmtVh" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                        <button class="btn-add-cart" onclick="addToCart('JBL Tune 520bt Azul', 'R$ 275,00', 'https://meli.la/2KFmtVh')">⭐ Salvar no Carrinho</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <span class="badge desconto">Destaque</span>
+                <div class="product-image">
+                    <img src="https://i.ibb.co/ynvpMrT2/Screenshot-2026-05-17-14-33-00-692-com-1779116424306-mercadolibre.jpg" alt="Dapon H02d">
+                </div>
+                <div class="product-info">
+                    <h3>fone de ouvido headphone Dapon H02d bluetooth 5.1 Over-ear 22h preto</h3>
+                    <p class="subtitle">⚡ Poucas unidades no estoque</p>
+                    <div class="price-container">
+                        <span class="old-price">De R$ 149,00</span>
+                        <div class="current-price">R$ 78,00 <span class="discount-tag">47% OFF</span></div>
+                    </div>
+                    <div class="actions-container">
+                        <a href="https://meli.la/1X6npsX" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                        <button class="btn-add-cart" onclick="addToCart('Headphone Dapon H02d', 'R$ 78,00', 'https://meli.la/1X6npsX')">⭐ Salvar no Carrinho</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <span class="badge desconto">Oferta</span>
+                <div class="product-image">
+                    <img src="https://i.ibb.co/Kj69Vkqp/Screenshot-2026-05-17-14-33-15-218-com-1779116424051-mercadolibre.jpg" alt="Qcy H3">
+                </div>
+                <div class="product-info">
+                    <h3>headset Qcy H3 adaptativo bluetooth 5.3 multiponto 60h cor azul</h3>
+                    <p class="subtitle">⚡ Campeão de avaliações 5 estrelas</p>
+                    <div class="price-container">
+                        <span class="old-price">De R$ 420,00</span>
+                        <div class="current-price">R$ 281,00 <span class="discount-tag">33% OFF</span></div>
+                    </div>
+                    <div class="actions-container">
+                        <a href="https://meli.la/32zGP3N" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                        <button class="btn-add-cart" onclick="addToCart('Headset Qcy H3 Azul', 'R$ 281,00', 'https://meli.la/32zGP3N')">⭐ Salvar no Carrinho</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <span class="badge premium">Smart</span>
+                <div class="product-image">
+                    <img src="https://i.ibb.co/0j6f26zg/Screenshot-2026-05-17-14-33-30-303-com-1779116424066-mercadolibre.jpg" alt="Smartwatch D20">
+                </div>
+                <div class="product-info">
+                    <h3>Relógio Smartwatch D20 Pro 1.3 Android-ios Preto Preto</h3>
+                    <p class="subtitle">⚡ Campeão em custo-benefício</p>
+                    <div class="price-container">
+                        <span class="old-price">De R$ 159,00</span>
+                        <div class="current-price">R$ 79,00 <span class="discount-tag">50% OFF</span></div>
+                    </div>
+                    <div class="actions-container">
+                        <a href="https://meli.la/1B8kgku" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                        <button class="btn-add-cart" onclick="addToCart('Smartwatch D20 Pro', 'R$ 79,00', 'https://meli.la/1B8kgku')">⭐ Salvar no Carrinho</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <span class="badge premium">Premium</span>
+                <div class="product-image">
+                    <img src="https://i.ibb.co/zh0cBnfd/Screenshot-2026-05-17-14-33-44-971-com-1779116424075-mercadolibre.jpg" alt="Smartwatch S10 Pro">
+                </div>
+                <div class="product-info">
+                    <h3>Relógio Smartwatch S10 Pro 46mm Serie 10 Nfc Chatgpt Gps Prateado</h3>
+                    <p class="subtitle">⚡ Notificações e Monitoramento Cardíaco</p>
+                    <div class="price-container">
+                        <span class="old-price">De R$ 299,00</span>
+                        <div class="current-price">R$ 182,00 <span class="discount-tag">39% OFF</span></div>
+                    </div>
+                    <div class="actions-container">
+                        <a href="https://meli.la/28Ryff2" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                        <button class="btn-add-cart" onclick="addToCart('Smartwatch S10 Pro', 'R$ 182,00', 'https://meli.la/28Ryff2')">⭐ Salvar no Carrinho</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Função para salvar itens na memória compartilhada do site (localStorage)
+        function addToCart(name, price, link) {
+            let cart = JSON.parse(localStorage.getItem('tech_cart')) || [];
+            cart.push({ title: name, price: price, link: link });
+            localStorage.setItem('tech_cart', JSON.stringify(cart));
+            alert(`${name} foi salvo com sucesso!`);
+        }
+    </script>
+</body>
+</html>
