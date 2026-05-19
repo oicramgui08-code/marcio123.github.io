@@ -1,0 +1,34 @@
+[
+  {
+    "nome": "Redmi Buds 6 Play",
+    "preco": "89,45",
+    "imagem": "https://i.ibb.co/G4wYwmCx/IMG-20260519-110430.jpg",
+    "link": "https://meli.la/2tPnubz"
+  }
+]
+<script>
+async function carregarProdutos() {
+    const resposta = await fetch("produtos.json");
+    const produtos = await resposta.json();
+    const grid = document.getElementById("productsGrid");
+
+    grid.innerHTML = "";
+
+    produtos.forEach(p => {
+        grid.innerHTML += `
+        <div class="product-card">
+            <div class="product-image">
+                <img src="${p.imagem}">
+            </div>
+            <div class="product-info">
+                <h3>${p.nome}</h3>
+                <div class="current-price">R$ ${p.preco}</div>
+                <a href="${p.link}" target="_blank" class="btn-oferta">Comprar</a>
+            </div>
+        </div>
+        `;
+    });
+}
+
+carregarProdutos();
+</script>
