@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <meta name="description" content="Nexa Tech - Sua loja de eletrônicos e achados tecnológicos. Confira as melhores ofertas em Smart TVs, projetores, smartphones e acessórios com descontos exclusivos.">
-    <meta name="keywords" content="nexa tech, eletrônicos, smart tv, projetor portátil, comprar celular, achados tech, promoções mercado livre, tecnologia">
+    <meta name="description" content="Nexa Tech - Sua loja de eletrônicos e achados tecnológicos. Confira as melhores ofertas em Smart TVs, projetores portáteis, smartphones e acessórios com descontos exclusivos.">
+    <meta name="keywords" content="nexa tech, eletrônicos, smart tv aoc, smart tv tcl, projetor portátil, projetor hy310, achados tech, promoções mercado livre, tecnologia 2026">
     <meta name="author" content="Nexa Tech">
     <meta name="robots" content="index, follow">
     
     <meta property="og:title" content="📱 Nexa Tech - Os Melhores Achados em Eletrônicos 📱">
-    <meta property="og:description" content="Sua nova vitrine de tecnologia. Os melhores produtos com descontos imperdíveis e segurança!">
+    <meta property="og:description" content="Sua vitrine inteligente de tecnologia. Os melhores produtos com descontos imperdíveis e segurança!">
     <meta property="og:type" content="website">
 
     <title>Nexa Tech - Eletrônicos</title>
@@ -33,14 +33,19 @@
         .product-card { background: #ffffff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); display: flex; flex-direction: column; overflow: hidden; border: 1px solid #eef2f5; transition: transform 0.3s; }
         .product-card:hover { transform: translateY(-5px); }
         
+        /* Sistema de Carrossel Arrastável (Slide) */
         .carousel-container { width: 100%; height: 240px; position: relative; overflow: hidden; background: white; border-bottom: 1px solid #eee; }
         .carousel-track { display: flex; width: 100%; height: 100%; transition: transform 0.3s ease-out; cursor: grab; }
         .carousel-track:active { cursor: grabbing; }
         .carousel-slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; padding: 15px; }
         .carousel-slide img { max-width: 100%; max-height: 100%; object-fit: contain; pointer-events: none; }
+        
+        /* Indicadores de bolinha embaixo da foto */
         .carousel-dots { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 10; }
         .dot { width: 8px; height: 8px; background: rgba(0,0,0,0.15); border-radius: 50%; transition: background 0.2s; }
         .dot.active { background: #00aaff; width: 12px; border-radius: 4px; }
+        
+        /* Setas laterais para PC */
         .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: 1px solid #ddd; width: 36px; height: 36px; border-radius: 50%; font-weight: bold; font-size: 1.2rem; color: #333; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; }
         .prev-btn { left: 8px; }
         .next-btn { right: 8px; }
@@ -78,11 +83,53 @@
         </a>
 
         <div class="products-grid">
+
             <div class="product-card">
                 <div class="carousel-container">
+                    <button class="nav-btn prev-btn">‹</button>
+                    <div class="carousel-track">
+                        <div class="carousel-slide"><img src="https://i.ibb.co/FqKqYv5g/Screenshot-2026-05-19-18-35-38-450-com-mercadolibre.jpg"></div>
+                        <div class="carousel-slide"><img src="https://i.ibb.co/CpXVC9C8/Screenshot-2026-05-19-18-35-40-998-com-mercadolibre.jpg"></div>
+                        <div class="carousel-slide"><img src="https://i.ibb.co/27bdbhjt/Screenshot-2026-05-19-18-35-47-582-com-mercadolibre.jpg"></div>
+                    </div>
+                    <button class="nav-btn next-btn">›</button>
+                    <div class="carousel-dots"></div>
+                </div>
+                <div class="product-info">
+                    <h3>Smart TV 43" AOC LED Roku Full HD Wi-Fi - 43S5155/78G</h3>
+                    <div class="price-container"><div class="current-price">R$ 1.279,00</div></div>
+                    <a href="https://meli.la/13LioHM" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                    <button class="btn-add-cart" onclick="addToCart('Smart TV 43 AOC', 'R$ 1.279,00', 'https://meli.la/13LioHM')">⭐ Salvar no Carrinho</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="carousel-container">
+                    <button class="nav-btn prev-btn">‹</button>
+                    <div class="carousel-track">
+                        <div class="carousel-slide"><img src="https://i.ibb.co/SXjRrHVH/Screenshot-2026-05-19-18-36-41-449-com-mercadolibre.jpg"></div>
+                        <div class="carousel-slide"><img src="https://i.ibb.co/nMHYKKcy/Screenshot-2026-05-19-18-36-43-682-com-mercadolibre.jpg"></div>
+                        <div class="carousel-slide"><img src="https://i.ibb.co/XxR1x5nC/Screenshot-2026-05-19-18-36-46-041-com-mercadolibre.jpg"></div>
+                    </div>
+                    <button class="nav-btn next-btn">›</button>
+                    <div class="carousel-dots"></div>
+                </div>
+                <div class="product-info">
+                    <h3>Smart TV TCL 50" QLED 4K Google TV - 50P7K</h3>
+                    <div class="price-container"><div class="current-price">R$ 2.159,00</div></div>
+                    <a href="https://meli.la/2pa7xf3" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                    <button class="btn-add-cart" onclick="addToCart('Smart TV TCL 50', 'R$ 2.159,00', 'https://meli.la/2pa7xf3')">⭐ Salvar no Carrinho</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="carousel-container">
+                    <button class="nav-btn prev-btn">‹</button>
                     <div class="carousel-track">
                         <div class="carousel-slide"><img src="https://i.ibb.co/v67mmPwn/Screenshot-2026-05-19-18-49-13-710-com-mercadolibre.jpg"></div>
+                        <div class="carousel-slide"><img src="https://i.ibb.co/1f3WNryF/Screenshot-2026-05-19-18-49-17-802-com-mercadolibre.jpg"></div>
                     </div>
+                    <button class="nav-btn next-btn">›</button>
                     <div class="carousel-dots"></div>
                 </div>
                 <div class="product-info">
@@ -92,24 +139,99 @@
                     <button class="btn-add-cart" onclick="addToCart('Projetor HY310', 'R$ 393,00', 'https://meli.la/2FiNFju')">⭐ Salvar no Carrinho</button>
                 </div>
             </div>
+
+            <div class="product-card">
+                <div class="carousel-container">
+                    <div class="carousel-track">
+                        <div class="carousel-slide"><img src="https://i.ibb.co/vxDTFGxj/Screenshot-2026-05-19-18-49-56-028-com-mercadolibre.jpg"></div>
+                    </div>
+                    <div class="carousel-dots"></div>
+                </div>
+                <div class="product-info">
+                    <h3>Projetor Smart Portátil Full HD Suporte 4K Home Theater</h3>
+                    <div class="price-container"><div class="current-price">R$ 189,00</div></div>
+                    <a href="https://meli.la/1TrRdQD" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                    <button class="btn-add-cart" onclick="addToCart('Projetor Portátil 4K', 'R$ 189,00', 'https://meli.la/1TrRdQD')">⭐ Salvar no Carrinho</button>
+                </div>
+            </div>
+
         </div>
     </div>
 
     <script>
-        // Lógica simplificada de carrossel arrastável
+        // Lógica dos Carrosséis Arrastáveis (Igual ao da copa, permitindo arrastar fotos)
         document.querySelectorAll('.product-card').forEach(card => {
             const track = card.querySelector('.carousel-track');
             const slides = Array.from(card.querySelectorAll('.carousel-slide'));
             const dotsContainer = card.querySelector('.carousel-dots');
+            const prevBtn = card.querySelector('.prev-btn');
+            const nextBtn = card.querySelector('.next-btn');
+            
             if(!track || slides.length === 0) return;
             
             let currentIndex = 0;
+            let isDragging = false;
+            let startX = 0;
+            let currentTranslate = 0;
+            let prevTranslate = 0;
+            let animationID = 0;
+
             slides.forEach((_, idx) => {
                 const dot = document.createElement('div');
                 dot.classList.add('dot');
                 if(idx === 0) dot.classList.add('active');
                 dotsContainer.appendChild(dot);
             });
+            const dots = card.querySelectorAll('.dot');
+
+            function updateCarousel() {
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                if(dots.length > currentIndex) {
+                    dots.forEach((d, idx) => d.classList.toggle('active', idx === currentIndex));
+                }
+                prevTranslate = -currentIndex * track.offsetWidth;
+            }
+
+            if(prevBtn && nextBtn) {
+                if(slides.length <= 1) { prevBtn.style.display='none'; nextBtn.style.display='none'; }
+                prevBtn.addEventListener('click', () => { if(currentIndex > 0) currentIndex--; updateCarousel(); });
+                nextBtn.addEventListener('click', () => { if(currentIndex < slides.length - 1) currentIndex++; updateCarousel(); });
+            }
+
+            track.addEventListener('touchstart', touchStart(currentIndex));
+            track.addEventListener('touchend', touchEnd);
+            track.addEventListener('touchmove', touchMove);
+            track.addEventListener('mousedown', touchStart(currentIndex));
+            track.addEventListener('mouseup', touchEnd);
+            track.addEventListener('mouseleave', touchEnd);
+            track.addEventListener('mousemove', touchMove);
+
+            function touchStart(index) {
+                return function(event) {
+                    isDragging = true;
+                    startX = event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+                    animationID = requestAnimationFrame(animation);
+                }
+            }
+            function touchMove(event) {
+                if (!isDragging) return;
+                const currentX = event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+                currentTranslate = prevTranslate + (currentX - startX);
+            }
+            function touchEnd() {
+                isDragging = false;
+                cancelAnimationFrame(animationID);
+                const movedBy = currentTranslate - prevTranslate;
+                if (movedBy < -40 && currentIndex < slides.length - 1) currentIndex++;
+                if (movedBy > 40 && currentIndex > 0) currentIndex--;
+                updateCarousel();
+            }
+            function animation() {
+                if (isDragging) {
+                    track.style.transform = `translateX(${currentTranslate}px)`;
+                    requestAnimationFrame(animation);
+                }
+            }
         });
 
         function addToCart(name, price, link) {
