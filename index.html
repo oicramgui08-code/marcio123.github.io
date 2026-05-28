@@ -7,313 +7,405 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexa Tech - Lançamentos e Achados</title>
     <style>
-        /* Variáveis de Cores para Controle de Tema */
+        /* Paleta de Cores Baseada na Imagem */
         :root {
-            --bg-principal: #ffffff;
+            --bg-principal: #f4f7fc;
             --bg-card: #ffffff;
-            --texto-principal: #2c3e50;
-            --texto-secundario: #7f8c8d;
-            --cor-destaque: #ffcc00; /* Amarelo */
-            --cor-botao-escura: #111111;
-            --borda: #e1e8ed;
+            --texto-principal: #0b1a30;
+            --texto-secundario: #627d98;
+            --cor-primaria: #0052cc; /* Azul Destaque */
+            --cor-primaria-hover: #0043a4;
+            --cor-tag: #ff9900; /* Laranja Oferta */
+            --borda: #e2e8f0;
         }
 
-        /* Cores aplicadas no Modo Escuro (Fundo Preto) */
+        /* Modo Escuro Mantido de Forma Harmoniosa */
         [data-theme="dark"] {
-            --bg-principal: #121212;
-            --bg-card: #1e1e1e;
-            --texto-principal: #f5f6fa;
-            --texto-secundario: #a4b0be;
-            --borda: #333333;
+            --bg-principal: #0b132b;
+            --bg-card: #1c2541;
+            --texto-principal: #f4f7fc;
+            --texto-secundario: #9aafc7;
+            --cor-primaria: #3a86ff;
+            --cor-primaria-hover: #00b4d8;
+            --borda: #3a506b;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; transition: background 0.3s ease, color 0.3s ease; }
-        body { background-color: var(--bg-principal); color: var(--texto-principal); padding-bottom: 40px; overflow-x: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; transition: background 0.2s ease, color 0.2s ease; }
+        body { background-color: var(--bg-principal); color: var(--texto-principal); padding-bottom: 60px; }
+
+        /* --- TOPO / NAVBAR --- */
+        .navbar { background-color: var(--cor-primaria); color: white; padding: 15px 20px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .navbar-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
         
-        /* Header Modernizado em Tom Escuro e Amarelo */
-        header { background: linear-gradient(135deg, #111111, #222222); color: white; text-align: center; padding: 40px 20px; position: relative; border-bottom: 4px solid var(--cor-destaque); }
-        header h1 { font-size: 2.2rem; margin-bottom: 8px; font-weight: 800; }
-        header h1 span { color: var(--cor-destaque); }
+        .brand { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px; }
+        .brand span { color: #00f0ff; }
+
+        .search-box { flex-grow: 1; max-width: 500px; position: relative; }
+        .search-box input { width: 100%; padding: 10px 45px 10px 20px; border-radius: 50px; border: none; outline: none; font-size: 0.95rem; font-weight: 500; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); }
+        .search-box .search-icon { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); font-size: 1.1rem; color: #718096; }
+
+        /* Menu de Navegação Superior */
+        .nav-menu { display: flex; gap: 20px; align-items: center; }
+        .nav-link { color: white; text-decoration: none; font-weight: 600; font-size: 0.9rem; opacity: 0.9; }
+        .nav-link:hover { opacity: 1; text-decoration: underline; }
+
+        /* --- BANNER DE DESTAQUE --- */
+        .hero-banner { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+        .hero-content { background: linear-gradient(135deg, #e6f0fa, #f0f7ff); border-radius: 24px; padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 30px; position: relative; overflow: hidden; border: 1px solid rgba(0,82,204,0.1); }
+        [data-theme="dark"] .hero-content { background: linear-gradient(135deg, #1c2541, #0b132b); }
         
-        /* Menu Lateral */
-        .menu-icon { position: absolute; top: 25px; right: 25px; display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 21px; cursor: pointer; z-index: 100; }
-        .menu-icon span { display: block; height: 4px; width: 100%; background-color: white; border-radius: 4px; transition: all 0.3s ease; }
-        .menu-icon.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-        .menu-icon.open span:nth-child(2) { opacity: 0; }
-        .menu-icon.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+        .hero-text { max-width: 550px; }
+        .hero-badge { background-color: #ff4757; color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; display: inline-block; margin-bottom: 15px; }
+        .hero-text h2 { font-size: 2.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; color: var(--texto-principal); }
+        .hero-text p { font-size: 1.1rem; color: var(--texto-secundario); margin-bottom: 25px; }
+
+        .hero-images { display: flex; align-items: center; gap: 20px; position: relative; }
+        .hero-img-box { width: 180px; height: 180px; background: white; border-radius: 50%; padding: 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+        .hero-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+        /* --- BARRA DE BENEFÍCIOS --- */
+        .features-bar { max-width: 1200px; margin: 0 auto 40px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .feature-item { background: var(--bg-card); padding: 20px; border-radius: 16px; border: 1px solid var(--borda); display: flex; align-items: center; gap: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .feature-icon { font-size: 1.8rem; color: var(--cor-primaria); }
+        .feature-title { font-weight: 700; font-size: 0.95rem; color: var(--texto-principal); }
+        .feature-desc { font-size: 0.8rem; color: var(--texto-secundario); margin-top: 2px; }
+
+        /* --- VITRINE / SEÇÕES DE PRODUTOS --- */
+        .section-container { max-width: 1200px; margin: 0 auto 50px auto; padding: 0 20px; }
+        .section-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 25px; display: flex; align-items: center; gap: 10px; color: var(--texto-principal); }
         
-        .sidebar { position: fixed; top: 0; right: -300px; width: 300px; height: 100%; background-color: var(--bg-card); box-shadow: -5px 0 15px rgba(0,0,0,0.1); z-index: 99; padding: 80px 20px; transition: right 0.3s ease; display: flex; flex-direction: column; gap: 20px; border-left: 1px solid var(--borda); }
-        .sidebar.open { right: 0; }
-        .sidebar-item { display: flex; align-items: center; gap: 12px; padding: 12px; color: var(--texto-principal); text-decoration: none; font-weight: 600; border-radius: 8px; }
-        .sidebar-item:hover { background-color: var(--cor-destaque); color: #111111; }
+        .main-layout { display: grid; grid-template-columns: 1fr; gap: 30px; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; }
         
-        /* Nova Barra de Pesquisa Destacada */
-        .search-container { max-width: 600px; margin: -20px auto 20px auto; padding: 0 20px; position: relative; z-index: 10; }
-        .search-box { display: flex; align-items: center; background: var(--bg-card); border: 2px solid var(--cor-destaque); border-radius: 50px; padding: 12px 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .search-box input { border: none; background: transparent; outline: none; width: 100%; font-size: 1rem; color: var(--texto-principal); font-weight: 500; }
-        .search-box input::placeholder { color: var(--texto-secundario); }
+        /* CARD DO PRODUTO */
+        .product-card { background: var(--bg-card); border-radius: 16px; border: 1px solid var(--borda); display: flex; flex-direction: column; overflow: hidden; position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.03); transform: translateY(0); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
         
-        /* Barra de Confiança */
-        .trust-bar { background-color: var(--bg-card); border-bottom: 1px solid var(--borda); padding: 12px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
-        .trust-item { font-size: 0.85rem; font-weight: 600; color: var(--texto-secundario); }
-        
-        /* Banner Retangular de Ofertas */
-        .ofertas-banner-container { max-width: 1200px; margin: 25px auto 10px auto; padding: 0 20px; }
-        .ofertas-banner { 
-            display: block;
-            text-decoration: none;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            border-radius: 16px;
-            padding: 35px 20px;
-            text-align: center;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-            border: 1px solid var(--cor-destaque);
-        }
-        .ofertas-banner h2 { color: var(--cor-destaque); font-size: 1.8rem; margin-bottom: 8px; text-transform: uppercase; font-weight: 800; letter-spacing: 1px; }
-        .ofertas-banner p { color: #ffffff; font-size: 1.05rem; font-weight: 500; }
-        
-        /* Grid de Produtos */
-        .container { max-width: 1200px; margin: 15px auto; padding: 0 20px; }
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .product-card { background: var(--bg-card); border-radius: 16px; box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05); display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; position: relative; border: 1px solid var(--borda); }
-        .badge { position: absolute; top: 15px; left: 15px; color: #111111; font-size: 0.75rem; font-weight: bold; padding: 6px 12px; border-radius: 20px; text-transform: uppercase; z-index: 10; background-color: var(--cor-destaque); }
-        .badge-especial { position: absolute; top: 15px; left: 15px; background: linear-gradient(135deg, #ff3b30, #ff9500); color: white; padding: 6px 12px; font-size: 0.75rem; font-weight: 800; border-radius: 20px; text-transform: uppercase; z-index: 10; box-shadow: 0 2px 8px rgba(255,59,48,0.4); }
-        
-        .product-image { width: 100%; height: 240px; display: flex; align-items: center; justify-content: center; padding: 20px; background: white; }
+        .number-badge { position: absolute; top: 15px; left: 15px; background: var(--cor-primaria); color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; z-index: 10; }
+        .tag-badge { position: absolute; top: 15px; right: 15px; background: var(--cor-tag); color: white; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; z-index: 10; }
+
+        .product-image { width: 100%; height: 230px; background: #ffffff; padding: 25px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--borda); }
         .product-image img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
         .product-info { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
-        .product-info h3 { font-size: 1rem; color: var(--texto-principal); margin-bottom: 6px; min-height: 44px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        
-        /* Preços e Ações */
-        .price-container { margin-top: auto; margin-bottom: 15px; }
-        .current-price { color: #00a650; font-size: 1.45rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
-        .actions-container { display: flex; flex-direction: column; gap: 8px; }
-        .btn-oferta { display: block; text-align: center; background-color: #00a650; color: white; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: bold; }
-        .btn-oferta-especial { display: block; text-align: center; background: linear-gradient(135deg, #ff3b30, #ff9500); color: white; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: bold; box-shadow: 0 4px 10px rgba(255,59,48,0.3); }
-        .btn-add-cart { display: block; text-align: center; background-color: transparent; color: var(--texto-principal); border: 2px solid var(--cor-destaque); padding: 10px; border-radius: 8px; font-weight: 600; cursor: pointer; }
-        .btn-add-cart:hover { background-color: var(--cor-destaque); color: #111111; }
-        
-        /* Botão Seletor de Tema (Flutuante) */
-        .theme-toggle-btn { position: fixed; bottom: 20px; right: 20px; background-color: var(--cor-botao-escura); color: var(--cor-destaque); border: 2px solid var(--cor-destaque); width: 50px; height: 50px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 1000; }
+        .product-info h3 { font-size: 1rem; font-weight: 700; color: var(--texto-principal); margin-bottom: 6px; line-height: 1.4; min-height: 44px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .product-desc { font-size: 0.82rem; color: var(--texto-secundario); margin-bottom: 15px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-        /* Mensagem de nenhum produto encontrado */
-        .no-results { display: none; text-align: center; padding: 40px; font-size: 1.2rem; color: var(--texto-secundario); width: 100%; grid-column: 1 / -1; }
+        .price-box { margin-top: auto; padding-top: 10px; }
+        .price-label { font-size: 0.75rem; color: var(--texto-secundario); text-transform: uppercase; font-weight: 600; }
+        .price-value { font-size: 1.4rem; font-weight: 800; color: #00a650; margin-bottom: 12px; }
 
-        @media (max-width: 600px) { 
-            header h1 { font-size: 1.8rem; }
-            .ofertas-banner h2 { font-size: 1.4rem; }
-            .ofertas-banner p { font-size: 0.9rem; }
-            .products-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; } 
-            .product-image { height: 160px; } 
-            .product-info h3 { font-size: 0.85rem; min-height: 36px; } 
-            .current-price { font-size: 1.1rem; flex-direction: column; align-items: flex-start; gap: 2px; } 
+        .btn-action { display: block; width: 100%; text-align: center; background-color: var(--cor-primaria); color: white; text-decoration: none; padding: 12px; border-radius: 10px; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; }
+        .btn-action:hover { background-color: var(--cor-primaria-hover); }
+
+        /* --- LAYOUT COM LATERAL INFORMATIVA --- */
+        .grid-with-sidebar { display: grid; grid-template-columns: 1fr 320px; gap: 30px; }
+        
+        /* CARD INFORMATIVO LATERAL */
+        .info-sidebar { display: flex; flex-direction: column; gap: 20px; }
+        .info-card { background: var(--bg-card); border: 1px solid var(--borda); border-radius: 16px; padding: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+        .info-card h4 { font-size: 1.1rem; font-weight: 800; margin-bottom: 15px; color: var(--texto-principal); }
+        
+        .info-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .info-list li { font-size: 0.88rem; color: var(--texto-principal); display: flex; align-items: flex-start; gap: 10px; font-weight: 500; }
+        .info-list li::before { content: "✓"; color: #00a650; font-weight: 900; }
+
+        .promo-card { background: linear-gradient(135deg, #0052cc, #003399); color: white; border-radius: 16px; padding: 25px; text-align: center; position: relative; overflow: hidden; }
+        .promo-card h4 { font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; }
+        .promo-card p { font-size: 0.9rem; opacity: 0.9; margin-bottom: 20px; }
+        .btn-promo { display: inline-block; background-color: #ffcc00; color: #111; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 0.9rem; }
+
+        /* Botão Flutuante de Fundo */
+        .theme-toggle-btn { position: fixed; bottom: 20px; right: 20px; background-color: var(--texto-principal); color: var(--bg-principal); border: 1px solid var(--borda); width: 45px; height: 45px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; }
+        .no-results { display: none; text-align: center; padding: 40px; font-size: 1.1rem; color: var(--texto-secundario); width: 100%; grid-column: 1 / -1; }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 992px) {
+            .grid-with-sidebar { grid-template-columns: 1fr; }
+            .hero-content { padding: 30px; flex-direction: column; text-align: center; }
+            .hero-text h2 { font-size: 2rem; }
+            .hero-images { margin-top: 10px; }
+        }
+        @media (max-width: 600px) {
+            .nav-menu { display: none; }
+            .products-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
+            .product-image { height: 165px; padding: 15px; }
+            .product-info { padding: 12px; }
+            .product-info h3 { font-size: 0.88rem; min-height: 38px; }
+            .product-desc { display: none; }
+            .price-value { font-size: 1.15rem; }
+            .btn-action { padding: 8px; font-size: 0.85rem; }
         }
     </style>
 </head>
 <body>
 
-    <button class="theme-toggle-btn" id="themeToggle" title="Mudar Fundo">🌓</button>
+    <button class="theme-toggle-btn" id="themeToggle" title="Mudar Tema">🌓</button>
 
-    <div class="menu-icon" id="menuToggle"><span></span><span></span><span></span></div>
-
-    <header>
-        <h1>Nexa <span>Tech</span></h1>
-        <p>Os melhores achados e lançamentos da internet</p>
-    </header>
-
-    <div class="search-container">
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="🔍 Digite o que você está procurando...">
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="brand">Nexa <span>Tech</span></div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Buscar produtos, marcas e mais...">
+                <span class="search-icon">🔍</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#" class="nav-link">Início</a>
+                <a href="#" class="nav-link">Fones</a>
+                <a href="#" class="nav-link">Smartwatches</a>
+                <a href="#" class="nav-link">Ofertas</a>
+            </div>
         </div>
     </div>
 
-    <div class="trust-bar">
-        <div class="trust-item">🔒 Compra Segura</div>
-        <div class="trust-item">⚡ Links Oficiais Verificados</div>
-        <div class="trust-item">📉 Melhores Descontos</div>
+    <div class="hero-banner">
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="hero-badge">🔥 Ofertas do Dia</span>
+                <h2>Tecnologia que transforma seu dia!</h2>
+                <p>Os melhores fones de ouvido, smartwatches e acessórios com os menores preços e entrega rápida.</p>
+            </div>
+            <div class="hero-images">
+                <div class="hero-img-box"><img src="https://i.ibb.co/vvYQ4kPM/download.webp" alt="Destaque"></div>
+            </div>
+        </div>
     </div>
 
-    <div class="ofertas-banner-container">
-        <a href="copa.html" class="ofertas-banner">
-            <h2>🇧🇷 Especial Copa do Mundo 2026 🇧🇷</h2>
-            <p>Clique aqui e confira nossa seleção de mantos, projetores e kits de torcedor!</p>
-        </a>
+    <div class="features-bar">
+        <div class="feature-item">
+            <div class="feature-icon">🛡️</div>
+            <div>
+                <div class="feature-title">Compra Segura</div>
+                <div class="feature-desc">Seus dados 100% protegidos</div>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">⚡</div>
+            <div>
+                <div class="feature-title">Entrega Rápida</div>
+                <div class="feature-desc">Envio expresso para todo o Brasil</div>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">💎</div>
+            <div>
+                <div class="feature-title">Melhores Preços</div>
+                <div class="feature-desc">Garantia do menor valor online</div>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🎧</div>
+            <div>
+                <div class="feature-title">Suporte Dedicado</div>
+                <div class="feature-desc">Atendimento pronto via e-mail</div>
+            </div>
+        </div>
     </div>
 
-    <div class="container">
-        <div class="products-grid" id="productsGrid">
+    <div class="section-container">
+        <div class="section-title">🎧 Fones e Dispositivos de Áudio</div>
+        <div class="main-layout">
+            <div class="products-grid" id="audioGrid">
+                
+                <div class="product-card" data-name="ring light iluminador led maquiagem gravacao">
+                    <div class="number-badge">1</div>
+                    <div class="tag-badge">Mais Buscado</div>
+                    <div class="product-image">
+                        <img src="https://i.ibb.co/vvYQ4kPM/download.webp" alt="Ring light">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ring Light Iluminador de LED - Edição Especial</h3>
+                        <p class="product-desc">Iluminação perfeita e profissional para suas gravações, fotos de estúdio e videoconferências com tripé regulável.</p>
+                        <div class="price-box">
+                            <div class="price-label">Por apenas</div>
+                            <div class="price-value">Oferta Relâmpago</div>
+                            <a href="https://meli.la/2vqfjEU" target="_blank" class="btn-action">Ver Oferta</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-name="fone de ouvido bluetooth wireless sem fio">
+                    <div class="number-badge">2</div>
+                    <div class="product-image">
+                        <img src="https://i.ibb.co/G4wYwmCx/IMG-20260519-110430.jpg" alt="Fone de ouvido">
+                    </div>
+                    <div class="product-info">
+                        <h3>Fone de Ouvido Bluetooth Wireless Alta Fidelidade</h3>
+                        <p class="product-desc">Áudio imersivo de alta definição com isolamento acústico passivo e bateria de longa duração para o dia todo.</p>
+                        <div class="price-box">
+                            <div class="price-label">Por apenas</div>
+                            <div class="price-value">Preço Promocional</div>
+                            <a href="https://meli.la/2tPnubz" target="_blank" class="btn-action">Ver Oferta</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-name="fire tv stick amazon streaming smart tv">
+                    <div class="number-badge">3</div>
+                    <div class="product-image">
+                        <img src="https://i.ibb.co/8nnSh83B/IMG-20260519-110442.jpg" alt="Fire tv stick">
+                    </div>
+                    <div class="product-info">
+                        <h3>Amazon Fire TV Stick - Transmissão Streaming</h3>
+                        <p class="product-desc">Acesse milhares de canais, aplicativos de streaming e conteúdos em alta definição diretamente na sua televisão.</p>
+                        <div class="price-box">
+                            <div class="price-label">Por apenas</div>
+                            <div class="price-value">Desconto Exclusivo</div>
+                            <a href="https://meli.la/2k6FaAp" target="_blank" class="btn-action">Ver Oferta</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-name="roku streaming stick reprodutor smart hd">
+                    <div class="number-badge">4</div>
+                    <div class="product-image">
+                        <img src="https://i.ibb.co/vvcB2wy0/IMG-20260519-110500.jpg" alt="Roku streaming stick">
+                    </div>
+                    <div class="product-info">
+                        <h3>Roku Streaming Stick - Interface Smart Avançada</h3>
+                        <p class="product-desc">Transforme instantaneamente qualquer tela em uma Smart TV veloz com menu intuitivo e controle remoto integrado.</p>
+                        <div class="price-box">
+                            <div class="price-label">Por apenas</div>
+                            <div class="price-value">Desconto do Dia</div>
+                            <a href="https://meli.la/2u3Xm6U" target="_blank" class="btn-action">Ver Oferta</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-name="processador de audio digital equalizador som profissional">
+                    <div class="number-badge">5</div>
+                    <div class="product-image">
+                        <img src="https://i.ibb.co/PzvRzLhG/IMG-20260519-110553.jpg" alt="Processador de áudio">
+                    </div>
+                    <div class="product-info">
+                        <h3>Processador de Áudio Equalizador Digital Profissional</h3>
+                        <p class="product-desc">Ajuste fino de frequência e equalização avançada para sistemas de som automotivo e caixas de alta fidelidade.</p>
+                        <div class="price-box">
+                            <div class="price-label">Por apenas</div>
+                            <div class="price-value">Preço Especial</div>
+                            <a href="https://meli.la/2L2ECcA" target="_blank" class="btn-action">Ver Oferta</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="section-container">
+        <div class="section-title">⌚ Smartwatches e Hardwares Inteligentes</div>
+        <div class="grid-with-sidebar">
             
-            <div class="product-card" data-name="ring light iluminador led maquiagem gravacao">
-                <div class="badge-especial">🔥 Imperdível</div>
-                <div class="product-image">
-                    <img src="https://i.ibb.co/vvYQ4kPM/download.webp" alt="Ring light">
-                </div>
-                <div class="product-info">
-                    <h3>Ring Light Iluminador de LED - Edição Especial com Suporte</h3>
-                    <div class="price-container"><div class="current-price">Oferta Especial</div></div>
-                    <div class="actions-container">
-                        <a href="https://meli.la/2vqfjEU" target="_blank" class="btn-oferta-especial">Aproveitar Oferta Relâmpago</a>
-                        <button class="btn-add-cart" onclick="addToCart('Ring Light', 'Oferta Especial', 'https://meli.la/2vqfjEU')">⭐ Salvar no Carrinho</button>
+            <div class="products-grid" id="gadgetGrid">
+                
+                <div class="product-card" data-name="ssd kingston 480gb memoria interna armazenamento pc">
+                    <div class="number-badge">6</div>
+                    <div class="product-image">
+                        <img src="https://i.ibb.co/67cT968s/IMG-20260519-110513.jpg" alt="SSD Kingston 480gb">
+                    </div>
+                    <div class="product-info">
+                        <h3>SSD Kingston 480GB Sata III de Alta Velocidade</h3>
+                        <p class="product-desc">Deixe seu computador ou notebook até 10 vezes mais rápido na inicialização do sistema e carregamento de arquivos.</p>
+                        <div class="price-box">
+                            <div class="price-label">Por apenas</div>
+                            <div class="price-value">Menor Preço</div>
+                            <a href="https://meli.la/1FWygjw" target="_blank" class="btn-action">Ver Oferta</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="product-card" data-name="fone de ouvido bluetooth wireless sem fio">
-                <span class="badge">Novidade</span>
-                <div class="product-image">
-                    <img src="https://i.ibb.co/G4wYwmCx/IMG-20260519-110430.jpg" alt="Fone de ouvido">
-                </div>
-                <div class="product-info">
-                    <h3>Fone de Ouvido Bluetooth Wireless Alta Fidelidade</h3>
-                    <div class="price-container"><div class="current-price">Preço Promocional</div></div>
-                    <div class="actions-container">
-                        <a href="https://meli.la/2tPnubz" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                        <button class="btn-add-cart" onclick="addToCart('Fone de Ouvido', 'Preço Promocional', 'https://meli.la/2tPnubz')">⭐ Salvar no Carrinho</button>
+                <div class="product-card" data-name="smartwatch relogio inteligente digital esporte">
+                    <div class="number-badge">7</div>
+                    <div class="product-image">
+                        <img src="https://i.ibb.co/W4b3N6XT/IMG-20260519-110528.jpg" alt="Smartwatch">
+                    </div>
+                    <div class="product-info">
+                        <h3>Smartwatch Relógio Inteligente Esportivo Monitor</h3>
+                        <p class="product-desc">Acompanhe seus passos, batimentos cardíacos e receba notificações de mensagens e aplicativos diretamente no seu pulso.</p>
+                        <div class="price-box">
+                            <div class="price-label">Por apenas</div>
+                            <div class="price-value">Super Desconto</div>
+                            <a href="https://meli.la/34mZxTS" target="_blank" class="btn-action">Ver Oferta</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="product-card" data-name="fire tv stick amazon streaming smart tv">
-                <span class="badge">Mais Vendido</span>
-                <div class="product-image">
-                    <img src="https://i.ibb.co/8nnSh83B/IMG-20260519-110442.jpg" alt="Fire tv stick">
-                </div>
-                <div class="product-info">
-                    <h3>Amazon Fire TV Stick - Transmissão HD Streaming</h3>
-                    <div class="price-container"><div class="current-price">Oferta Especial</div></div>
-                    <div class="actions-container">
-                        <a href="https://meli.la/2k6FaAp" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                        <button class="btn-add-cart" onclick="addToCart('Fire TV Stick', 'Oferta Especial', 'https://meli.la/2k6FaAp')">⭐ Salvar no Carrinho</button>
+                <div class="product-card" data-name="smartv smart tv televisao 4k led inteligente">
+                    <div class="number-badge">8</div>
+                    <div class="product-image">
+                        <img src="https://i.ibb.co/v4VS7z95/IMG-20260519-110540.jpg" alt="Smartv">
+                    </div>
+                    <div class="product-info">
+                        <h3>Smart TV LED Inteligente de Alta Definição</h3>
+                        <p class="product-desc">Qualidade de imagem cristalina com tecnologia LED e conectividade completa com os principais apps da atualidade.</p>
+                        <div class="price-box">
+                            <div class="price-label">Por apenas</div>
+                            <div class="price-value">Valor Imperdível</div>
+                            <a href="https://meli.la/2CS2MPo" target="_blank" class="btn-action">Ver Oferta</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="product-card" data-name="roku streaming stick reprodutor smart hd">
-                <div class="product-image">
-                    <img src="https://i.ibb.co/vvcB2wy0/IMG-20260519-110500.jpg" alt="Roku streaming stick">
-                </div>
-                <div class="product-info">
-                    <h3>Roku Streaming Stick - Transforma Qualquer TV em Smart</h3>
-                    <div class="price-container"><div class="current-price">Desconto do Dia</div></div>
-                    <div class="actions-container">
-                        <a href="https://meli.la/2u3Xm6U" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                        <button class="btn-add-cart" onclick="addToCart('Roku Streaming Stick', 'Desconto do Dia', 'https://meli.la/2u3Xm6U')">⭐ Salvar no Carrinho</button>
+                <div class="product-card" data-name="suporte tv articulado parede inclinacao">
+                    <div class="number-badge">9</div>
+                    <div class="product-image">
+                        <img src="https://i.ibb.co/4ZwLPfbL/IMG-20260519-110620.jpg" alt="Suporte tv">
+                    </div>
+                    <div class="product-info">
+                        <h3>Suporte de TV Articulado Reforçado de Parede</h3>
+                        <p class="product-desc">Máxima inclinação e movimentação lateral segura para fixar sua televisão na parede mantendo excelente ângulo de visão.</p>
+                        <div class="price-box">
+                            <div class="price-label">Por apenas</div>
+                            <div class="price-value">Preço Verificado</div>
+                            <a href="https://meli.la/2nLPAtd" target="_blank" class="btn-action">Ver Oferta</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="product-card" data-name="ssd kingston 480gb memoria interna armazenamento pc">
-                <div class="product-image">
-                    <img src="https://i.ibb.co/67cT968s/IMG-20260519-110513.jpg" alt="SSD Kingston 480gb">
-                </div>
-                <div class="product-info">
-                    <h3>SSD Kingston 480GB Sata III de Alta Velocidade</h3>
-                    <div class="price-container"><div class="current-price">Menor Preço</div></div>
-                    <div class="actions-container">
-                        <a href="https://meli.la/1FWygjw" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                        <button class="btn-add-cart" onclick="addToCart('SSD Kingston 480GB', 'Menor Preço', 'https://meli.la/1FWygjw')">⭐ Salvar no Carrinho</button>
+                <div class="product-card" data-name="echo spot alexa assistente virtual inteligente tela">
+                    <div class="number-badge">10</div>
+                    <div class="product-image">
+                        <img src="https://i.ibb.co/xq5Y6HXz/IMG-20260519-110631.jpg" alt="Echo spot">
+                    </div>
+                    <div class="product-info">
+                        <h3>Echo Spot Alexa Inteligente com Display</h3>
+                        <p class="product-desc">Sua assistente virtual integrada com tela compacta para exibir horas, alarmes, previsão do tempo e controlar sua casa inteligente.</p>
+                        <div class="price-box">
+                            <div class="price-label">Por apenas</div>
+                            <div class="price-value">Melhor Preço</div>
+                            <a href="https://meli.la/2wwnrtB" target="_blank" class="btn-orange">Ver Oferta</a>
+                        </div>
                     </div>
                 </div>
+
+                <div class="no-results" id="noResults">Nenhum produto encontrado. 😕</div>
             </div>
 
-            <div class="product-card" data-name="smartwatch relogio inteligente digital esporte">
-                <span class="badge">Recomendado</span>
-                <div class="product-image">
-                    <img src="https://i.ibb.co/W4b3N6XT/IMG-20260519-110528.jpg" alt="Smartwatch">
+            <div class="info-sidebar">
+                <div class="info-card">
+                    <h4>Por que comprar aqui?</h4>
+                    <ul class="info-list">
+                        <li>Produtos originais e com garantia oficial</li>
+                        <li>As melhores ofertas e achados do Mercado Livre</li>
+                        <li>Links de afiliado oficiais - você paga o mesmo preço</li>
+                        <li>Atualizamos os preços todos os dias automaticamente</li>
+                        <li>Compra 100% protegida e segura</li>
+                    </ul>
                 </div>
-                <div class="product-info">
-                    <h3>Smartwatch Relógio Inteligente Esportivo Premium</h3>
-                    <div class="price-container"><div class="current-price">Super Desconto</div></div>
-                    <div class="actions-container">
-                        <a href="https://meli.la/34mZxTS" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                        <button class="btn-add-cart" onclick="addToCart('Smartwatch', 'Super Desconto', 'https://meli.la/34mZxTS')">⭐ Salvar no Carrinho</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card" data-name="smartv smart tv televisao 4k led inteligente">
-                <div class="product-image">
-                    <img src="https://i.ibb.co/v4VS7z95/IMG-20260519-110540.jpg" alt="Smartv">
-                </div>
-                <div class="product-info">
-                    <h3>Smart TV LED Inteligente de Alta Definição</h3>
-                    <div class="price-container"><div class="current-price">Preço Especial</div></div>
-                    <div class="actions-container">
-                        <a href="https://meli.la/2CS2MPo" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                        <button class="btn-add-cart" onclick="addToCart('Smartv', 'Preço Especial', 'https://meli.la/2CS2MPo')">⭐ Salvar no Carrinho</button>
-                    </div>
+                
+                <div class="promo-card">
+                    <h4>Ofertas Exclusivas</h4>
+                    <p>Novas promoções e cupons todos os dias!</p>
+                    <a href="#" class="btn-promo">Aproveitar agora →</a>
                 </div>
             </div>
-
-            <div class="product-card" data-name="processador de audio digital equalizador som profissional">
-                <div class="product-image">
-                    <img src="https://i.ibb.co/PzvRzLhG/IMG-20260519-110553.jpg" alt="Processador de áudio">
-                </div>
-                <div class="product-info">
-                    <h3>Processador de Áudio Equalizador Som Profissional</h3>
-                    <div class="price-container"><div class="current-price">Oferta Imperdível</div></div>
-                    <div class="actions-container">
-                        <a href="https://meli.la/2L2ECcA" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                        <button class="btn-add-cart" onclick="addToCart('Processador de Áudio', 'Oferta Imperdível', 'https://meli.la/2L2ECcA')">⭐ Salvar no Carrinho</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card" data-name="suporte tv articulado parede inclinação">
-                <div class="product-image">
-                    <img src="https://i.ibb.co/4ZwLPfbL/IMG-20260519-110620.jpg" alt="Suporte tv">
-                </div>
-                <div class="product-info">
-                    <h3>Suporte de TV Articulado Reforçado de Parede</h3>
-                    <div class="price-container"><div class="current-price">Desconto Verificado</div></div>
-                    <div class="actions-container">
-                        <a href="https://meli.la/2nLPAtd" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                        <button class="btn-add-cart" onclick="addToCart('Suporte TV', 'Desconto Verificado', 'https://meli.la/2nLPAtd')">⭐ Salvar no Carrinho</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card" data-name="echo spot alexa assistente virtual inteligente tela">
-                <span class="badge">Queima de Estoque</span>
-                <div class="product-image">
-                    <img src="https://i.ibb.co/xq5Y6HXz/IMG-20260519-110631.jpg" alt="Echo spot">
-                </div>
-                <div class="product-info">
-                    <h3>Echo Spot Alexa Inteligente com Display Integrado</h3>
-                    <div class="price-container"><div class="current-price">Melhor Preço Garantido</div></div>
-                    <div class="actions-container">
-                        <a href="https://meli.la/2wwnrtB" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                        <button class="btn-add-cart" onclick="addToCart('Echo Spot', 'Melhor Preço', 'https://meli.la/2wwnrtB')">⭐ Salvar no Carrinho</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="no-results" id="noResults">Nenhum produto encontrado com esse nome. 😕</div>
 
         </div>
-    </div>
-
-    <div class="sidebar" id="sidebar">
-        <a href="index.html" class="sidebar-item">🏠 Início</a>
-        <a href="copa.html" class="sidebar-item">🇧🇷 Especial Copa</a>
-        <a href="#" class="sidebar-item">🛒 Carrinho</a>
     </div>
 
     <script>
-        // Lógica do Menu Lateral (Sidebar)
-        const menuToggle = document.getElementById('menuToggle');
-        const sidebar = document.getElementById('sidebar');
-
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('open');
-            sidebar.classList.toggle('open');
-        });
-
-        // Lógica do Alternador de Tema (Fundo Claro / Fundo Preto)
+        // Lógica da Alternância do Modo Claro / Escuro
         const themeToggle = document.getElementById('themeToggle');
-        
         themeToggle.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             if (currentTheme === 'dark') {
@@ -323,39 +415,31 @@
             }
         });
 
-        // Lógica Avançada da Barra de Pesquisa (Filtra os produtos na hora)
+        // Lógica de Busca Unificada em Tempo Real
         const searchInput = document.getElementById('searchInput');
         const productCards = document.querySelectorAll('.product-card');
         const noResults = document.getElementById('noResults');
 
         searchInput.addEventListener('input', function() {
             const searchTerm = searchInput.value.toLowerCase().trim();
-            let foundAny = false;
+            let totalFound = 0;
 
             productCards.forEach(card => {
                 const productName = card.getAttribute('data-name');
                 if (productName && productName.includes(searchTerm)) {
                     card.style.display = 'flex';
-                    foundAny = true;
+                    totalFound++;
                 } else {
                     card.style.display = 'none';
                 }
             });
 
-            if (foundAny) {
+            if (totalFound > 0) {
                 noResults.style.display = 'none';
             } else {
                 noResults.style.display = 'block';
             }
         });
-
-        // Lógica para Salvar no Carrinho
-        function addToCart(name, price, link) {
-            let cart = JSON.parse(localStorage.getItem('tech_cart')) || [];
-            cart.push({ title: name, price: price, link: link });
-            localStorage.setItem('tech_cart', JSON.stringify(cart));
-            alert(`${name} foi salvo com sucesso no carrinho!`);
-        }
     </script>
 </body>
 </html>
