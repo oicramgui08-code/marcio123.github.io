@@ -87,9 +87,7 @@
         
         /* Preços e Ações */
         .price-container { margin-top: auto; margin-bottom: 15px; }
-        .old-price { font-size: 0.85rem; color: var(--texto-secundario); text-decoration: line-through; margin-bottom: 2px; display: block; }
         .current-price { color: #00a650; font-size: 1.45rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
-        .discount-tag { background: #e6f7ed; color: #00a650; font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
         .actions-container { display: flex; flex-direction: column; gap: 8px; }
         .btn-oferta { display: block; text-align: center; background-color: #00a650; color: white; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: bold; }
         .btn-oferta-especial { display: block; text-align: center; background: linear-gradient(135deg, #ff3b30, #ff9500); color: white; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: bold; box-shadow: 0 4px 10px rgba(255,59,48,0.3); }
@@ -146,40 +144,6 @@
     <div class="container">
         <div class="products-grid" id="productsGrid">
             
-            <div class="product-card" data-name="smart tv 43 aoc led roku full hd wifi">
-                <span class="badge">Destaque</span>
-                <div class="product-image">
-                    <img src="https://i.ibb.co/FqKqYv5g/Screenshot-2026-05-19-18-35-38-450-com-mercadolibre.jpg" alt="Smart TV AOC">
-                </div>
-                <div class="product-info">
-                    <h3>Smart TV 43" AOC LED Roku Full HD Wi-Fi - 43S5155/78G</h3>
-                    <div class="price-container">
-                        <div class="current-price">R$ 1.279,00</div>
-                    </div>
-                    <div class="actions-container">
-                        <a href="https://meli.la/13LioHM" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                        <button class="btn-add-cart" onclick="addToCart('Smart TV 43 AOC', 'R$ 1.279,00', 'https://meli.la/13LioHM')">⭐ Salvar no Carrinho</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card" data-name="smart tv tcl 50 qled 4k google tv">
-                <span class="badge">Mais Vendido</span>
-                <div class="product-image">
-                    <img src="https://i.ibb.co/SXjRrHVH/Screenshot-2026-05-19-18-36-41-449-com-mercadolibre.jpg" alt="Smart TV TCL">
-                </div>
-                <div class="product-info">
-                    <h3>Smart TV TCL 50" QLED 4K Google TV - 50P7K</h3>
-                    <div class="price-container">
-                        <div class="current-price">R$ 2.159,00</div>
-                    </div>
-                    <div class="actions-container">
-                        <a href="https://meli.la/2pa7xf3" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                        <button class="btn-add-cart" onclick="addToCart('Smart TV TCL 50', 'R$ 2.159,00', 'https://meli.la/2pa7xf3')">⭐ Salvar no Carrinho</button>
-                    </div>
-                </div>
-            </div>
-
             <div class="product-card" data-name="manto oficial selecao brasileira edicao exclusiva copa 2026">
                 <div class="badge-especial">🔥 Imperdível</div>
                 <div class="product-image">
@@ -195,108 +159,217 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="manto amarelo selecao brasileira copa do mundo 2026">
+            <div class="product-card" data-name="produto eletronico lancamento novidade tech">
+                <span class="badge">Novidade</span>
                 <div class="product-image">
-                    <img src="https://i.ibb.co/68gP8n9n/Screenshot-2026-05-19-18-42-45-709-com-mercadolibre.jpg" alt="Manto Amarelo">
+                    <img src="https://i.ibb.co/G4wYwmCx/IMG-20260519-110430.jpg" alt="Produto 1">
                 </div>
                 <div class="product-info">
-                    <h3>Manto Amarelo Seleção Brasileira Copa do Mundo 2026</h3>
-                    <div class="price-container"><div class="current-price">R$ 179,90</div></div>
+                    <h3>Smart Tech Gadget - Lançamento Exclusivo Verificado</h3>
+                    <div class="price-container"><div class="current-price">Preço Promocional</div></div>
                     <div class="actions-container">
-                        <a href="https://meli.la/2L7BMP4" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                        <button class="btn-add-cart" onclick="addToCart('Manto Amarelo', 'R$ 179,90', 'https://meli.la/2L7BMP4')">⭐ Salvar no Carrinho</button>
+                        <a href="https://meli.la/2tPnubz" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                        <button class="btn-add-cart" onclick="addToCart('Smart Tech Gadget', 'Preço Promocional', 'https://meli.la/2tPnubz')">⭐ Salvar no Carrinho</button>
                     </div>
                 </div>
             </div>
 
-            <div class="product-card" data-name="manto azul selecao brasileira copa do mundo 2026">
+            <div class="product-card" data-name="achado premium eletronico inteligente">
+                <span class="badge">Mais Vendido</span>
                 <div class="product-image">
-                    <img src="https://i.ibb.co/gM8wL1P9/Screenshot-2026-05-19-18-44-12-880-com-mercadolibre.jpg" alt="Manto Azul">
+                    <img src="https://i.ibb.co/8nnSh83B/IMG-20260519-110442.jpg" alt="Produto 2">
                 </div>
                 <div class="product-info">
-                    <h3>Manto Azul Seleção Brasileira Copa do Mundo 2026</h3>
-                    <div class="price-container"><div class="current-price">R$ 179,90</div></div>
+                    <h3>Achado Premium Inteligente - Edição Limitada</h3>
+                    <div class="price-container"><div class="current-price">Oferta Especial</div></div>
                     <div class="actions-container">
-                        <a href="https://meli.la/2D7ANQa" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                        <button class="btn-add-cart" onclick="addToCart('Manto Azul', 'R$ 179,90', 'https://meli.la/2D7ANQa')">⭐ Salvar no Carrinho</button>
+                        <a href="https://meli.la/2k6FaAp" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                        <button class="btn-add-cart" onclick="addToCart('Achado Premium Inteligente', 'Oferta Especial', 'https://meli.la/2k6FaAp')">⭐ Salvar no Carrinho</button>
                     </div>
                 </div>
             </div>
 
-            <div class="product-card" data-name="projetor magcubic hy310 smart full hd 1080p android 11">
+            <div class="product-card" data-name="acessorio inteligente tech multifuncional">
                 <div class="product-image">
-                    <img src="https://i.ibb.co/v67mmPwn/Screenshot-2026-05-19-18-49-13-710-com-mercadolibre.jpg" alt="Projetor HY310">
+                    <img src="https://i.ibb.co/vvcB2wy0/IMG-20260519-110500.jpg" alt="Produto 3">
                 </div>
                 <div class="product-info">
-                    <h3>Projetor Magcubic Hy310 Smart Full HD 1080p Android 11</h3>
-                    <div class="price-container"><div class="current-price">R$ 393,00</div></div>
+                    <h3>Dispositivo Tech Multifuncional de Alta Performance</h3>
+                    <div class="price-container"><div class="current-price">Desconto do Dia</div></div>
                     <div class="actions-container">
-                        <a href="https://meli.la/2FiNFju" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                        <button class="btn-add-cart" onclick="addToCart('Projetor HY310', 'R$ 393,00', 'https://meli.la/2FiNFju')">⭐ Salvar no Carrinho</button>
+                        <a href="https://meli.la/2u3Xm6U" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                        <button class="btn-add-cart" onclick="addToCart('Dispositivo Tech Multifuncional', 'Desconto do Dia', 'https://meli.la/2u3Xm6U')">⭐ Salvar no Carrinho</button>
                     </div>
                 </div>
             </div>
 
-            <div class="product-card" data-name="projetor smart portatil full hd suporte 4k home theater">
+            <div class="product-card" data-name="gadget utilitario dia a dia nexa tech">
                 <div class="product-image">
-                    <img src="https://i.ibb.co/vxDTFGxj/Screenshot-2026-05-19-18-49-56-028-com-mercadolibre.jpg" alt="Projetor Portatil">
+                    <img src="https://i.ibb.co/67cT968s/IMG-20260519-110513.jpg" alt="Produto 4">
                 </div>
                 <div class="product-info">
-                    <h3>Projetor Smart Portátil Full HD Suporte 4K Home Theater</h3>
-                    <div class="price-container"><div class="current-price">R$ 189,00</div></div>
+                    <h3>Utilitário Tecnológico Essencial Nexa Tech</h3>
+                    <div class="price-container"><div class="current-price">Menor Preço</div></div>
                     <div class="actions-container">
-                        <a href="https://meli.la/1TrRdQD" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                        <button class="btn-add-cart" onclick="addToCart('Projetor Portátil 4K', 'R$ 189,00', 'https://meli.la/1TrRdQD')">⭐ Salvar no Carrinho</button>
+                        <a href="https://meli.la/1FWygjw" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                        <button class="btn-add-cart" onclick="addToCart('Utilitário Tecnológico Essencial', 'Menor Preço', 'https://meli.la/1FWygjw')">⭐ Salvar no Carrinho</button>
                     </div>
                 </div>
             </div>
 
-            <div class="product-card" data-name="kit 2 cornetas vuvuzela grande torcida copa 2026">
+            <div class="product-card" data-name="equipamento top vendas recomendado original">
+                <span class="badge">Recomendado</span>
                 <div class="product-image">
-                    <img src="https://i.ibb.co/B5JsmDs7/Screenshot-2026-05-19-18-50-46-412-com-mercadolibre.jpg" alt="Vuvuzelas">
+                    <img src="https://i.ibb.co/W4b3N6XT/IMG-20260519-110528.jpg" alt="Produto 5">
                 </div>
                 <div class="product-info">
-                    <h3>Kit 2 Cornetas Vuvuzela Grande Torcida Copa 2026</h3>
-                    <div class="price-container"><div class="current-price">R$ 21,00</div></div>
+                    <h3>Equipamento Original de Alta Conectividade</h3>
+                    <div class="price-container"><div class="current-price">Super Desconto</div></div>
                     <div class="actions-container">
-                        <a href="https://meli.la/1B7tKiW" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                        <button class="btn-add-cart" onclick="addToCart('Kit 2 Cornetas', 'R$ 21,00', 'https://meli.la/1B7tKiW')">⭐ Salvar no Carrinho</button>
+                        <a href="https://meli.la/34mZxTS" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                        <button class="btn-add-cart" onclick="addToCart('Equipamento Original', 'Super Desconto', 'https://meli.la/34mZxTS')">⭐ Salvar no Carrinho</button>
                     </div>
                 </div>
             </div>
 
-            <div class="product-card" data-name="bandeira do brasil grande oficial dupla face 150 x 090">
+            <div class="product-card" data-name="smart item lancamento tendencia conforto">
                 <div class="product-image">
-                    <img src="https://i.ibb.co/wF1Myr1g/Screenshot-2026-05-19-18-51-28-685-com-mercadolibre.jpg" alt="Bandeira Brasil">
+                    <img src="https://i.ibb.co/v4VS7z95/IMG-20260519-110540.jpg" alt="Produto 6">
                 </div>
                 <div class="product-info">
-                    <h3>Bandeira Do Brasil Grande Oficial Dupla Face (1,50 X 0,90)</h3>
-                    <div class="price-container"><div class="current-price">R$ 37,00</div></div>
+                    <h3>Item Smart Premium - Conforto e Tecnologia</h3>
+                    <div class="price-container"><div class="current-price">Preço Especial</div></div>
                     <div class="actions-container">
-                        <a href="https://meli.la/2tYNL8S" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                        <button class="btn-add-cart" onclick="addToCart('Bandeira Oficial', 'R$ 37,00', 'https://meli.la/2tYNL8S')">⭐ Salvar no Carrinho</button>
+                        <a href="https://meli.la/2CS2MPo" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                        <button class="btn-add-cart" onclick="addToCart('Item Smart Premium', 'Preço Especial', 'https://meli.la/2CS2MPo')">⭐ Salvar no Carrinho</button>
                     </div>
                 </div>
             </div>
 
-            <div class="product-card" data-name="kit decoracao tematica festa copa do mundo 2026">
+            <div class="product-card" data-name="gadget inovador utilitario portatil nexa">
                 <div class="product-image">
-                    <img src="https://i.ibb.co/KxtXwz7g/Screenshot-2026-05-19-18-51-59-994-com-mercadolibre.jpg" alt="Kit Decoracao">
+                    <img src="https://i.ibb.co/PzvRzLhG/IMG-20260519-110553.jpg" alt="Produto 7">
                 </div>
                 <div class="product-info">
-                    <h3>Kit Decoração Temática Festa Copa do Mundo 2026</h3>
-                    <div class="price-container"><div class="current-price">R$ 45,00</div></div>
+                    <h3>Gadget Inovador Portátil - Conectividade Total</h3>
+                    <div class="price-container"><div class="current-price">Oferta Imperdível</div></div>
                     <div class="actions-container">
-                        <a href="https://meli.la/2LFKL4o" target="_blank" class="btn-oferta">Garantir Desconto</a>
-                        <button class="btn-add-cart" onclick="addToCart('Kit Decoração Copa', 'R$ 45,00', 'https://meli.la/2LFKL4o')">⭐ Salvar no Carrinho</button>
+                        <a href="https://meli.la/2L2ECcA" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                        <button class="btn-add-cart" onclick="addToCart('Gadget Inovador Portátil', 'Oferta Imperdível', 'https://meli.la/2L2ECcA')">⭐ Salvar no Carrinho</button>
                     </div>
                 </div>
             </div>
 
-            <div class="product-card" data-name="kit pintura facial verde e amarelo aderecos torcida">
+            <div class="product-card" data-name="acessorio tech funcional dia a dia premium">
+                <span class="badge">Destaque</span>
                 <div class="product-image">
-                    <img src="https://i.ibb.co/6R2pZpX1/Screenshot-2026-05-19-18-52-44-123-com-mercadolibre.jpg" alt="Kit Pintura">
+                    <img src="https://i.ibb.co/8DRSs77k/IMG-20260519-110606.jpg" alt="Produto 8">
                 </div>
                 <div class="product-info">
-                    <h3>Kit Pintura Facial Verde e Amarelo + Adereços Torcida</h3>
-                    <div class="price-container"><div class="current-price">R$ 29,90</div></d
+                    <h3>Acessório Funcional Premium - Edição Promocional</h3>
+                    <div class="price-container"><div class="current-price">Últimas Unidades</div></div>
+                    <div class="actions-container">
+                        <a href="https://meli.la/1GNqfdB" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                        <button class="btn-add-cart" onclick="addToCart('Acessório Funcional Premium', 'Últimas Unidades', 'https://meli.la/1GNqfdB')">⭐ Salvar no Carrinho</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-name="dispositivo inteligente wireless facil uso">
+                <div class="product-image">
+                    <img src="https://i.ibb.co/4ZwLPfbL/IMG-20260519-110620.jpg" alt="Produto 9">
+                </div>
+                <div class="product-info">
+                    <h3>Dispositivo Inteligente Conectado de Alta Fidelidade</h3>
+                    <div class="price-container"><div class="current-price">Desconto Verificado</div></div>
+                    <div class="actions-container">
+                        <a href="https://meli.la/2nLPAtd" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                        <button class="btn-add-cart" onclick="addToCart('Dispositivo Inteligente', 'Desconto Verificado', 'https://meli.la/2nLPAtd')">⭐ Salvar no Carrinho</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-name="tecnologia utilitaria item desejado achado">
+                <span class="badge">Queima de Estoque</span>
+                <div class="product-image">
+                    <img src="https://i.ibb.co/xq5Y6HXz/IMG-20260519-110631.jpg" alt="Produto 10">
+                </div>
+                <div class="product-info">
+                    <h3>Tecnologia Avançada de Uso Diário - Campeão de Vendas</h3>
+                    <div class="price-container"><div class="current-price">Melhor Preço Garantido</div></div>
+                    <div class="actions-container">
+                        <a href="https://meli.la/2wwnrtB" target="_blank" class="btn-oferta">Garantir Desconto</a>
+                        <button class="btn-add-cart" onclick="addToCart('Tecnologia Avançada Diária', 'Melhor Preço', 'https://meli.la/2wwnrtB')">⭐ Salvar no Carrinho</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="no-results" id="noResults">Nenhum produto encontrado com esse nome. 😕</div>
+
+        </div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <a href="index.html" class="sidebar-item">🏠 Início</a>
+        <a href="copa.html" class="sidebar-item">🇧🇷 Especial Copa</a>
+        <a href="#" class="sidebar-item">🛒 Carrinho</a>
+    </div>
+
+    <script>
+        // Lógica do Menu Lateral (Sidebar)
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('open');
+            sidebar.classList.toggle('open');
+        });
+
+        // Lógica do Alternador de Tema (Fundo Claro / Fundo Preto)
+        const themeToggle = document.getElementById('themeToggle');
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        });
+
+        // Lógica Avançada da Barra de Pesquisa (Filtra os produtos na hora)
+        const searchInput = document.getElementById('searchInput');
+        const productCards = document.querySelectorAll('.product-card');
+        const noResults = document.getElementById('noResults');
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            let foundAny = false;
+
+            productCards.forEach(card => {
+                const productName = card.getAttribute('data-name');
+                if (productName && productName.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                    foundAny = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            if (foundAny) {
+                noResults.style.display = 'none';
+            } else {
+                noResults.style.display = 'block';
+            }
+        });
+
+        // Lógica para Salvar no Carrinho
+        function addToCart(name, price, link) {
+            let cart = JSON.parse(localStorage.getItem('tech_cart')) || [];
+            cart.push({ title: name, price: price, link: link });
+            localStorage.setItem('tech_cart', JSON.stringify(cart));
+            alert(`${name} foi salvo com sucesso no carrinho!`);
+        }
+    </script>
+</body>
+</html>
