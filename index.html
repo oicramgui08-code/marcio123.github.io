@@ -7,116 +7,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexa Tech - Lançamentos e Achados</title>
     <style>
-        /* Paleta de Cores Baseada na Imagem */
+        /* Paleta de Cores Baseada em Amarelo e Tons Escuros Modernos */
         :root {
-            --bg-principal: #f4f7fc;
+            --bg-principal: #f8f9fa;
             --bg-card: #ffffff;
-            --texto-principal: #0b1a30;
-            --texto-secundario: #627d98;
-            --cor-primaria: #0052cc; /* Azul Destaque */
-            --cor-primaria-hover: #0043a4;
-            --cor-tag: #ff9900; /* Laranja Oferta */
-            --borda: #e2e8f0;
+            --texto-principal: #111111;
+            --texto-secundario: #555555;
+            --cor-primaria: #ffcc00; /* Amarelo Principal */
+            --cor-escura: #111111;
+            --cor-tag: #ff3b30;
+            --borda: #e1e8ed;
         }
 
-        /* Modo Escuro Mantido de Forma Harmoniosa */
+        /* Modo Escuro */
         [data-theme="dark"] {
-            --bg-principal: #0b132b;
-            --bg-card: #1c2541;
-            --texto-principal: #f4f7fc;
-            --texto-secundario: #9aafc7;
-            --cor-primaria: #3a86ff;
-            --cor-primaria-hover: #00b4d8;
-            --borda: #3a506b;
+            --bg-principal: #121212;
+            --bg-card: #1e1e1e;
+            --texto-principal: #f5f6fa;
+            --texto-secundario: #a4b0be;
+            --borda: #333333;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; transition: background 0.2s ease, color 0.2s ease; }
         body { background-color: var(--bg-principal); color: var(--texto-principal); padding-bottom: 60px; }
 
         /* --- TOPO / NAVBAR --- */
-        .navbar { background-color: var(--cor-primaria); color: white; padding: 15px 20px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .navbar { background-color: var(--cor-escura); color: white; padding: 15px 20px; position: sticky; top: 0; z-index: 1000; border-bottom: 3px solid var(--cor-primaria); }
         .navbar-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
         
-        .brand { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px; }
-        .brand span { color: #00f0ff; }
+        .brand { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.5px; }
+        .brand span { color: var(--cor-primaria); }
 
         .search-box { flex-grow: 1; max-width: 500px; position: relative; }
-        .search-box input { width: 100%; padding: 10px 45px 10px 20px; border-radius: 50px; border: none; outline: none; font-size: 0.95rem; font-weight: 500; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); }
+        .search-box input { width: 100%; padding: 10px 45px 10px 20px; border-radius: 50px; border: none; outline: none; font-size: 0.95rem; font-weight: 500; background: #fff; color: #111; }
         .search-box .search-icon { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); font-size: 1.1rem; color: #718096; }
 
-        /* Menu de Navegação Superior */
         .nav-menu { display: flex; gap: 20px; align-items: center; }
         .nav-link { color: white; text-decoration: none; font-weight: 600; font-size: 0.9rem; opacity: 0.9; }
-        .nav-link:hover { opacity: 1; text-decoration: underline; }
+        .nav-link:hover { color: var(--cor-primaria); opacity: 1; }
 
-        /* --- BANNER DE DESTAQUE --- */
-        .hero-banner { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
-        .hero-content { background: linear-gradient(135deg, #e6f0fa, #f0f7ff); border-radius: 24px; padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 30px; position: relative; overflow: hidden; border: 1px solid rgba(0,82,204,0.1); }
-        [data-theme="dark"] .hero-content { background: linear-gradient(135deg, #1c2541, #0b132b); }
+        /* --- BANNER PRINCIPAL --- */
+        .hero-banner { max-width: 1200px; margin: 30px auto 15px auto; padding: 0 20px; }
+        .hero-content { background: linear-gradient(135deg, #fffdec, #fdf6cc); border-radius: 24px; padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 30px; position: relative; overflow: hidden; border: 1px solid rgba(255,204,0,0.2); }
+        [data-theme="dark"] .hero-content { background: linear-gradient(135deg, #1e1e1e, #121212); border: 1px solid var(--borda); }
         
         .hero-text { max-width: 550px; }
-        .hero-badge { background-color: #ff4757; color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; display: inline-block; margin-bottom: 15px; }
+        .hero-badge { background-color: var(--cor-escura); color: var(--cor-primaria); padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; display: inline-block; margin-bottom: 15px; }
+        [data-theme="dark"] .hero-badge { background-color: var(--cor-primaria); color: #111; }
         .hero-text h2 { font-size: 2.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; color: var(--texto-principal); }
         .hero-text p { font-size: 1.1rem; color: var(--texto-secundario); margin-bottom: 25px; }
 
-        .hero-images { display: flex; align-items: center; gap: 20px; position: relative; }
-        .hero-img-box { width: 180px; height: 180px; background: white; border-radius: 50%; padding: 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+        .hero-images { display: flex; align-items: center; gap: 20px; }
+        .hero-img-box { width: 180px; height: 180px; background: white; border-radius: 50%; padding: 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
         .hero-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+        /* --- BANNER COPA DO MUNDO REINSERIDO --- */
+        .ofertas-banner-container { max-width: 1200px; margin: 15px auto 30px auto; padding: 0 20px; }
+        .ofertas-banner { 
+            display: block;
+            text-decoration: none;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid var(--cor-primaria);
+        }
+        .ofertas-banner h2 { color: var(--cor-primaria); font-size: 1.8rem; margin-bottom: 6px; text-transform: uppercase; font-weight: 800; letter-spacing: 1px; }
+        .ofertas-banner p { color: #ffffff; font-size: 1.05rem; font-weight: 500; }
 
         /* --- BARRA DE BENEFÍCIOS --- */
         .features-bar { max-width: 1200px; margin: 0 auto 40px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
         .feature-item { background: var(--bg-card); padding: 20px; border-radius: 16px; border: 1px solid var(--borda); display: flex; align-items: center; gap: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-        .feature-icon { font-size: 1.8rem; color: var(--cor-primaria); }
+        .feature-icon { font-size: 1.8rem; color: #ffaa00; }
         .feature-title { font-weight: 700; font-size: 0.95rem; color: var(--texto-principal); }
-        .feature-desc { font-size: 0.8rem; color: var(--texto-secundario); margin-top: 2px; }
+        .feature-desc { font-size: 0.8rem; color: var(--texto-secundario); }
 
-        /* --- VITRINE / SEÇÕES DE PRODUTOS --- */
-        .section-container { max-width: 1200px; margin: 0 auto 50px auto; padding: 0 20px; }
-        .section-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 25px; display: flex; align-items: center; gap: 10px; color: var(--texto-principal); }
+        /* --- VITRINE UNIFICADA --- */
+        .section-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 25px; display: flex; align-items: center; gap: 10px; color: var(--texto-principal); border-left: 5px solid var(--cor-primaria); padding-left: 12px; }
         
-        .main-layout { display: grid; grid-template-columns: 1fr; gap: 30px; }
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; }
+        .grid-with-sidebar { display: grid; grid-template-columns: 1fr 320px; gap: 30px; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; align-content: start; }
         
         /* CARD DO PRODUTO */
-        .product-card { background: var(--bg-card); border-radius: 16px; border: 1px solid var(--borda); display: flex; flex-direction: column; overflow: hidden; position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.03); transform: translateY(0); transition: transform 0.2s ease, box-shadow 0.2s ease; }
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+        .product-card { background: var(--bg-card); border-radius: 16px; border: 1px solid var(--borda); display: flex; flex-direction: column; overflow: hidden; position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+        .product-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
         
-        .number-badge { position: absolute; top: 15px; left: 15px; background: var(--cor-primaria); color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; z-index: 10; }
+        .number-badge { position: absolute; top: 15px; left: 15px; background: var(--cor-escura); color: var(--cor-primaria); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; z-index: 10; }
+        [data-theme="dark"] .number-badge { background: var(--cor-primaria); color: #111; }
         .tag-badge { position: absolute; top: 15px; right: 15px; background: var(--cor-tag); color: white; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; z-index: 10; }
 
         .product-image { width: 100%; height: 230px; background: #ffffff; padding: 25px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--borda); }
         .product-image img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
         .product-info { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
-        .product-info h3 { font-size: 1rem; font-weight: 700; color: var(--texto-principal); margin-bottom: 6px; line-height: 1.4; min-height: 44px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .product-desc { font-size: 0.82rem; color: var(--texto-secundario); margin-bottom: 15px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .product-info h3 { font-size: 1rem; font-weight: 700; color: var(--texto-principal); margin-bottom: 8px; line-height: 1.4; min-height: 44px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .product-desc { font-size: 0.85rem; color: var(--texto-secundario); margin-bottom: 15px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
         .price-box { margin-top: auto; padding-top: 10px; }
         .price-label { font-size: 0.75rem; color: var(--texto-secundario); text-transform: uppercase; font-weight: 600; }
-        .price-value { font-size: 1.4rem; font-weight: 800; color: #00a650; margin-bottom: 12px; }
+        .price-value { font-size: 1.35rem; font-weight: 800; color: #00a650; margin-bottom: 12px; }
 
-        .btn-action { display: block; width: 100%; text-align: center; background-color: var(--cor-primaria); color: white; text-decoration: none; padding: 12px; border-radius: 10px; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; }
-        .btn-action:hover { background-color: var(--cor-primaria-hover); }
+        .btn-action { display: block; width: 100%; text-align: center; background-color: var(--cor-escura); color: var(--cor-primaria); text-decoration: none; padding: 12px; border-radius: 10px; font-weight: 700; font-size: 0.95rem; border: 2px solid var(--cor-escura); cursor: pointer; }
+        .btn-action:hover { background-color: var(--cor-primaria); color: var(--cor-escura); border-color: var(--cor-primaria); }
 
-        /* --- LAYOUT COM LATERAL INFORMATIVA --- */
-        .grid-with-sidebar { display: grid; grid-template-columns: 1fr 320px; gap: 30px; }
-        
-        /* CARD INFORMATIVO LATERAL */
+        /* --- BARRA LATERAL --- */
         .info-sidebar { display: flex; flex-direction: column; gap: 20px; }
         .info-card { background: var(--bg-card); border: 1px solid var(--borda); border-radius: 16px; padding: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
         .info-card h4 { font-size: 1.1rem; font-weight: 800; margin-bottom: 15px; color: var(--texto-principal); }
         
         .info-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-        .info-list li { font-size: 0.88rem; color: var(--texto-principal); display: flex; align-items: flex-start; gap: 10px; font-weight: 500; }
+        .info-list li { font-size: 0.88rem; color: var(--texto-principal); display: flex; align-items: flex-start; gap: 10px; font-weight: 500; line-height: 1.3; }
         .info-list li::before { content: "✓"; color: #00a650; font-weight: 900; }
 
-        .promo-card { background: linear-gradient(135deg, #0052cc, #003399); color: white; border-radius: 16px; padding: 25px; text-align: center; position: relative; overflow: hidden; }
-        .promo-card h4 { font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; }
+        .promo-card { background: linear-gradient(135deg, #111, #222); color: white; border-radius: 16px; padding: 25px; text-align: center; border: 1px solid var(--cor-primaria); }
+        .promo-card h4 { font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; color: var(--cor-primaria); }
         .promo-card p { font-size: 0.9rem; opacity: 0.9; margin-bottom: 20px; }
-        .btn-promo { display: inline-block; background-color: #ffcc00; color: #111; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 0.9rem; }
+        .btn-promo { display: inline-block; background-color: var(--cor-primaria); color: #111; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 0.9rem; }
 
-        /* Botão Flutuante de Fundo */
-        .theme-toggle-btn { position: fixed; bottom: 20px; right: 20px; background-color: var(--texto-principal); color: var(--bg-principal); border: 1px solid var(--borda); width: 45px; height: 45px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; }
+        /* Botão Alternador Tema */
+        .theme-toggle-btn { position: fixed; bottom: 20px; right: 20px; background-color: var(--cor-escura); color: var(--cor-primaria); border: 1px solid var(--borda); width: 45px; height: 45px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; }
         .no-results { display: none; text-align: center; padding: 40px; font-size: 1.1rem; color: var(--texto-secundario); width: 100%; grid-column: 1 / -1; }
 
         /* --- RESPONSIVIDADE --- */
@@ -146,14 +159,13 @@
         <div class="navbar-container">
             <div class="brand">Nexa <span>Tech</span></div>
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Buscar produtos, marcas e mais...">
+                <input type="text" id="searchInput" placeholder="Buscar nas melhores ofertas disponíveis...">
                 <span class="search-icon">🔍</span>
             </div>
             <div class="nav-menu">
                 <a href="#" class="nav-link">Início</a>
-                <a href="#" class="nav-link">Fones</a>
-                <a href="#" class="nav-link">Smartwatches</a>
-                <a href="#" class="nav-link">Ofertas</a>
+                <a href="#" class="nav-link">Ofertas da Copa</a>
+                <a href="#" class="nav-link">Contato</a>
             </div>
         </div>
     </div>
@@ -161,9 +173,9 @@
     <div class="hero-banner">
         <div class="hero-content">
             <div class="hero-text">
-                <span class="hero-badge">🔥 Ofertas do Dia</span>
+                <span class="hero-badge">🔥 Ofertas Ativas</span>
                 <h2>Tecnologia que transforma seu dia!</h2>
-                <p>Os melhores fones de ouvido, smartwatches e acessórios com os menores preços e entrega rápida.</p>
+                <p>Os melhores eletrônicos e novidades de hardware com os menores preços e links verificados.</p>
             </div>
             <div class="hero-images">
                 <div class="hero-img-box"><img src="https://i.ibb.co/vvYQ4kPM/download.webp" alt="Destaque"></div>
@@ -176,40 +188,49 @@
             <div class="feature-icon">🛡️</div>
             <div>
                 <div class="feature-title">Compra Segura</div>
-                <div class="feature-desc">Seus dados 100% protegidos</div>
+                <div class="feature-desc">Dados protegidos</div>
             </div>
         </div>
         <div class="feature-item">
             <div class="feature-icon">⚡</div>
             <div>
                 <div class="feature-title">Entrega Rápida</div>
-                <div class="feature-desc">Envio expresso para todo o Brasil</div>
+                <div class="feature-desc">Para todo o Brasil</div>
             </div>
         </div>
         <div class="feature-item">
-            <div class="feature-icon">💎</div>
+            <div class="feature-icon">📉</div>
             <div>
                 <div class="feature-title">Melhores Preços</div>
-                <div class="feature-desc">Garantia do menor valor online</div>
+                <div class="feature-desc">Garantia do menor valor</div>
             </div>
         </div>
         <div class="feature-item">
             <div class="feature-icon">🎧</div>
             <div>
                 <div class="feature-title">Suporte Dedicado</div>
-                <div class="feature-desc">Atendimento pronto via e-mail</div>
+                <div class="feature-desc">Atendimento via e-mail</div>
             </div>
         </div>
     </div>
 
+    <div class="ofertas-banner-container">
+        <a href="copa.html" class="ofertas-banner">
+            <h2>🇧🇷 Especial Copa do Mundo 2026 🇧🇷</h2>
+            <p>Clique aqui e confira nossa seleção de mantos, projetores e kits de torcedor!</p>
+        </a>
+    </div>
+
     <div class="section-container">
-        <div class="section-title">🎧 Fones e Dispositivos de Áudio</div>
-        <div class="main-layout">
-            <div class="products-grid" id="audioGrid">
+        <div class="section-title">Melhores Ofertas Disponíveis</div>
+        
+        <div class="grid-with-sidebar">
+            
+            <div class="products-grid" id="productsGrid">
                 
                 <div class="product-card" data-name="ring light iluminador led maquiagem gravacao">
                     <div class="number-badge">1</div>
-                    <div class="tag-badge">Mais Buscado</div>
+                    <div class="tag-badge">Destaque do Dia</div>
                     <div class="product-image">
                         <img src="https://i.ibb.co/vvYQ4kPM/download.webp" alt="Ring light">
                     </div>
@@ -272,34 +293,8 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-name="processador de audio digital equalizador som profissional">
-                    <div class="number-badge">5</div>
-                    <div class="product-image">
-                        <img src="https://i.ibb.co/PzvRzLhG/IMG-20260519-110553.jpg" alt="Processador de áudio">
-                    </div>
-                    <div class="product-info">
-                        <h3>Processador de Áudio Equalizador Digital Profissional</h3>
-                        <p class="product-desc">Ajuste fino de frequência e equalização avançada para sistemas de som automotivo e caixas de alta fidelidade.</p>
-                        <div class="price-box">
-                            <div class="price-label">Por apenas</div>
-                            <div class="price-value">Preço Especial</div>
-                            <a href="https://meli.la/2L2ECcA" target="_blank" class="btn-action">Ver Oferta</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="section-container">
-        <div class="section-title">⌚ Smartwatches e Hardwares Inteligentes</div>
-        <div class="grid-with-sidebar">
-            
-            <div class="products-grid" id="gadgetGrid">
-                
                 <div class="product-card" data-name="ssd kingston 480gb memoria interna armazenamento pc">
-                    <div class="number-badge">6</div>
+                    <div class="number-badge">5</div>
                     <div class="product-image">
                         <img src="https://i.ibb.co/67cT968s/IMG-20260519-110513.jpg" alt="SSD Kingston 480gb">
                     </div>
@@ -315,7 +310,7 @@
                 </div>
 
                 <div class="product-card" data-name="smartwatch relogio inteligente digital esporte">
-                    <div class="number-badge">7</div>
+                    <div class="number-badge">6</div>
                     <div class="product-image">
                         <img src="https://i.ibb.co/W4b3N6XT/IMG-20260519-110528.jpg" alt="Smartwatch">
                     </div>
@@ -331,7 +326,7 @@
                 </div>
 
                 <div class="product-card" data-name="smartv smart tv televisao 4k led inteligente">
-                    <div class="number-badge">8</div>
+                    <div class="number-badge">7</div>
                     <div class="product-image">
                         <img src="https://i.ibb.co/v4VS7z95/IMG-20260519-110540.jpg" alt="Smartv">
                     </div>
@@ -342,6 +337,22 @@
                             <div class="price-label">Por apenas</div>
                             <div class="price-value">Valor Imperdível</div>
                             <a href="https://meli.la/2CS2MPo" target="_blank" class="btn-action">Ver Oferta</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-name="processador de audio digital equalizador som profissional">
+                    <div class="number-badge">8</div>
+                    <div class="product-image">
+                        <img src="https://i.ibb.co/PzvRzLhG/IMG-20260519-110553.jpg" alt="Processador de áudio">
+                    </div>
+                    <div class="product-info">
+                        <h3>Processador de Áudio Equalizador Som Profissional</h3>
+                        <p class="product-desc">Ajuste fino de frequência e equalização avançada para sistemas de som automotivo e caixas de alta fidelidade.</p>
+                        <div class="price-box">
+                            <div class="price-label">Por apenas</div>
+                            <div class="price-value">Preço Especial</div>
+                            <a href="https://meli.la/2L2ECcA" target="_blank" class="btn-action">Ver Oferta</a>
                         </div>
                     </div>
                 </div>
@@ -373,29 +384,29 @@
                         <div class="price-box">
                             <div class="price-label">Por apenas</div>
                             <div class="price-value">Melhor Preço</div>
-                            <a href="https://meli.la/2wwnrtB" target="_blank" class="btn-orange">Ver Oferta</a>
+                            <a href="https://meli.la/2wwnrtB" target="_blank" class="btn-action">Ver Oferta</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="no-results" id="noResults">Nenhum produto encontrado. 😕</div>
+                <div class="no-results" id="noResults">Nenhum produto encontrado com esse termo. 😕</div>
             </div>
 
             <div class="info-sidebar">
                 <div class="info-card">
                     <h4>Por que comprar aqui?</h4>
                     <ul class="info-list">
-                        <li>Produtos originais e com garantia oficial</li>
-                        <li>As melhores ofertas e achados do Mercado Livre</li>
-                        <li>Links de afiliado oficiais - você paga o mesmo preço</li>
-                        <li>Atualizamos os preços todos os dias automaticamente</li>
+                        <li>Produtos originais e com garantia</li>
+                        <li>As melhores ofertas do Mercado Livre</li>
+                        <li>Links oficiais - você paga o mesmo preço</li>
+                        <li>Atualizamos os preços todos os dias</li>
                         <li>Compra 100% protegida e segura</li>
                     </ul>
                 </div>
                 
                 <div class="promo-card">
                     <h4>Ofertas Exclusivas</h4>
-                    <p>Novas promoções e cupons todos os dias!</p>
+                    <p>Novas promoções e achados todos os dias!</p>
                     <a href="#" class="btn-promo">Aproveitar agora →</a>
                 </div>
             </div>
@@ -404,7 +415,7 @@
     </div>
 
     <script>
-        // Lógica da Alternância do Modo Claro / Escuro
+        // Lógica de Alternar Tema (Fundo Claro / Escuro)
         const themeToggle = document.getElementById('themeToggle');
         themeToggle.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -415,7 +426,7 @@
             }
         });
 
-        // Lógica de Busca Unificada em Tempo Real
+        // Lógica de Filtro em Tempo Real
         const searchInput = document.getElementById('searchInput');
         const productCards = document.querySelectorAll('.product-card');
         const noResults = document.getElementById('noResults');
