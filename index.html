@@ -61,7 +61,7 @@
         .hero-img-box { width: 180px; height: 180px; background: white; border-radius: 50%; padding: 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
         .hero-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-        /* --- BANNER COPA DO MUNDO REINSERIDO --- */
+        /* --- BANNER COPA DO MUNDO --- */
         .ofertas-banner-container { max-width: 1200px; margin: 15px auto 30px auto; padding: 0 20px; }
         .ofertas-banner { 
             display: block;
@@ -85,7 +85,7 @@
         .feature-title { font-weight: 700; font-size: 0.95rem; color: var(--texto-principal); }
         .feature-desc { font-size: 0.8rem; color: var(--texto-secundario); }
 
-        /* --- VITRINE UNIFICADA --- */
+        /* --- VITRINE TOTALMENTE UNIFICADA --- */
         .section-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .section-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 25px; display: flex; align-items: center; gap: 10px; color: var(--texto-principal); border-left: 5px solid var(--cor-primaria); padding-left: 12px; }
         
@@ -100,9 +100,25 @@
         [data-theme="dark"] .number-badge { background: var(--cor-primaria); color: #111; }
         .tag-badge { position: absolute; top: 15px; right: 15px; background: var(--cor-tag); color: white; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; z-index: 10; }
 
-        .product-image { width: 100%; height: 230px; background: #ffffff; padding: 25px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--borda); }
-        .product-image img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        /* AREA DA IMAGEM E CONFIGURAÇÃO DO CARROSSEL */
+        .product-image { width: 100%; height: 230px; background: #ffffff; padding: 25px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--borda); position: relative; overflow: hidden; }
+        .product-image img { max-width: 100%; max-height: 100%; object-fit: contain; cursor: zoom-in; }
 
+        /* Estilos do Carrossel (Últimos 3 produtos) */
+        .carousel-container { width: 100%; height: 100%; display: flex; position: relative; }
+        .carousel-track { display: flex; width: 100%; height: 100%; transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .carousel-slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; padding: 10px; background: white; }
+        
+        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6); color: white; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-weight: bold; font-size: 14px; z-index: 5; display: flex; align-items: center; justify-content: center; }
+        .carousel-btn:hover { background: var(--cor-primaria); color: #111; }
+        .btn-prev { left: 8px; }
+        .btn-next { right: 8px; }
+
+        .carousel-dots { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 5; }
+        .dot { width: 8px; height: 8px; background: rgba(0,0,0,0.3); border-radius: 50%; cursor: pointer; }
+        .dot.active { background: var(--cor-primaria); width: 16px; border-radius: 4px; }
+
+        /* INFO PRODUTOS */
         .product-info { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
         .product-info h3 { font-size: 1rem; font-weight: 700; color: var(--texto-principal); margin-bottom: 8px; line-height: 1.4; min-height: 44px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         .product-desc { font-size: 0.85rem; color: var(--texto-secundario); margin-bottom: 15px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -126,7 +142,15 @@
         .promo-card { background: linear-gradient(135deg, #111, #222); color: white; border-radius: 16px; padding: 25px; text-align: center; border: 1px solid var(--cor-primaria); }
         .promo-card h4 { font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; color: var(--cor-primaria); }
         .promo-card p { font-size: 0.9rem; opacity: 0.9; margin-bottom: 20px; }
-        .btn-promo { display: inline-block; background-color: var(--cor-primaria); color: #111; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 0.9rem; }
+        .btn-promo { inline-block; background-color: var(--cor-primaria); color: #111; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 0.9rem; }
+
+        /* --- MODAL DE IMAGE ZOOM --- */
+        .image-modal { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.9); display:none; justify-content:center; align-items:center; z-index: 2000; padding: 20px; opacity:0; transition: opacity 0.3s ease; }
+        .image-modal.active { display:flex; opacity:1; }
+        .image-modal-content { max-width: 90%; max-height: 85vh; object-fit: contain; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transform: scale(0.9); transition: transform 0.3s ease; }
+        .image-modal.active .image-modal-content { transform: scale(1); }
+        .image-modal-close { position: absolute; top: 20px; right: 25px; color: #fff; font-size: 35px; font-weight: bold; cursor: pointer; user-select: none; }
+        .image-modal-close:hover { color: var(--cor-primaria); }
 
         /* Botão Alternador Tema */
         .theme-toggle-btn { position: fixed; bottom: 20px; right: 20px; background-color: var(--cor-escura); color: var(--cor-primaria); border: 1px solid var(--borda); width: 45px; height: 45px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; }
@@ -142,7 +166,7 @@
         @media (max-width: 600px) {
             .nav-menu { display: none; }
             .products-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
-            .product-image { height: 165px; padding: 15px; }
+            .product-image { height: 165px; padding: 10px; }
             .product-info { padding: 12px; }
             .product-info h3 { font-size: 0.88rem; min-height: 38px; }
             .product-desc { display: none; }
@@ -152,6 +176,11 @@
     </style>
 </head>
 <body>
+
+    <div class="image-modal" id="imageModal">
+        <span class="image-modal-close" id="modalClose">&times;</span>
+        <img class="image-modal-content" id="modalImg" alt="Foto Ampliada">
+    </div>
 
     <button class="theme-toggle-btn" id="themeToggle" title="Mudar Tema">🌓</button>
 
@@ -178,7 +207,7 @@
                 <p>Os melhores eletrônicos e novidades de hardware com os menores preços e links verificados.</p>
             </div>
             <div class="hero-images">
-                <div class="hero-img-box"><img src="https://i.ibb.co/vvYQ4kPM/download.webp" alt="Destaque"></div>
+                <div class="hero-img-box"><img src="https://i.ibb.co/vvYQ4kPM/download.webp" alt="Destaque" class="zoomable-img"></div>
             </div>
         </div>
     </div>
@@ -230,16 +259,16 @@
                 
                 <div class="product-card" data-name="ring light iluminador led maquiagem gravacao">
                     <div class="number-badge">1</div>
-                    <div class="tag-badge">Destaque do Dia</div>
+                    <div class="tag-badge">Destaque</div>
                     <div class="product-image">
-                        <img src="https://i.ibb.co/vvYQ4kPM/download.webp" alt="Ring light">
+                        <img src="https://i.ibb.co/vvYQ4kPM/download.webp" alt="Ring light" class="zoomable-img">
                     </div>
                     <div class="product-info">
                         <h3>Ring Light Iluminador de LED - Edição Especial</h3>
                         <p class="product-desc">Iluminação perfeita e profissional para suas gravações, fotos de estúdio e videoconferências com tripé regulável.</p>
                         <div class="price-box">
                             <div class="price-label">Por apenas</div>
-                            <div class="price-value">Oferta Relâmpago</div>
+                            <div class="price-value">R$ 45,90</div>
                             <a href="https://meli.la/2vqfjEU" target="_blank" class="btn-action">Ver Oferta</a>
                         </div>
                     </div>
@@ -248,14 +277,14 @@
                 <div class="product-card" data-name="fone de ouvido bluetooth wireless sem fio">
                     <div class="number-badge">2</div>
                     <div class="product-image">
-                        <img src="https://i.ibb.co/G4wYwmCx/IMG-20260519-110430.jpg" alt="Fone de ouvido">
+                        <img src="https://i.ibb.co/G4wYwmCx/IMG-20260519-110430.jpg" alt="Fone de ouvido" class="zoomable-img">
                     </div>
                     <div class="product-info">
                         <h3>Fone de Ouvido Bluetooth Wireless Alta Fidelidade</h3>
                         <p class="product-desc">Áudio imersivo de alta definição com isolamento acústico passivo e bateria de longa duração para o dia todo.</p>
                         <div class="price-box">
                             <div class="price-label">Por apenas</div>
-                            <div class="price-value">Preço Promocional</div>
+                            <div class="price-value">R$ 89,90</div>
                             <a href="https://meli.la/2tPnubz" target="_blank" class="btn-action">Ver Oferta</a>
                         </div>
                     </div>
@@ -264,14 +293,14 @@
                 <div class="product-card" data-name="fire tv stick amazon streaming smart tv">
                     <div class="number-badge">3</div>
                     <div class="product-image">
-                        <img src="https://i.ibb.co/8nnSh83B/IMG-20260519-110442.jpg" alt="Fire tv stick">
+                        <img src="https://i.ibb.co/8nnSh83B/IMG-20260519-110442.jpg" alt="Fire tv stick" class="zoomable-img">
                     </div>
                     <div class="product-info">
                         <h3>Amazon Fire TV Stick - Transmissão Streaming</h3>
                         <p class="product-desc">Acesse milhares de canais, aplicativos de streaming e conteúdos em alta definição diretamente na sua televisão.</p>
                         <div class="price-box">
                             <div class="price-label">Por apenas</div>
-                            <div class="price-value">Desconto Exclusivo</div>
+                            <div class="price-value">R$ 289,00</div>
                             <a href="https://meli.la/2k6FaAp" target="_blank" class="btn-action">Ver Oferta</a>
                         </div>
                     </div>
@@ -280,14 +309,14 @@
                 <div class="product-card" data-name="roku streaming stick reprodutor smart hd">
                     <div class="number-badge">4</div>
                     <div class="product-image">
-                        <img src="https://i.ibb.co/vvcB2wy0/IMG-20260519-110500.jpg" alt="Roku streaming stick">
+                        <img src="https://i.ibb.co/vvcB2wy0/IMG-20260519-110500.jpg" alt="Roku streaming stick" class="zoomable-img">
                     </div>
                     <div class="product-info">
                         <h3>Roku Streaming Stick - Interface Smart Avançada</h3>
                         <p class="product-desc">Transforme instantaneamente qualquer tela em uma Smart TV veloz com menu intuitivo e controle remoto integrado.</p>
                         <div class="price-box">
                             <div class="price-label">Por apenas</div>
-                            <div class="price-value">Desconto do Dia</div>
+                            <div class="price-value">R$ 199,00</div>
                             <a href="https://meli.la/2u3Xm6U" target="_blank" class="btn-action">Ver Oferta</a>
                         </div>
                     </div>
@@ -296,14 +325,14 @@
                 <div class="product-card" data-name="ssd kingston 480gb memoria interna armazenamento pc">
                     <div class="number-badge">5</div>
                     <div class="product-image">
-                        <img src="https://i.ibb.co/67cT968s/IMG-20260519-110513.jpg" alt="SSD Kingston 480gb">
+                        <img src="https://i.ibb.co/67cT968s/IMG-20260519-110513.jpg" alt="SSD Kingston 480gb" class="zoomable-img">
                     </div>
                     <div class="product-info">
                         <h3>SSD Kingston 480GB Sata III de Alta Velocidade</h3>
                         <p class="product-desc">Deixe seu computador ou notebook até 10 vezes mais rápido na inicialização do sistema e carregamento de arquivos.</p>
                         <div class="price-box">
                             <div class="price-label">Por apenas</div>
-                            <div class="price-value">Menor Preço</div>
+                            <div class="price-value">R$ 185,00</div>
                             <a href="https://meli.la/1FWygjw" target="_blank" class="btn-action">Ver Oferta</a>
                         </div>
                     </div>
@@ -312,14 +341,14 @@
                 <div class="product-card" data-name="smartwatch relogio inteligente digital esporte">
                     <div class="number-badge">6</div>
                     <div class="product-image">
-                        <img src="https://i.ibb.co/W4b3N6XT/IMG-20260519-110528.jpg" alt="Smartwatch">
+                        <img src="https://i.ibb.co/W4b3N6XT/IMG-20260519-110528.jpg" alt="Smartwatch" class="zoomable-img">
                     </div>
                     <div class="product-info">
                         <h3>Smartwatch Relógio Inteligente Esportivo Monitor</h3>
                         <p class="product-desc">Acompanhe seus passos, batimentos cardíacos e receba notificações de mensagens e aplicativos diretamente no seu pulso.</p>
                         <div class="price-box">
                             <div class="price-label">Por apenas</div>
-                            <div class="price-value">Super Desconto</div>
+                            <div class="price-value">R$ 69,90</div>
                             <a href="https://meli.la/34mZxTS" target="_blank" class="btn-action">Ver Oferta</a>
                         </div>
                     </div>
@@ -328,14 +357,14 @@
                 <div class="product-card" data-name="smartv smart tv televisao 4k led inteligente">
                     <div class="number-badge">7</div>
                     <div class="product-image">
-                        <img src="https://i.ibb.co/v4VS7z95/IMG-20260519-110540.jpg" alt="Smartv">
+                        <img src="https://i.ibb.co/v4VS7z95/IMG-20260519-110540.jpg" alt="Smartv" class="zoomable-img">
                     </div>
                     <div class="product-info">
                         <h3>Smart TV LED Inteligente de Alta Definição</h3>
                         <p class="product-desc">Qualidade de imagem cristalina com tecnologia LED e conectividade completa com os principais apps da atualidade.</p>
                         <div class="price-box">
                             <div class="price-label">Por apenas</div>
-                            <div class="price-value">Valor Imperdível</div>
+                            <div class="price-value">R$ 1.199,00</div>
                             <a href="https://meli.la/2CS2MPo" target="_blank" class="btn-action">Ver Oferta</a>
                         </div>
                     </div>
@@ -344,14 +373,14 @@
                 <div class="product-card" data-name="processador de audio digital equalizador som profissional">
                     <div class="number-badge">8</div>
                     <div class="product-image">
-                        <img src="https://i.ibb.co/PzvRzLhG/IMG-20260519-110553.jpg" alt="Processador de áudio">
+                        <img src="https://i.ibb.co/PzvRzLhG/IMG-20260519-110553.jpg" alt="Processador de áudio" class="zoomable-img">
                     </div>
                     <div class="product-info">
                         <h3>Processador de Áudio Equalizador Som Profissional</h3>
                         <p class="product-desc">Ajuste fino de frequência e equalização avançada para sistemas de som automotivo e caixas de alta fidelidade.</p>
                         <div class="price-box">
                             <div class="price-label">Por apenas</div>
-                            <div class="price-value">Preço Especial</div>
+                            <div class="price-value">R$ 349,00</div>
                             <a href="https://meli.la/2L2ECcA" target="_blank" class="btn-action">Ver Oferta</a>
                         </div>
                     </div>
@@ -360,14 +389,14 @@
                 <div class="product-card" data-name="suporte tv articulado parede inclinacao">
                     <div class="number-badge">9</div>
                     <div class="product-image">
-                        <img src="https://i.ibb.co/4ZwLPfbL/IMG-20260519-110620.jpg" alt="Suporte tv">
+                        <img src="https://i.ibb.co/4ZwLPfbL/IMG-20260519-110620.jpg" alt="Suporte tv" class="zoomable-img">
                     </div>
                     <div class="product-info">
                         <h3>Suporte de TV Articulado Reforçado de Parede</h3>
                         <p class="product-desc">Máxima inclinação e movimentação lateral segura para fixar sua televisão na parede mantendo excelente ângulo de visão.</p>
                         <div class="price-box">
                             <div class="price-label">Por apenas</div>
-                            <div class="price-value">Preço Verificado</div>
+                            <div class="price-value">R$ 54,90</div>
                             <a href="https://meli.la/2nLPAtd" target="_blank" class="btn-action">Ver Oferta</a>
                         </div>
                     </div>
@@ -376,15 +405,97 @@
                 <div class="product-card" data-name="echo spot alexa assistente virtual inteligente tela">
                     <div class="number-badge">10</div>
                     <div class="product-image">
-                        <img src="https://i.ibb.co/xq5Y6HXz/IMG-20260519-110631.jpg" alt="Echo spot">
+                        <img src="https://i.ibb.co/xq5Y6HXz/IMG-20260519-110631.jpg" alt="Echo spot" class="zoomable-img">
                     </div>
                     <div class="product-info">
                         <h3>Echo Spot Alexa Inteligente com Display</h3>
                         <p class="product-desc">Sua assistente virtual integrada com tela compacta para exibir horas, alarmes, previsão do tempo e controlar sua casa inteligente.</p>
                         <div class="price-box">
                             <div class="price-label">Por apenas</div>
-                            <div class="price-value">Melhor Preço</div>
+                            <div class="price-value">R$ 449,00</div>
                             <a href="https://meli.la/2wwnrtB" target="_blank" class="btn-action">Ver Oferta</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-name="suporte veicular carro magnetico celular automatico">
+                    <div class="number-badge">11</div>
+                    <div class="product-image">
+                        <div class="carousel-container" data-carousel="0">
+                            <button class="carousel-btn btn-prev">&lt;</button>
+                            <div class="carousel-track">
+                                <div class="carousel-slide"><img src="https://i.ibb.co/N6DJGfnV/Screenshot-2026-05-28-16-34-59-226-com-mercadolibre.jpg" alt="Suporte foto 1" class="zoomable-img"></div>
+                                <div class="carousel-slide"><img src="https://i.ibb.co/vCKNZfdM/Screenshot-2026-05-28-16-36-10-683-com-mercadolibre.jpg" alt="Suporte foto 2" class="zoomable-img"></div>
+                            </div>
+                            <button class="carousel-btn btn-next">&gt;</button>
+                            <div class="carousel-dots">
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Suporte Veicular Premium Antiqueda Inteligente</h3>
+                        <p class="product-desc">Fixação firme e segura para seu smartphone no painel ou saída de ar do carro, ideal para navegação GPS com estabilidade.</p>
+                        <div class="price-box">
+                            <div class="price-label">Por apenas</div>
+                            <div class="price-value">R$ 23,00</div>
+                            <a href="https://meli.la/2k59ksv" target="_blank" class="btn-action">Ver Oferta</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-name="carregador 120w turbo fast charge tipo c usb">
+                    <div class="number-badge">12</div>
+                    <div class="tag-badge">Super Rápido</div>
+                    <div class="product-image">
+                        <div class="carousel-container" data-carousel="0">
+                            <button class="carousel-btn btn-prev">&lt;</button>
+                            <div class="carousel-track">
+                                <div class="carousel-slide"><img src="https://i.ibb.co/Nnxs6LvV/Screenshot-2026-05-28-16-39-34-490-com-mercadolibre.jpg" alt="Carregador foto 1" class="zoomable-img"></div>
+                                <div class="carousel-slide"><img src="https://i.ibb.co/twqhgPTG/Screenshot-2026-05-28-16-39-48-550-com-mercadolibre.jpg" alt="Carregador foto 2" class="zoomable-img"></div>
+                            </div>
+                            <button class="carousel-btn btn-next">&gt;</button>
+                            <div class="carousel-dots">
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Carregador Ultra Turbo Inteligente 120W Fast Charge</h3>
+                        <p class="product-desc">Carregamento em velocidade máxima para seus dispositivos compatíveis com proteção avançada contra superaquecimento.</p>
+                        <div class="price-box">
+                            <div class="price-label">Por apenas</div>
+                            <div class="price-value">R$ 25,00</div>
+                            <a href="https://meli.la/1jmZeJZ" target="_blank" class="btn-action">Ver Oferta</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-name="pelicula xiaomi vidro temperado 3d 9h protecao tela">
+                    <div class="number-badge">13</div>
+                    <div class="product-image">
+                        <div class="carousel-container" data-carousel="0">
+                            <button class="carousel-btn btn-prev">&lt;</button>
+                            <div class="carousel-track">
+                                <div class="carousel-slide"><img src="https://i.ibb.co/svF1GTQy/Screenshot-2026-05-28-16-42-55-831-com-mercadolibre.jpg" alt="Pelicula foto 1" class="zoomable-img"></div>
+                                <div class="carousel-slide"><img src="https://i.ibb.co/GvqjXt1m/Screenshot-2026-05-28-16-43-15-822-com-mercadolibre.jpg" alt="Pelicula foto 2" class="zoomable-img"></div>
+                            </div>
+                            <button class="carousel-btn btn-next">&gt;</button>
+                            <div class="carousel-dots">
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Película Blindada de Vidro Temperado para Xiaomi</h3>
+                        <p class="product-desc">Máxima proteção contra quedas, riscos e impactos cotidianos sem perder a sensibilidade ao toque e a clareza da tela.</p>
+                        <div class="price-box">
+                            <div class="price-label">Por apenas</div>
+                            <div class="price-value">R$ 49,00</div>
+                            <a href="https://meli.la/1AfK2vG" target="_blank" class="btn-action">Ver Oferta</a>
                         </div>
                     </div>
                 </div>
@@ -415,7 +526,76 @@
     </div>
 
     <script>
-        // Lógica de Alternar Tema (Fundo Claro / Escuro)
+        // --- LOGICA DOS CARROSSEIS ---
+        const carousels = document.querySelectorAll('.carousel-container');
+        
+        carousels.forEach(container => {
+            const track = container.querySelector('.carousel-track');
+            const slides = container.querySelectorAll('.carousel-slide');
+            const prevBtn = container.querySelector('.btn-prev');
+            const nextBtn = container.querySelector('.btn-next');
+            const dots = container.querySelectorAll('.dot');
+            let currentIndex = 0;
+
+            function updateCarousel(index) {
+                if (index < 0) index = slides.length - 1;
+                if (index >= slides.length) index = 0;
+                currentIndex = index;
+                
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                dots.forEach((dot, i) => {
+                    if (i === currentIndex) dot.classList.add('active');
+                    else dot.classList.remove('active');
+                });
+            }
+
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Evita ativar o zoom ao clicar no botão
+                updateCarousel(currentIndex - 1);
+            });
+
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Evita ativar o zoom ao clicar no botão
+                updateCarousel(currentIndex + 1);
+            });
+
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    updateCarousel(i);
+                });
+            });
+
+            // Carrossel Automático Sutil (muda a cada 5 segundos se não mexer)
+            setInterval(() => {
+                updateCarousel(currentIndex + 1);
+            }, 5000);
+        });
+
+        // --- LÓGICA DO AMPLIFICADOR (ZOOM MODAL) ---
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
+        const modalClose = document.getElementById('modalClose');
+        const zoomableImages = document.querySelectorAll('.zoomable-img');
+
+        zoomableImages.forEach(img => {
+            img.addEventListener('click', () => {
+                modal.classList.add('active');
+                modalImg.src = img.src;
+            });
+        });
+
+        // Fechar ao clicar no "X" ou fora da foto
+        modalClose.addEventListener('click', () => modal.classList.remove('active'));
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal || e.target === modalClose) {
+                modal.classList.remove('active');
+            }
+        });
+
+
+        // --- LOGICA DE ALTERNAR TEMA (CLARO/ESCURO) ---
         const themeToggle = document.getElementById('themeToggle');
         themeToggle.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -426,7 +606,7 @@
             }
         });
 
-        // Lógica de Filtro em Tempo Real
+        // --- FILTRO DE BUSCA EM TEMPO REAL ---
         const searchInput = document.getElementById('searchInput');
         const productCards = document.querySelectorAll('.product-card');
         const noResults = document.getElementById('noResults');
